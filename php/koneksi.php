@@ -4,7 +4,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$database = "coba";
+$database = "db_raport";
 
 $koneksi = mysqli_connect($host, $user, $pass, $database);
 if(!$koneksi){
