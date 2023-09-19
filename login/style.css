@@ -11,4 +11,18 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    background: #5CD2E6;
+    /* memberikan lengkungan pada ujung */
+    border-radius: 20px;
+}
+.center h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid black;
+}
+.center form{
+    padding: 0 40px;
+    
 }
