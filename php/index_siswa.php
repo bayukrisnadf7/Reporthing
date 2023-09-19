@@ -13,11 +13,11 @@ $no = 0;
     <meta charset="UTF-8">
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <link href="../asset/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../asset/js/bootstrap.bundle.min.js"></script>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../asset/fontawesome/css/font-awesome.min.css">
 
     <title>SDN JUMERTO 02</title>
   </head>
