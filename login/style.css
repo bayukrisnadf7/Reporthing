@@ -2,7 +2,7 @@ body{
     margin: 0%;
     padding: 0%;
     font-family: 'Times New Roman', Times, serif;
-    background-color: aliceblue;
+    background-color: #5CD2E6;
     height: 100vh;
     overflow: hidden;
 }
@@ -12,17 +12,43 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
-    height: 200px;
-    background: #5CD2E6;
+    /* height: 200px; */
+    background: white;
     /* memberikan lengkungan pada ujung */
     border-radius: 20px;
 }
 .center h1{
+    /* untuk mengatur text menjadi center, align ... */
     text-align: center;
-    padding: 0 0 20px 0;
+    padding: 0 0 10px 0;
+    /* border bottom berfungsi untuk memberikan garis, 1px adalah ketebalan garis */
     border-bottom: 1px solid black;
 }
 .center form{
-    padding: 0 40px;
-    
+    padding: 0 50px;
+    box-sizing: border-box;
 }
+form .textfield{
+    position: relative;
+    border-bottom: 2px solid black;
+    margin: 30px 0;
+}
+.textfield input{
+    width: 100%;
+    padding: 0 5px;
+    height: 20px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+.textfield label{
+    /* position: absolute; */
+    /* top: 50%;
+    left: 50%; */
+    color: #adadad;
+    transform: translate(-50%);
+
+}
+
+
