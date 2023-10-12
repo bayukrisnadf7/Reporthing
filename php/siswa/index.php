@@ -12,46 +12,37 @@ $no = 0;
   <head>
     <meta charset="UTF-8">
 
-    <!-- Bootstrap -->
-    <link href="../asset/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../asset/js/bootstrap.bundle.min.js"></script>
+     <!-- Bootstrap -->
+    <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../asset/js/bootstrap.bundle.min.js"></script>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../asset/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
 
-    <title>SDN JUMERTO 02</title>
+    <title>Reporthing</title>
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand text-white" href="#">
-          <strong>
-            &nbsp;MySchool
-          </strong> - Sistem Informasi Akademik Sekolah
-        </a>
-      </div>
-    </nav>
-
+    
     <!-- Judul -->
     <div class="container">
-      <h1 class="mt-4">Data Siswa</h1>
-      <figure>
+      <h1 class="mt-5">Data Siswa</h1>
+      <!-- <figure>
         <blockquote class="blockquote">
           <p>Halaman Untuk Mengelola Data Siswa</p>
         </blockquote>
-      </figure>
+      </figure> -->
 
       <!-- Button Tambah Data -->
-      <a href="kelola.php" type="button" class="btn btn-primary mb-3">
+      <a href="kelola.php" type="button" class="btn btn-primary mb-4 mt-3">
         <i class="fa fa-plus"></i>
         Tambah Data
       </a>
 
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+      </div> -->
 
       <!-- Tabel -->
       <div class="table-responsive">
@@ -65,13 +56,19 @@ $no = 0;
                 <center>NISN</center>
               </th>
               <th>
-                <center>Nama Siswa</center>
+                <center>Nama</center>
+              </th>
+              <th>
+                <center>Kelas</center>
+              </th>
+              <th>
+                <center>No Telp</center>
               </th>
               <th>
                 <center>Jenis Kelamin</center>
               </th>
               <th>
-                <center>Foto Siswa</center>
+                <center>Foto</center>
               </th>
               <th>
                 <center>Alamat</center>
@@ -100,10 +97,16 @@ $no = 0;
                   <?php echo $result['nama_siswa']; ?>
                 </td>
                 <td>
+                  <?php echo $result['kelas']; ?>
+                </td>
+                <td>
+                  <?php echo $result['no_telp']; ?>
+                </td>
+                <td>
                   <?php echo $result['jenis_kelamin']; ?>
                 </td>
                 <td>
-                  <img src="img/<?php echo $result['foto_siswa']; ?>" style="width: 150px; height: 100px;">
+                  <img src="../../asset/img/<?php echo $result['foto_siswa']; ?>" style="width: 50px; height: 50px;">
                 </td>
                 <td>
                   <?php echo $result['alamat']; ?>
@@ -114,7 +117,7 @@ $no = 0;
                   <center>
                     <a href="kelola.php?ubah=<?php echo $result['id_siswa']; ?>" type="button"
                       class="btn btn-success btn-sm">
-                      <i class="fa fa-pencil"></i>
+                      <i class="fa fa-pencil "></i>
                     </a>
                     <a href="proses.php?hapus=<?php echo $result['id_siswa']; ?>" type="button"
                       class="btn btn-danger btn-sm" onClick="return confirm('Ingin menghapus data tersebut?')">

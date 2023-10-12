@@ -6,6 +6,8 @@ include 'koneksi.php';
 $id_siswa = '';
 $nisn = '';
 $nama_siswa = '';
+$kelas = '';
+$no_telp = '';
 $jenis_kelamin = '';
 $alamat = '';
 
@@ -19,6 +21,8 @@ if (isset($_GET['ubah'])) {
 
     $nisn = $result['nisn'];
     $nama_siswa = $result['nama_siswa'];
+    $kelas = $result['kelas'];
+    $no_telp = $result['no_telp'];
     $jenis_kelamin = $result['jenis_kelamin'];
     $alamat = $result['alamat'];
 
@@ -30,28 +34,19 @@ if (isset($_GET['ubah'])) {
 <head>
     <meta charset="UTF-8">
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/bootstrap.bundle.min.js"></script>
+     <!-- Bootstrap -->
+     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../asset/js/bootstrap.bundle.min.js"></script>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
 
-    <title>SDN JUMERTO 02</title>
+    <title>Reporthing</title>
 
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-primary mb-4">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">
-                <strong>
-                    &nbsp;MySchool
-                </strong> - Sistem Informasi Akademik Sekolah
-            </a>
-        </div>
-    </nav>
-    <div class="container">
+    <div class="container mt-4">
         <form method="POST" action="proses.php" enctype="multipart/form-data">
             <input type="hidden" value="<?php echo $id_siswa ?>" name="id_siswa">
 
@@ -71,6 +66,24 @@ if (isset($_GET['ubah'])) {
                 <div class="col-sm-10">
                     <input required type="text" name="nama_siswa" class="form-control" id="nama"
                         placeholder="Ex: Naufal" value="<?php echo $nama_siswa; ?>">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="kelas" class="col-sm-2 col-form-label">
+                    Kelas
+                </label>
+                <div class="col-sm-10">
+                    <input required type="text" name="kelas" class="form-control" id="kelas"
+                        placeholder="Ex: 2A" value="<?php echo $kelas; ?>">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="notelp" class="col-sm-2 col-form-label">
+                    No Telp
+                </label>
+                <div class="col-sm-10">
+                    <input required type="text" name="no_telp" class="form-control" id="notelp" 
+                        placeholder="Ex: 085xxxxxxxxx" value="<?php echo $no_telp; ?>">
                 </div>
             </div>
             <div class="mb-3 row">
