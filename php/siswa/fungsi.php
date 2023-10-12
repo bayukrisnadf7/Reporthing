@@ -15,7 +15,7 @@
         $alamat = $data['alamat'];
 
         //destination
-        $dir = "../../asset/img/";
+        $dir = "../../img/";
         //filename
         $tmpFile = $files['foto']['tmp_name'];
         //memindahkan
@@ -48,8 +48,8 @@
             $ekstensi = $split[count($split)-1];
 
             $foto = $result['nisn'].'.'.$ekstensi;
-            unlink("../../asset/img/" . $result['foto_siswa']);
-            move_uploaded_file($files['foto']['tmp_name'], '../../asset/img/'.$foto);
+            unlink("../../img/" . $result['foto_siswa']);
+            move_uploaded_file($files['foto']['tmp_name'], '../../img/'.$foto);
         }
 
         $query = "UPDATE tb_siswa SET nisn='$nisn', nama_siswa='$nama_siswa', kelas='$kelas', no_telp='$no_telp', jenis_kelamin='$jenis_kelamin',alamat='$alamat', foto_siswa='$foto' WHERE id_siswa='$id_siswa';";

@@ -106,7 +106,7 @@ $no = 0;
                   <?php echo $result['jenis_kelamin']; ?>
                 </td>
                 <td>
-                  <img src="../../asset/img/<?php echo $result['foto_siswa']; ?>" style="width: 50px; height: 50px;">
+                  <img src="../../img/<?php echo $result['foto_siswa']; ?>" style="width: 50px; height: 50px;">
                 </td>
                 <td>
                   <?php echo $result['alamat']; ?>
