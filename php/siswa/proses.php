@@ -1,5 +1,5 @@
 <?php
-include '../fungsi.php';
+include 'fungsi.php';
 
 if (isset($_POST['aksi'])) {
     if ($_POST['aksi'] == "add") {

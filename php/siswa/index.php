@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 
 $query = "SELECT * FROM tb_siswa;";
 $sql = mysqli_query($conn, $query);
@@ -62,6 +62,9 @@ $no = 0;
                 <center>Kelas</center>
               </th>
               <th>
+                <center>Tempat & Tgl Lahir</center>
+              </th>
+              <th>
                 <center>No Telp</center>
               </th>
               <th>
@@ -97,7 +100,10 @@ $no = 0;
                   <?php echo $result['nama_siswa']; ?>
                 </td>
                 <td>
-                  <?php echo $result['kelas']; ?>
+                  <?php echo $result['id_kelas']; ?>
+                </td>
+                <td>
+                  <?php echo $result['tempat_lahir'] . ', ' . $result['tanggal_lahir']; ?>
                 </td>
                 <td>
                   <?php echo $result['no_telp']; ?>
