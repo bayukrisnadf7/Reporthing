@@ -31,6 +31,9 @@ if (isset($_GET['ubah'])) {
     $alamat = $result['alamat'];
 
 }
+
+    $sql1 = "SELECT id_kelas, nama_kelas FROM tb_kelas"; 
+    $result1 = $conn->query($sql1);
 ?>
 
 <html lang="en">
@@ -77,8 +80,20 @@ if (isset($_GET['ubah'])) {
                     Kelas
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="id_kelas" class="form-control" id="kelas"
-                        placeholder="Ex: 2A" value="<?php echo $kelas; ?>">
+                    <select required id="kelas" name="id_kelas" class="form-select">
+                        <?php
+                        if ($result1->num_rows > 0) {
+                            while ($row = $result1->fetch_assoc()) {
+                                $selected = ($row['id_kelas'] == $id_kelas) ? "selected" : "";
+                                echo "<option $selected value='" . $row["id_kelas"] . "'>" . $row["nama_kelas"] . "</option>";
+                            }
+                        } else {
+                            echo "0 hasil";
+                        }
+
+                        $conn->close();
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -104,7 +119,7 @@ if (isset($_GET['ubah'])) {
                     No Telp
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="no_telp" class="form-control" id="notelp" 
+                    <input required type="telp" name="no_telp" class="form-control" id="notelp" 
                         placeholder="Ex: 085xxxxxxxxx" value="<?php echo $no_telp; ?>">
                 </div>
             </div>
