@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 
 $query = "SELECT * FROM tb_siswa;";
 $sql = mysqli_query($conn, $query);

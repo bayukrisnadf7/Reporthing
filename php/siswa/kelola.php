@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 
 $id_siswa = '';
 $nisn = '';
