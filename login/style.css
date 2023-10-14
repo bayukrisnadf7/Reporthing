@@ -8,7 +8,7 @@
 body{
   margin: 0;
   padding: 0;
-  background: linear-gradient(120deg,#2980b9, #8e44ad);
+  /* background: linear-gradient(120deg,#2980b9, #8e44ad); */
   height: 100vh;
   overflow: hidden;
 }
@@ -20,7 +20,7 @@ body{
   background-color: white;
   width: 500px;
   border-radius: 10px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.05);
 }
 /* .center h1{
   text-align: center;
@@ -30,22 +30,28 @@ body{
 
 .center .gambar{
   text-align: center;
-  padding: 5px 0;
+  padding: 20px 0;
   border-bottom: 1px solid silver;
   size: 50px;
+  background-color: #2E84D9;
+
 }
-.center .gambar img{
+.center .gambar label{
+  font-size: 20px;
+  color: #FFFFFF;
+}
+/* .center .logo img{
   position: relative;
   width: 200px;
   align-items: center;
   left: 10px;
   margin-bottom: 10px;
-}
-.center img{
+} */
+.center .logo img{
   position: absolute;
-  left: 90px;
-  width: 60px;
-  top: 10px;
+  left: 125px;
+  width: 260px;
+  top: -70px;
 }
 .center form{
   padding: 0 40px;

@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'db_siswa';
+$db = 'db_raport';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
 if ($conn) {
