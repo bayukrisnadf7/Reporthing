@@ -42,7 +42,7 @@ if(isset($_POST["login"])){
   <body>
     <div class="center">
       <div class="gambar">
-        <label> <b>Login</b></label>
+        <label> <b>L o g i n</b></label>
       </div>
       <div class="logo">
       <img src="../img/Group 268.png" alt="">

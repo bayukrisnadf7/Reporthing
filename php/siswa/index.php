@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 
 $query = "SELECT * FROM tb_siswa;";
 $sql = mysqli_query($conn, $query);
@@ -15,6 +15,7 @@ $no = 0;
      <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
@@ -97,7 +98,7 @@ $no = 0;
                   <?php echo $result['nama_siswa']; ?>
                 </td>
                 <td>
-                  <?php echo $result['kelas']; ?>
+                  <?php echo $result['id_kelas']; ?>
                 </td>
                 <td>
                   <?php echo $result['no_telp']; ?>
@@ -133,5 +134,6 @@ $no = 0;
         </table>
       </div>
     </div>
+    
   </body>
 </php>
