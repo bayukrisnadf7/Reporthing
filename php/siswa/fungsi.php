@@ -1,5 +1,5 @@
 <?php
-    include '../koneksi.php';
+    include '../../koneksi.php';
     function tambah_data($data, $files){
 
         $nisn = $data['nisn'];

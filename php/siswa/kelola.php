@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 
 <?php
-include '../koneksi.php';
+include '../../koneksi.php';
 
 $id_siswa = '';
 $nisn = '';
 $nama_siswa = '';
 $kelas = '';
+$tempat_lahir = '';
+$tanggal_lahir = '';
 $no_telp = '';
 $jenis_kelamin = '';
 $alamat = '';
@@ -21,7 +23,9 @@ if (isset($_GET['ubah'])) {
 
     $nisn = $result['nisn'];
     $nama_siswa = $result['nama_siswa'];
-    $kelas = $result['kelas'];
+    $kelas = $result['id_kelas'];
+    $tempat_lahir = $result['tempat_lahir'];
+    $tanggal_lahir = $result['tanggal_lahir'];
     $no_telp = $result['no_telp'];
     $jenis_kelamin = $result['jenis_kelamin'];
     $alamat = $result['alamat'];
@@ -73,8 +77,26 @@ if (isset($_GET['ubah'])) {
                     Kelas
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="kelas" class="form-control" id="kelas"
+                    <input required type="text" name="id_kelas" class="form-control" id="kelas"
                         placeholder="Ex: 2A" value="<?php echo $kelas; ?>">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="tempat_lahir" class="col-sm-2 col-form-label">
+                    Tempat Lahir
+                </label>
+                <div class="col-sm-10">
+                    <input required type="text" name="tempat_lahir" class="form-control" id="tempat_Lahir"
+                        placeholder="Ex: Jember" value="<?php echo $tempat_lahir; ?>">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="tanggal_lahir" class="col-sm-2 col-form-label">
+                    Tanggal Lahir
+                </label>
+                <div class="col-sm-10">
+                    <input required type="date" name="tanggal_lahir" class="form-control" id="tanggal_Lahir"
+                        value="<?php echo $tanggal_lahir; ?>">
                 </div>
             </div>
             <div class="mb-3 row">
