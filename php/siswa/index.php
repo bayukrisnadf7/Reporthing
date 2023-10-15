@@ -51,7 +51,7 @@ if (isset($_GET['ubah'])) {
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>Reporthing</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -238,7 +238,7 @@ if (isset($_GET['ubah'])) {
                       </div>
 
                       <div class="mb-3 row mt-4">
-                          <div class="">
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                               <?php
                               if (isset($_GET['ubah'])) {
                                   ?>
