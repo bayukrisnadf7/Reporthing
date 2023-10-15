@@ -1,7 +1,7 @@
 <?php
 include '../../koneksi.php';
 
-$query = "SELECT * FROM tb_siswa;";
+$query = "SELECT * FROM tb_guru;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -17,12 +17,12 @@ $no = 0;
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>Reporthing</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Reporthing</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -51,14 +51,14 @@ $no = 0;
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
     </div>
   </div>
 </nav>
 
 <div class="container">
-      <h1 class="mt-5">Data Siswa</h1>
+      <h1 class="mt-5">Data Guru</h1>
       <!-- <figure>
         <blockquote class="blockquote">
           <p>Halaman Untuk Mengelola Data Siswa</p>
@@ -85,13 +85,10 @@ $no = 0;
                 <center>No.</center>
               </th>
               <th>
-                <center>NISN</center>
+                <center>NIP</center>
               </th>
               <th>
                 <center>Nama</center>
-              </th>
-              <th>
-                <center>Kelas</center>
               </th>
               <th>
                 <center>Tempat & Tgl Lahir</center>
@@ -126,13 +123,10 @@ $no = 0;
                   </center>
                 </td>
                 <td>
-                  <?php echo $result['nisn']; ?>
+                  <?php echo $result['nip']; ?>
                 </td>
                 <td>
-                  <?php echo $result['nama_siswa']; ?>
-                </td>
-                <td>
-                  <?php echo $result['id_kelas']; ?>
+                  <?php echo $result['nama_guru']; ?>
                 </td>
                 <td>
                   <?php echo $result['tempat_lahir'] . ', ' . $result['tanggal_lahir']; ?>
@@ -144,7 +138,7 @@ $no = 0;
                   <?php echo $result['jenis_kelamin']; ?>
                 </td>
                 <td>
-                  <img src="../../img/<?php echo $result['foto_siswa']; ?>" style="width: 50px; height: 50px;">
+                  <img src="../../img/<?php echo $result['foto_guru']; ?>" style="width: 50px; height: 50px;">
                 </td>
                 <td>
                   <?php echo $result['alamat']; ?>
@@ -153,11 +147,11 @@ $no = 0;
                 <!-- Button UBAH dan HAPUS-->
                 <td>
                   <center>
-                    <a href="kelola.php?ubah=<?php echo $result['id_siswa']; ?>" type="button"
+                    <a href="kelola.php?ubah=<?php echo $result['id_guru']; ?>" type="button"
                       class="btn btn-success btn-sm">
                       <i class="fa fa-pencil "></i>
                     </a>
-                    <a href="proses.php?hapus=<?php echo $result['id_siswa']; ?>" type="button"
+                    <a href="proses.php?hapus=<?php echo $result['id_guru']; ?>" type="button"
                       class="btn btn-danger btn-sm" onClick="return confirm('Ingin menghapus data tersebut?')">
                       <i class="fa fa-trash"></i>
                     </a>
