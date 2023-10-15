@@ -41,8 +41,8 @@ if (isset($_GET['ubah'])) {
 <head>
     <meta charset="UTF-8">
 
-     <!-- Bootstrap -->
-     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
 
     <!-- Font Awesome -->
@@ -66,6 +66,7 @@ if (isset($_GET['ubah'])) {
                         value="<?php echo $nisn; ?>">
                 </div>
             </div>
+            
             <div class="mb-3 row">
                 <label for="nama" class="col-sm-2 col-form-label">
                     Nama Siswa
