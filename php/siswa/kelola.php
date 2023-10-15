@@ -101,7 +101,7 @@ if (isset($_GET['ubah'])) {
                     Tempat Lahir
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="tempat_lahir" class="form-control" id="tempat_Lahir"
+                    <input required type="text" name="tempat_lahir" class="form-control" id="tempat_lahir"
                         placeholder="Ex: Jember" value="<?php echo $tempat_lahir; ?>">
                 </div>
             </div>
@@ -110,7 +110,7 @@ if (isset($_GET['ubah'])) {
                     Tanggal Lahir
                 </label>
                 <div class="col-sm-10">
-                    <input required type="date" name="tanggal_lahir" class="form-control" id="tanggal_Lahir"
+                    <input required type="date" name="tanggal_lahir" class="form-control" id="tanggal_lahir" 
                         value="<?php echo $tanggal_lahir; ?>">
                 </div>
             </div>
@@ -119,8 +119,8 @@ if (isset($_GET['ubah'])) {
                     No Telp
                 </label>
                 <div class="col-sm-10">
-                    <input required type="telp" name="no_telp" class="form-control" id="notelp" 
-                        placeholder="Ex: 085xxxxxxxxx" value="<?php echo $no_telp; ?>">
+                    <input required type="text" name="no_telp" class="form-control" id="notelp" 
+                        placeholder="Ex: 085XXXXXXXXX" value="<?php echo $no_telp; ?>">
                 </div>
             </div>
             <div class="mb-3 row">

@@ -23,7 +23,7 @@
         //memindahkan
         move_uploaded_file($tmpFile, $dir . $foto);
 
-        $query = "INSERT INTO tb_siswa VALUES(null, '$nisn', '$nama_siswa', '$kelas', '$tempat_lahir', $tanggal_lahir, '$no_telp', '$jenis_kelamin', '$foto', '$alamat')";
+        $query = "INSERT INTO tb_siswa VALUES(null, '$nisn', '$nama_siswa', '$kelas', '$tempat_lahir', '$tanggal_lahir', '$no_telp', '$jenis_kelamin', '$foto', '$alamat')";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         return true;
