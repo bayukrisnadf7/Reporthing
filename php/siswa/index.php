@@ -50,9 +50,9 @@ if (isset($_GET['ubah'])) {
   <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
   <script src="../../asset/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
-  <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
+    <title>Document</title>
 </head>
 
 <body>
@@ -243,7 +243,7 @@ if (isset($_GET['ubah'])) {
                       </div>
 
                       <div class="mb-3 row mt-4">
-                          <div class="">
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                               <?php
                               if (isset($_GET['ubah'])) {
                                   ?>
