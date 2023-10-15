@@ -34,7 +34,7 @@ body{
   border-bottom: 1px solid silver;
   size: 50px;
   background-color: #2E84D9;
-
+  border-radius: 10px;
 }
 .center .gambar label{
   font-size: 20px;

@@ -16,6 +16,7 @@ $no = 0;
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
 
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
 
@@ -139,5 +140,6 @@ $no = 0;
         </table>
       </div>
     </div>
+    
   </body>
 </php>
