@@ -85,7 +85,7 @@ if (isset($_GET['ubah'])) {
                         <?php
                         if ($result1->num_rows > 0) {
                             while ($row = $result1->fetch_assoc()) {
-                                $selected = ($row['id_kelas'] == $id_kelas) ? "selected" : "";
+                                $selected = ($row['id_kelas'] == $kelas) ? "selected" : "";
                                 echo "<option $selected value='" . $row["id_kelas"] . "'>" . $row["nama_kelas"] . "</option>";
                             }
                         } else {
