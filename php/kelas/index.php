@@ -1,7 +1,7 @@
 <?php
 include '../../koneksi.php';
 
-$query = "SELECT * FROM tb_guru;";
+$query = "SELECT tb_kelas.*, tb_guru.nama_guru FROM tb_kelas JOIN tb_guru ON tb_kelas.id_guru = tb_guru.id_guru;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -22,6 +22,7 @@ $no = 0;
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Reporthing</a>
@@ -65,7 +66,7 @@ $no = 0;
     </nav>
 
     <div class="container">
-        <h1 class="mt-5">Data Guru</h1>
+        <h1 class="mt-5">Data Kelas</h1>
         <!-- <figure>
         <blockquote class="blockquote">
             <p>Halaman Untuk Mengelola Data Siswa</p>
@@ -92,25 +93,13 @@ $no = 0;
                             <center>No.</center>
                         </th>
                         <th>
-                            <center>NIP</center>
+                            <center>Id Kelas</center>
                         </th>
                         <th>
-                            <center>Nama</center>
+                            <center>Nama Kelas</center>
                         </th>
                         <th>
-                            <center>Tempat & Tgl Lahir</center>
-                        </th>
-                        <th>
-                            <center>No Telp</center>
-                        </th>
-                        <th>
-                            <center>Jenis Kelamin</center>
-                        </th>
-                        <th>
-                            <center>Foto</center>
-                        </th>
-                        <th>
-                            <center>Alamat</center>
+                            <center>Wali Kelas</center>
                         </th>
                         <th>
                             <center>Aksi</center>
@@ -130,35 +119,23 @@ $no = 0;
                                 </center>
                             </td>
                             <td>
-                                <?php echo $result['nip']; ?>
+                                <?php echo $result['id_kelas']; ?>
+                            </td>
+                            <td>
+                                <?php echo $result['nama_kelas']; ?>
                             </td>
                             <td>
                                 <?php echo $result['nama_guru']; ?>
-                            </td>
-                            <td>
-                                <?php echo $result['tempat_lahir'] . ', ' . $result['tanggal_lahir']; ?>
-                            </td>
-                            <td>
-                                <?php echo $result['no_telp']; ?>
-                            </td>
-                            <td>
-                                <?php echo $result['jenis_kelamin']; ?>
-                            </td>
-                            <td>
-                                <img src="../../img/<?php echo $result['foto_guru']; ?>" style="width: 50px; height: 50px;">
-                            </td>
-                            <td>
-                                <?php echo $result['alamat']; ?>
                             </td>
 
                             <!-- Button UBAH dan HAPUS-->
                             <td>
                                 <center>
-                                    <a href="kelola.php?ubah=<?php echo $result['id_guru']; ?>" type="button"
+                                    <a href="kelola.php?ubah=<?php echo $result['id_kelas']; ?>" type="button"
                                         class="btn btn-success btn-sm">
                                         <i class="fa fa-pencil "></i>
                                     </a>
-                                    <a href="proses.php?hapus=<?php echo $result['id_guru']; ?>" type="button"
+                                    <a href="proses.php?hapus=<?php echo $result['id_kelas']; ?>" type="button"
                                         class="btn btn-danger btn-sm"
                                         onClick="return confirm('Ingin menghapus data tersebut?')">
                                         <i class="fa fa-trash"></i>
