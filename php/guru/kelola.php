@@ -51,7 +51,6 @@ if (isset($_GET['ubah'])) {
     <div class="container mt-4">
         <form method="POST" action="proses.php" enctype="multipart/form-data">
             <input type="hidden" value="<?php echo $id_guru ?>" name="id_guru">
-
             <div class="mb-3 row">
                 <label for="nip" class="col-sm-2 col-form-label mt-4">
                     NIP

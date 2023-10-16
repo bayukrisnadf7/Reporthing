@@ -91,7 +91,6 @@ if (isset($_GET['ubah'])) {
                         } else {
                             echo "0 hasil";
                         }
-
                         $conn->close();
                         ?>
                     </select>

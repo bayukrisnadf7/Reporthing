@@ -11,11 +11,9 @@ $no = 0;
 
 <head>
     <meta charset="UTF-8">
-
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
     <title>Reporthing</title>
@@ -29,18 +27,15 @@ $no = 0;
             <p>Halaman Untuk Mengelola Data Siswa</p>
         </blockquote>
         </figure> -->
-
         <!-- Button Tambah Data -->
         <a href="kelola.php" type="button" class="btn btn-primary mb-4 mt-3">
             <i class="fa fa-plus"></i>
             Tambah Data
         </a>
-
         <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div> -->
-
         <!-- Tabel -->
         <div class="table-responsive">
             <table class="table align-middle table-bordered table-hover">
@@ -63,7 +58,6 @@ $no = 0;
                         </th>
                     </tr>
                 </thead>
-
                 <!-- Tabel Body -->
                 <tbody>
                     <?php
@@ -84,7 +78,6 @@ $no = 0;
                             <td>
                                 <?php echo $result['nama_guru']; ?>
                             </td>
-
                             <!-- Button UBAH dan HAPUS-->
                             <td>
                                 <center>
