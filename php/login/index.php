@@ -21,7 +21,7 @@ if(isset($_POST["login"])){
 
     }
     if ($usernameVar== $username && $passwordVar==$password) {
-        // header("location:../sidebar/index.php");
+        header("location:../sidebar/index.php");
         echo '<script language = "javascript">
         alert ("Login Berhasil"); document.location="../sidebar/dasboard.php"; </script>';
     } else if($usernameVar!= $username && $passwordVar!=$password){

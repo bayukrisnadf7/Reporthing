@@ -82,10 +82,14 @@ $no = 0;
                                 <?php echo $result['id_mapel']; ?>
                             </td>
                             <td>
+                                <center>
                                 <?php echo $result['nama_mapel']; ?>
+                                </center>
                             </td>
                             <td>
+                                <center>
                                 <?php echo $result['kkm']; ?>
+                                </center>                                
                             </td>
 
                             <!-- Button UBAH dan HAPUS-->

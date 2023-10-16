@@ -1,3 +1,8 @@
-.container .table-responsive table{
+.container{
+    position: absolute;
+    right: 50px;
+}
+.container .table-responsive{
+    color: #FFF;
     
 }

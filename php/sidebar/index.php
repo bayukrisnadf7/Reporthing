@@ -1,5 +1,5 @@
 <?php 
-include '../koneksi.php';
+include '../../koneksi.php';
 
 
 
@@ -26,7 +26,7 @@ include '../koneksi.php';
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="../gambar/Asset 6xxxhdpi.png" alt="logo">
+                    <img src="../../img/Asset 6xxxhdpi.png" alt="logo">
                 </span>
                 <span>
                     <div class="text header-text">
@@ -44,32 +44,32 @@ include '../koneksi.php';
               <li class="nav-link">
                 <!-- <a href="#"> -->
                   <!-- membuat a href untuk menuju file yang dituju -->
-                  <a href="dasboard.php">
+                  <a href="#">
                   <i class='bx bx-home-alt icons' ></i>
                   <span class="text nav-text">Dasboard</span>
                 </a>
               </li>
               <!-- menu pegawai -->
               <li class="nav-link">
-                <a href="#">
+                <a href="../guru/index.php">
                   <i class='bx bx-user-circle icons'></i>
-                  <span class="text nav-text">Pegawai</span>
+                  <span class="text nav-text">Guru</span>
                 </a>
               </li>
               <li class="nav-link">
-                <a href="#">
+                <a href="../siswa/index.php">
                   <i class='bx bx-user-pin icons' ></i>
                   <span class="text nav-text">Siswa</span>
                 </a>
               </li>
               <li class="nav-link">
-                <a href="#">
+                <a href="../kelas/index.php">
                   <i class='bx bxs-devices icons'></i>
                   <span class="text nav-text">Kelas</span>
                 </a>
               </li>
               <li class="nav-link">
-                <a href="#">
+                <a href="../mata pelajaran/index.php">
                   <i class='bx bx-book-alt icons'></i>
                   <span class="text nav-text">Mata Pelajaran</span>
                 </a>
