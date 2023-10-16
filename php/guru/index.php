@@ -132,7 +132,7 @@ $no = 0;
 
     <!-- sidebar -->
 
-    <nav class="sidebar">
+    <nav class="sidebar close">
         <header>
             <div class="image-text">
                 <span class="image">
@@ -144,7 +144,7 @@ $no = 0;
                     </div>
                 </span>
             </div>
-            <i class='bx bxs-chevrons-left arrow' ></i>
+            <i class='bx bx-chevrons-right arrow toogle'></i>
         </header>
         <hr>
         <div class="menu-bar">
@@ -179,7 +179,7 @@ $no = 0;
                 </a>
               </li>
               <li class="nav-link">
-                <a href="../mata Pelajaran/index.php">
+                <a href="../mata pelajaran/index.php">
                   <i class='bx bx-book-alt icons'></i>
                   <span class="text nav-text">Mata Pelajaran</span>
                 </a>
@@ -212,6 +212,8 @@ $no = 0;
 
         
     </nav>
+
+    <script src="../sidebar/script.js"></script>
 
 
 </body>

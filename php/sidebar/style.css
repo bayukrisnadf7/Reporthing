@@ -34,6 +34,13 @@ body{
     width: 300px;
     padding: 10px;
     background: var(--sidebarcolor);
+    transition: var(--tran-05);
+}
+.sidebar.close{
+    width: 80px;
+}
+.sidebar.close .text{
+    opacity: 0;
 }
 .sidebar hr{
     width: 100%;
@@ -58,13 +65,16 @@ body{
 .sidebar .text{
     font-size: 22px;
     font-weight: 2000;
+    color: var(--textcolor);
+    transition: var(--tran-04);
+    white-space: nowrap;
 }
 /* mengatur gambar */
 .sidebar .image img{
     width: 50px;
     display: flex;
 }
-.sidebar header .arrow{
+.sidebar header .toogle{
     position: absolute;
     top: 50%;
     right: -25px; 
@@ -78,6 +88,11 @@ body{
     color: var(--bodycolor);
     font-size: 30px;
 }
+.sidebar.close header .toggle{
+    transform: translateY(-50%) rotate(180deg); 
+}   
+
+
 .sidebar header{
     position: relative;
 }

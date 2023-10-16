@@ -22,7 +22,7 @@ include '../../koneksi.php';
     <title>Reporthing</title>
   </head>
   <body>
-    <nav class="sidebar">
+    <nav class="sidebar close">
         <header>
             <div class="image-text">
                 <span class="image">
@@ -34,7 +34,7 @@ include '../../koneksi.php';
                     </div>
                 </span>
             </div>
-            <i class='bx bxs-chevrons-left arrow' ></i>
+            <i class='bx bx-chevrons-right toogle'></i>
         </header>
         <hr>
         <div class="menu-bar">
@@ -102,6 +102,8 @@ include '../../koneksi.php';
 
         
     </nav>
+
+    <script src="script.js"></script>
     
   </body>
 </html>

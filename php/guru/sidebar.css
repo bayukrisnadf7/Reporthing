@@ -34,6 +34,13 @@ body{
     width: 300px;
     padding: 10px;
     background: var(--sidebarcolor);
+    transition: var(--tran-05);
+}
+.sidebar.close{
+    width: 80px;
+}
+.sidebar.close .text{
+    opacity: 0;
 }
 .sidebar hr{
     width: 100%;
@@ -58,6 +65,9 @@ body{
 .sidebar .text{
     font-size: 22px;
     font-weight: 2000;
+    color: var(--textcolor);
+    transition: var(--tran-04);
+    white-space: nowrap;
 }
 /* mengatur gambar */
 .sidebar .image img{
@@ -109,18 +119,19 @@ body{
 .sidebar .bottom-content li{
     height: 40px;
 }
-/* .sidebar .bottom-content .admin i{
+.sidebar .bottom-content .admin i{
     background-color: #695CFE;
     border-radius: 100%;
     align-items: center;
-} */
+}
+
+
 .sidebar .menu-bar{
     display: flex;
     height: 85%;
     flex-direction: column;
     justify-content: space-between;
 }
-
 .sidebar .menu-bar .menu{
     margin-left: -16px;
     margin-top: 1px;
