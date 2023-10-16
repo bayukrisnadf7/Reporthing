@@ -3,25 +3,25 @@
 <?php
 include '../../koneksi.php';
 
-
 $id_mapel = '';
 $nama_mapel = '';
 $kkm = '';
 
-
 if (isset($_GET['ubah'])) {
-    $id_guru = $_GET['ubah'];
+    $id_mapel = $_GET['ubah'];
 
-    $query = "SELECT * FROM tb_guru WHERE id_mapel = '$id_mapel';";
+    $query = "SELECT * FROM tb_mapel WHERE id_mapel = '$id_mapel';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
 
-    $id_mapel = $data['id_mapel'];
-    $nama_mapel = $data ['nama_mapel'];
-    $kkm = $data['kkm'];
-
+    $id_mapel = $result['id_mapel'];
+    $nama_mapel = $result['nama_mapel'];
+    $kkm = $result['kkm'];
 }
+
+    $sql1 = "SELECT * FROM tb_mapel";
+    $result1 = $conn->query($sql1);
 ?>
 
 <html lang="en">
@@ -29,8 +29,8 @@ if (isset($_GET['ubah'])) {
 <head>
     <meta charset="UTF-8">
 
-     <!-- Bootstrap -->
-     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
 
     <!-- Font Awesome -->
@@ -42,37 +42,35 @@ if (isset($_GET['ubah'])) {
 
 <body>
     <div class="container mt-4">
-        <form method="POST" action="index.php" enctype="multipart/form-data">
-            <input type="hidden" value="<?php echo $id_mapel ?>" name="id_mapel">
+        <form method="POST" action="proses.php" enctype="multipart/form-data">
+            <input type="hidden" value="<?php echo $id_mapel ?>" name="id_kelas">
             <div class="mb-3 row">
-                <label for="nip" class="col-sm-2 col-form-label mt-4">
+                <label for="id_kelas" class="col-sm-2 col-form-label mt-4">
                     ID Mapel
                 </label>
                 <div class="col-sm-10 mt-4">
-                    <input required type="text" name="id_mapel" class="form-control" id="id_mapel" placeholder="Ex: BI1"
+                    <input required type="text" name="id_kelas" class="form-control" id="id_kelas" placeholder="Ex: BI1"
                         value="<?php echo $id_mapel; ?>">
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="nama_mapel" class="col-sm-2 col-form-label">
+                <label for="nama" class="col-sm-2 col-form-label">
                     Nama Mapel
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="nama_mapel" class="form-control" id="nama_mapel"
-                        placeholder="Ex: Bahasa Indonesia" value="<?php echo $nama_mapel; ?>">
+                    <input required type="text" name="nama_kelas" class="form-control" id="nama" placeholder="Ex: Bahasa Indonesia"
+                        value="<?php echo $nama_mapel; ?>">
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="kkm" class="col-sm-2 col-form-label">
+                <label for="nama" class="col-sm-2 col-form-label">
                     KKM
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="kkm" class="form-control" id="kkm"
-                        placeholder="Ex: Jember" value="<?php echo $kkm; ?>">
+                    <input required type="text" name="nama_kelas" class="form-control" id="nama" placeholder="Ex: 70"
+                        value="<?php echo $kkm; ?>">
                 </div>
             </div>
-
-
             <div class="mb-3 row mt-4">
                 <div class="col">
                     <?php

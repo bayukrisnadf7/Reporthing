@@ -1,38 +1,5 @@
 <?php
 include '../../koneksi.php';
-include 'kelola.php';
-
-
-if(isset($_POST['aksi'])){
-    if($_POST['aksi'] == "add"){
-        $id_mapel = $data['id_mapel'];
-        $nama_mapel = $data ['nama_mapel'];
-        $kkm = $data['kkm'];
-    
-        $query = "INSERT INTO tb_mapel ('$id_mapel','$nama_mapel','$kkm')";
-        $result = mysqli_query($conn,$query);
-    } elseif($_POST['aksi'] == "edit"){
-        $id_mapel = $data['id_mapel'];
-        $nama_mapel = $data ['nama_mapel'];
-        $kkm = $data['kkm'];
-
-        $query = "UPDATE tb_mapel SET id_mapel='$id_mapel', nama_mapel='$nama_mapel', kkm='$kkm'";
-        $result = mysqli_query($conn, $query);
-    } 
-} 
-if (isset ($_POST['hapus'])) {
-    $queryShow = "SELECT * FROM tb_mapel WHERE id_mapel = '$id_mapel';";
-    $sqlShow = mysqli_query($conn, $queryShow);
-    $result = mysqli_fetch_assoc($sqlShow);
-
-    $query = "DELETE FROM tb_mapel WHERE id_mapel = '$id_mapel';";
-    $sql = mysqli_query($conn, $query);
-    return true;
-}
-
-    
-
-
 
 // $query = "SELECT tb_mapel.*, tb_guru.nama_guru FROM tb_kelas JOIN tb_guru ON tb_kelas.id_guru = tb_guru.id_guru;";
 $query = "SELECT * FROM tb_mapel";
@@ -124,20 +91,15 @@ $no = 0;
                             <!-- Button UBAH dan HAPUS-->
                             <td>
                                 <center>
-                                    <a href="kelola.php?ubah=<?php echo $result['id_mapel']; ?>" type="button"
+                                <a href="kelola.php?ubah=<?php echo $result['id_mapel']; ?>" type="button"
                                         class="btn btn-success btn-sm">
                                         <i class="fa fa-pencil "></i>
                                     </a>
-                                    <button type="button" name="hapus" 
-                                    class="btn btn-danger btn-sm"
-                                    onClick="return confirm('Ingin menghapus data tersebut?')">
-                                    <i class="fa fa-trash"></i></button>
-                                    
-                                    <!-- <a href="index.php?hapus=" type="button"
+                                    <a href="proses.php?hapus=<?php echo $result['id_mapel']; ?>" type="button"
                                         class="btn btn-danger btn-sm"
                                         onClick="return confirm('Ingin menghapus data tersebut?')">
                                         <i class="fa fa-trash"></i>
-                                    </a> -->
+                                    </a>
                             </td>
                             </center>
                         </tr>
