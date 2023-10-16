@@ -45,18 +45,16 @@ $result1 = $conn->query($sql1);
 
 <head>
   <meta charset="UTF-8">
-
   <!-- Bootstrap -->
   <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
   <script src="../../asset/js/bootstrap.bundle.min.js"></script>
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
   <title>Reporthing</title>
 </head>
 
 <body>
-<!-- ISINYA BRO-->
+  <!-- ISINYA BRO-->
   <div class="container">
     <h1 class="mt-5">Data Siswa</h1>
     <!-- <figure>
@@ -64,23 +62,19 @@ $result1 = $conn->query($sql1);
           <p>Halaman Untuk Mengelola Data Siswa</p>
         </blockquote>
       </figure> -->
-
     <!-- Button Tambah Data -->
     <!-- <a href="kelola.php" type="button" class="btn btn-primary mb-4 mt-3">
         <i class="fa fa-plus"></i>
         Tambah Data
       </a> -->
-
     <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div> -->
-
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mb-4 mt-3" data-bs-toggle="modal" data-bs-target="#TambahSiswa">
       Tambah Data
     </button>
-
     <!-- Modal -->
     <div class="modal fade modal-lg" id="TambahSiswa" data-bs-backdrop="static" data-bs-keyboard="false"
       tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -90,13 +84,10 @@ $result1 = $conn->query($sql1);
             <h5 class="modal-title" id="staticBackdropLabel">Tambah Data</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-
           <!-- awal body modal -->
           <div class="modal-body">
-
             <form method="POST" action="proses.php" enctype="multipart/form-data">
               <input type="hidden" value="<?php echo $id_siswa ?>" name="id_siswa">
-
               <div class="mb-3 row">
                 <label for="nisn" class="col-sm-2 col-form-label mt-4">
                   NISN
@@ -235,7 +226,6 @@ $result1 = $conn->query($sql1);
         </div>
       </div>
     </div>
-
     <!-- Tabel -->
     <div class="table-responsive">
       <table class="table align-middle table-bordered table-hover">
@@ -273,7 +263,6 @@ $result1 = $conn->query($sql1);
             </th>
           </tr>
         </thead>
-
         <!-- Tabel Body -->
         <tbody>
           <?php
@@ -309,7 +298,6 @@ $result1 = $conn->query($sql1);
               <td>
                 <?php echo $result['alamat']; ?>
               </td>
-
               <!-- Button UBAH dan HAPUS-->
               <td>
                 <center>

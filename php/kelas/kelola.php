@@ -6,21 +6,22 @@ include '../../koneksi.php';
 $id_kelas = '';
 $nama_kelas = '';
 $id_guru = '';
-$nama_guru = '';
 
 if (isset($_GET['ubah'])) {
     $id_kelas = $_GET['ubah'];
 
-    
-    $query = "SELECT tb_kelas.*, tb_guru.nama_guru FROM tb_kelas JOIN tb_guru ON tb_kelas.id_guru = tb_guru.id_guru WHERE tb_kelas.id_kelas = '$id_kelas';";
+    $query = "SELECT * FROM tb_kelas WHERE id_kelas = '$id_kelas';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
 
+    $id_kelas = $result['id_kelas'];
     $nama_kelas = $result['nama_kelas'];
     $id_guru = $result['id_guru'];
-    $nama_guru = $result['nama_guru'];
 }
+
+    $sql1 = "SELECT id_guru, nama_guru FROM tb_guru";
+    $result1 = $conn->query($sql1);
 ?>
 
 <html lang="en">
@@ -43,7 +44,6 @@ if (isset($_GET['ubah'])) {
     <div class="container mt-4">
         <form method="POST" action="proses.php" enctype="multipart/form-data">
             <input type="hidden" value="<?php echo $id_kelas ?>" name="id_kelas">
-
             <div class="mb-3 row">
                 <label for="id_kelas" class="col-sm-2 col-form-label mt-4">
                     Id Kelas
@@ -58,8 +58,8 @@ if (isset($_GET['ubah'])) {
                     Nama Kelas
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="nama_kelas" class="form-control" id="nama"
-                        placeholder="Ex: 1A" value="<?php echo $nama_kelas; ?>">
+                    <input required type="text" name="nama_kelas" class="form-control" id="nama" placeholder="Ex: 1A"
+                        value="<?php echo $nama_kelas; ?>">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -67,11 +67,21 @@ if (isset($_GET['ubah'])) {
                     Wali Kelas
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="id_guru" class="form-control" id="id_guru"
-                        placeholder="Ex: Mail" value="<?php echo $nama_guru; ?>">
+                    <select required id="id_guru" name="id_guru" class="form-select">
+                        <?php
+                        if ($result1->num_rows > 0) {
+                            while ($row = $result1->fetch_assoc()) {
+                                $selected = ($row['id_guru'] == $id_guru) ? "selected" : "";
+                                echo "<option $selected value='" . $row["id_guru"] . "'>" . $row["nama_guru"] . "</option>";
+                            }
+                        } else {
+                            echo "0 hasil";
+                        }
+                        $conn->close();
+                        ?>
+                    </select>
                 </div>
             </div>
-            
             <div class="mb-3 row mt-4">
                 <div class="col">
                     <?php
