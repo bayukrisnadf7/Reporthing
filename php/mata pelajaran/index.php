@@ -1,7 +1,8 @@
 <?php
 include '../../koneksi.php';
 
-$query = "SELECT * FROM tb_guru;";
+// $query = "SELECT tb_mapel.*, tb_guru.nama_guru FROM tb_kelas JOIN tb_guru ON tb_kelas.id_guru = tb_guru.id_guru;";
+$query = "SELECT * FROM tb_mapel";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -10,10 +11,12 @@ $no = 0;
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/font-awesome.min.css">
     <title>Reporthing</title>
@@ -21,21 +24,26 @@ $no = 0;
 
 <body>
     <div class="container">
-        <h1 class="mt-5">Data Guru</h1>
+        <h1 class="mt-5">Data Mata Pelajaran</h1>
         <!-- <figure>
         <blockquote class="blockquote">
             <p>Halaman Untuk Mengelola Data Siswa</p>
         </blockquote>
         </figure> -->
+
         <!-- Button Tambah Data -->
         <a href="kelola.php" type="button" class="btn btn-primary mb-4 mt-3">
             <i class="fa fa-plus"></i>
             Tambah Data
         </a>
+
         <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div> -->
+
+
+
         <!-- Tabel -->
         <div class="table-responsive">
             <table class="table align-middle table-bordered table-hover">
@@ -45,31 +53,20 @@ $no = 0;
                             <center>No.</center>
                         </th>
                         <th>
-                            <center>NIP</center>
+                            <center>ID Mapel</center>
                         </th>
                         <th>
-                            <center>Nama</center>
+                            <center>Nama Mapel</center>
                         </th>
                         <th>
-                            <center>Tempat & Tgl Lahir</center>
-                        </th>
-                        <th>
-                            <center>No Telp</center>
-                        </th>
-                        <th>
-                            <center>Jenis Kelamin</center>
-                        </th>
-                        <th>
-                            <center>Foto</center>
-                        </th>
-                        <th>
-                            <center>Alamat</center>
+                            <center>KKM</center>
                         </th>
                         <th>
                             <center>Aksi</center>
                         </th>
                     </tr>
                 </thead>
+
                 <!-- Tabel Body -->
                 <tbody>
                     <?php
@@ -82,34 +79,23 @@ $no = 0;
                                 </center>
                             </td>
                             <td>
-                                <?php echo $result['nip']; ?>
+                                <?php echo $result['id_mapel']; ?>
                             </td>
                             <td>
-                                <?php echo $result['nama_guru']; ?>
+                                <?php echo $result['nama_mapel']; ?>
                             </td>
                             <td>
-                                <?php echo $result['tempat_lahir'] . ', ' . $result['tanggal_lahir']; ?>
+                                <?php echo $result['kkm']; ?>
                             </td>
-                            <td>
-                                <?php echo $result['no_telp']; ?>
-                            </td>
-                            <td>
-                                <?php echo $result['jenis_kelamin']; ?>
-                            </td>
-                            <td>
-                                <img src="../../img/<?php echo $result['foto_guru']; ?>" style="width: 50px; height: 50px;">
-                            </td>
-                            <td>
-                                <?php echo $result['alamat']; ?>
-                            </td>
+
                             <!-- Button UBAH dan HAPUS-->
                             <td>
                                 <center>
-                                    <a href="kelola.php?ubah=<?php echo $result['id_guru']; ?>" type="button"
+                                <a href="kelola.php?ubah=<?php echo $result['id_mapel']; ?>" type="button"
                                         class="btn btn-success btn-sm">
                                         <i class="fa fa-pencil "></i>
                                     </a>
-                                    <a href="proses.php?hapus=<?php echo $result['id_guru']; ?>" type="button"
+                                    <a href="proses.php?hapus=<?php echo $result['id_mapel']; ?>" type="button"
                                         class="btn btn-danger btn-sm"
                                         onClick="return confirm('Ingin menghapus data tersebut?')">
                                         <i class="fa fa-trash"></i>
@@ -122,9 +108,14 @@ $no = 0;
                     ?>
                 </tbody>
             </table>
+
+            
         </div>
     </div>
 
+
+
+    
 
 
 </body>
