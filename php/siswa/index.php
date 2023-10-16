@@ -298,19 +298,18 @@ $result1 = $conn->query($sql1);
               <td>
                 <?php echo $result['alamat']; ?>
               </td>
+              
               <!-- Button UBAH dan HAPUS-->
               <td>
                 <center>
-                  <a href="kelola.php?ubah=<?php echo $result['id_siswa']; ?>" type="button"
-                    class="btn btn-success btn-sm">
-                    <i class="fa fa-pencil "></i>
-                  </a>
+                  <a href="kelola.php?ubah=<?php echo $result['id_siswa']; ?>" type="submit" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#UbahSiswa"><i class="fa fa-pencil"></i></a>
                   <a href="proses.php?hapus=<?php echo $result['id_siswa']; ?>" type="button"
                     class="btn btn-danger btn-sm" onClick="return confirm('Ingin menghapus data tersebut?')">
                     <i class="fa fa-trash"></i>
                   </a>
+                </center>
               </td>
-              </center>
+              
             </tr>
             <?php
           }

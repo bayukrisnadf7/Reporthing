@@ -1,5 +1,5 @@
 <?php 
-include '../koneksi.php';
+include '../../koneksi.php';
 
 
 
@@ -26,7 +26,7 @@ include '../koneksi.php';
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="../img/Asset 6xxxhdpi.png" alt="logo">
+                    <img src="../../img/Asset 6xxxhdpi.png" alt="logo">
                 </span>
                 <span>
                     <div class="text header-text">
@@ -57,7 +57,7 @@ include '../koneksi.php';
                 </a>
               </li>
               <li class="nav-link">
-                <a href="../php/siswa/index.php">
+                <a href="../siswa/index.php">
                   <i class='bx bx-user-pin icons' ></i>
                   <span class="text nav-text">Siswa</span>
                 </a>

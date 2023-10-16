@@ -1,5 +1,5 @@
 <?php 
-include '../koneksi.php';
+include '../../koneksi.php';
 
 
 
@@ -26,7 +26,7 @@ include '../koneksi.php';
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="../gambar/Asset 6xxxhdpi.png" alt="logo">
+                    <img src="../../img/Asset 6xxxhdpi.png" alt="logo">
                 </span>
                 <span>
                     <div class="text header-text">
