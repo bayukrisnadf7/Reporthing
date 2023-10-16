@@ -72,11 +72,11 @@ $result1 = $conn->query($sql1);
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div> -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary mb-4 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button type="button" class="btn btn-primary mb-4 mt-3" data-bs-toggle="modal" data-bs-target="#TambahSiswa">
       Tambah Data
     </button>
     <!-- Modal -->
-    <div class="modal fade modal-lg" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+    <div class="modal fade modal-lg" id="TambahSiswa" data-bs-backdrop="static" data-bs-keyboard="false"
       tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
