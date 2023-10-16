@@ -1,5 +1,5 @@
 <?php 
-include '../koneksi.php';
+include '../../koneksi.php';
 
 if(isset($_POST["login"])){
     $username = $_POST["txt_username"];
@@ -45,7 +45,7 @@ if(isset($_POST["login"])){
         <label> <b>L o g i n</b></label>
       </div>
       <div class="logo">
-      <img src="../img/Group 268.png" alt="">
+      <img src="../../img/Group 268.png" alt="">
       </div>
       <form action="index.php" method="POST">
         <div class="txt_field">

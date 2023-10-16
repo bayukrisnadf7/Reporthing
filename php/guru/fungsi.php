@@ -61,7 +61,7 @@
     }
 
     function hapus_data($data){
-        $id_guru = $data['hapus'];
+    $id_guru = $data['hapus'];
 
     //foto
     $queryShow = "SELECT * FROM tb_guru WHERE id_guru = '$id_guru';";
