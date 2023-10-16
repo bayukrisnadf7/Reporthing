@@ -43,13 +43,13 @@ if (isset($_GET['ubah'])) {
 <body>
     <div class="container mt-4">
         <form method="POST" action="proses.php" enctype="multipart/form-data">
-            <input type="hidden" value="<?php echo $id_mapel ?>" name="id_kelas">
+            <input type="hidden" value="<?php echo $id_mapel ?>" name="id_mapel">
             <div class="mb-3 row">
                 <label for="id_kelas" class="col-sm-2 col-form-label mt-4">
                     ID Mapel
                 </label>
                 <div class="col-sm-10 mt-4">
-                    <input required type="text" name="id_kelas" class="form-control" id="id_kelas" placeholder="Ex: BI1"
+                    <input required type="text" name="id_mapel" class="form-control" id="id_mapel" placeholder="Ex: BI1"
                         value="<?php echo $id_mapel; ?>">
                 </div>
             </div>
@@ -58,7 +58,7 @@ if (isset($_GET['ubah'])) {
                     Nama Mapel
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="nama_kelas" class="form-control" id="nama" placeholder="Ex: Bahasa Indonesia"
+                    <input required type="text" name="nama_mapel" class="form-control" id="nama_mapel" placeholder="Ex: Bahasa Indonesia"
                         value="<?php echo $nama_mapel; ?>">
                 </div>
             </div>
@@ -67,7 +67,7 @@ if (isset($_GET['ubah'])) {
                     KKM
                 </label>
                 <div class="col-sm-10">
-                    <input required type="text" name="nama_kelas" class="form-control" id="nama" placeholder="Ex: 70"
+                    <input required type="text" name="kkm" class="form-control" id="kkm" placeholder="Ex: 70"
                         value="<?php echo $kkm; ?>">
                 </div>
             </div>

@@ -17,11 +17,11 @@
         $nama_mapel = $data['nama_mapel'];
         $kkm = $data['kkm'];
 
-        $queryShow = "SELECT * FROM tb_kelas WHERE id_kelas = '$id_mapel';";
+        $queryShow = "SELECT * FROM tb_mapel WHERE id_mapel = '$id_mapel';";
         $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
         $result = mysqli_fetch_assoc($sqlShow);
 
-        $query = "UPDATE tb_mapel SET id_kelas='$id_mapel', nama_kelas='$nama_mapel', kkm='$kkm' WHERE id_kelas='$id_mapel';";
+        $query = "UPDATE tb_mapel SET id_mapel='$id_mapel', nama_mapel='$nama_mapel', kkm='$kkm' WHERE id_mapel='$id_mapel';";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         return true;
