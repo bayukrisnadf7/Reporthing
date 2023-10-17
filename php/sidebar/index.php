@@ -99,11 +99,15 @@ include '../../koneksi.php';
             </li>
           </div>
         </div>
-
-        
     </nav>
 
+    <section class="home">
+      <div class="text">TESTI</div>
+    </section>
+
     <script src="script.js"></script>
+
+    
     
   </body>
 </html>

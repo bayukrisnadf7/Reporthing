@@ -32,12 +32,13 @@ body{
     left: 0;
     height: 100%;
     width: 300px;
-    padding: 10px;
+    padding: 10px 14px;
     background: var(--sidebarcolor);
     transition: var(--tran-05);
+    z-index: 100;
 }
 .sidebar.close{
-    width: 80px;
+    width: 88px;
 }
 .sidebar.close .text{
     opacity: 0;
@@ -68,6 +69,7 @@ body{
     color: var(--textcolor);
     transition: var(--tran-04);
     white-space: nowrap;
+    opacity: 1;
 }
 /* mengatur gambar */
 .sidebar .image img{
@@ -136,4 +138,16 @@ body{
     height: 85%;
     flex-direction: column;
     justify-content: space-between;
+}
+.home{
+    position: relative;
+    height: 100vh;
+    left: 308px;
+    width: calc(100% - 308px);
+    background: var(--bodycolor);
+    transition: var(--tran-05);
+}
+.sidebar.close ~ .home{
+    left: 88px;
+    width: calc(100% - 88px);
 }
