@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'db_raport';
+$db = 'db_report';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
 if ($conn) {
