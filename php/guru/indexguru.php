@@ -1,5 +1,6 @@
 <?php
 include '../../koneksi.php';
+session_start();
 
 $query = "SELECT * FROM tb_guru;";
 $sql = mysqli_query($conn, $query);
@@ -18,10 +19,10 @@ $no = 0;
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">   
+    <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
     <title>Reporthing</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" />
-    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
+    <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
 </head>
 
@@ -36,7 +37,7 @@ $no = 0;
             <div class="h-100">
                 <div class="sidebar-logo">
                     <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
-                        style="width: 10%; margin-right: 2px; margin-bottom: 3px;"/> Reporthing</a>
+                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
@@ -118,6 +119,21 @@ $no = 0;
                         <h4>Data Guru</h4>
                         <h6>Halaman untuk mengelola data guru</h6>
                     </div>
+
+                    <?php
+                    if (isset($_SESSION['eksekusi'])):
+                        ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php
+                            echo $_SESSION['eksekusi'];
+                            ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php
+                        session_destroy();
+                    endif;
+                    ?>
+
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header">
@@ -171,12 +187,12 @@ $no = 0;
                                             </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
-                                                <a href="kelolaguru.php?ubah=<?php echo $result['nip']; ?>"
-                                                    type="button" class="btn btn-warning btn-sm">
+                                                <a href="kelolaguru.php?ubah=<?php echo $result['nip']; ?>" type="button"
+                                                    class="btn btn-warning btn-sm">
                                                     <i class="fa fa-pen"></i>
                                                 </a>
-                                                <a href="prosesguru.php?hapus=<?php echo $result['nip']; ?>"
-                                                    type="button" class="btn btn-danger btn-sm"
+                                                <a href="prosesguru.php?hapus=<?php echo $result['nip']; ?>" type="button"
+                                                    class="btn btn-danger btn-sm"
                                                     onClick="return confirm('Ingin menghapus data tersebut?')">
                                                     <i class="fa fa-trash"></i>
                                                 </a>

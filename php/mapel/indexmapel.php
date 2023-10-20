@@ -1,5 +1,6 @@
 <?php
 include '../../koneksi.php';
+session_start();
 
 $query = "SELECT * FROM tb_mapel";
 $sql = mysqli_query($conn, $query);
@@ -118,6 +119,21 @@ $no = 0;
                         <h4>Data Mata Pelajaran</h4>
                         <h6>Halaman untuk mengelola data mata pelajaran</h6>
                     </div>
+
+                    <?php
+                    if (isset($_SESSION['eksekusi'])):
+                        ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php
+                            echo $_SESSION['eksekusi'];
+                            ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php
+                        session_destroy();
+                    endif;
+                    ?>
+                    
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header">

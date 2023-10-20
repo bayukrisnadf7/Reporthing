@@ -1,10 +1,12 @@
 <?php
 include 'fungsiguru.php';
+session_start();
 
 if (isset($_POST['aksi'])) {
     if ($_POST['aksi'] == "add") {
         $berhasil = tambah_data($_POST, $_FILES);
         if ($berhasil) {
+            $_SESSION['eksekusi'] = "Data Berhasil Ditambahkan";
             header("location: indexguru.php");
         } else {
             echo $berhasil;
@@ -14,6 +16,7 @@ if (isset($_POST['aksi'])) {
         $berhasil = ubah_data($_POST, $_FILES);
 
         if ($berhasil) {
+            $_SESSION['eksekusi'] = "Data Berhasil Diperbarui";
             header("location: indexguru.php");
         } else {
             echo $berhasil;
@@ -23,6 +26,7 @@ if (isset($_POST['aksi'])) {
 if (isset($_GET['hapus'])) {
     $berhasil = hapus_data($_GET);
     if ($berhasil) {
+        $_SESSION['eksekusi'] = "Data Berhasil Dihapus";
         header("location: indexguru.php");
     } else {
         echo $berhasil;

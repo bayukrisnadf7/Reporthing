@@ -1,5 +1,6 @@
 <?php
 include '../../koneksi.php';
+session_start();
 
 $query = "SELECT * FROM tb_siswa;";
 $sql = mysqli_query($conn, $query);
@@ -121,6 +122,21 @@ $result1 = $conn->query($sql1);
                         <h4>Data Siswa</h4>
                         <h6>Halaman untuk mengelola data siswa</h6>
                     </div>
+
+                    <?php
+                    if (isset($_SESSION['eksekusi'])):
+                        ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php
+                            echo $_SESSION['eksekusi'];
+                            ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php
+                        session_destroy();
+                    endif;
+                    ?>
+                    
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header">

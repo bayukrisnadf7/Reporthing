@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include '../../koneksi.php';
+session_start();
 
 $id_kelas = '';
 $nama_kelas = '';

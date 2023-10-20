@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include '../../koneksi.php';
+session_start();
 
 $nip = '';
 $nama_guru = '';
