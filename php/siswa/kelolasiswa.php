@@ -62,7 +62,8 @@ $result1 = $conn->query($sql1);
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">Reporthing</a>
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                        style="width: 10%; margin-right: 2px; margin-bottom: 3px;"/> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
@@ -176,10 +177,10 @@ $result1 = $conn->query($sql1);
                                 <form method="POST" action="prosessiswa.php" enctype="multipart/form-data">
                                     <input type="hidden" value="<?php echo $nisn ?>" name="nisn">
                                     <div class="mb-3 row">
-                                        <label for="nisn" class="col-sm-2 col-form-label mt-4">
+                                        <label for="nisn" class="col-sm-2 col-form-label">
                                             NISN
                                         </label>
-                                        <div class="col-sm-10 mt-4">
+                                        <div class="col-sm-10">
                                             <input required type="text" name="nisn" class="form-control" id="nisn"
                                                 placeholder="Ex: 1A" value="<?php echo $nisn; ?>">
                                         </div>

@@ -49,7 +49,8 @@ $result1 = $conn->query($sql1);
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">Reporthing</a>
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                        style="width: 10%; margin-right: 2px; margin-bottom: 3px;"/> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
@@ -159,10 +160,10 @@ $result1 = $conn->query($sql1);
                                 <form method="POST" action="prosesmapel.php" enctype="multipart/form-data">
                                     <input type="hidden" value="<?php echo $id_mapel ?>" name="id_mapel">
                                     <div class="mb-3 row">
-                                        <label for="id_mapel" class="col-sm-2 col-form-label mt-4">
+                                        <label for="id_mapel" class="col-sm-2 col-form-label">
                                             Id Mapel
                                         </label>
-                                        <div class="col-sm-10 mt-4">
+                                        <div class="col-sm-10">
                                             <input required type="text" name="id_mapel" class="form-control"
                                                 id="id_mapel" placeholder="Ex: BI1" value="<?php echo $id_mapel; ?>">
                                         </div>

@@ -168,10 +168,10 @@ if (isset($_GET['ubah'])) {
                                 <form method="POST" action="prosesguru.php" enctype="multipart/form-data">
                                     <input type="hidden" value="<?php echo $nip ?>" name="nip">
                                     <div class="mb-3 row">
-                                        <label for="nip" class="col-sm-2 col-form-label mt-4">
+                                        <label for="nip" class="col-sm-2 col-form-label">
                                             NIP
                                         </label>
-                                        <div class="col-sm-10 mt-4">
+                                        <div class="col-sm-10">
                                             <input required type="text" name="nip" class="form-control" id="nip"
                                                 placeholder="Ex: 112233" value="<?php echo $nip; ?>">
                                         </div>
