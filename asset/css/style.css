@@ -44,7 +44,7 @@ h4 {
 #sidebar{
     max-width: 254px;
     min-width: 254px;
-    background: #0D1282;
+    background: #FFFFFF;
     transition: all 0.35s ease-in-out;
 }
 
@@ -56,7 +56,7 @@ h4 {
     overflow: hidden;
     transition: all 0.35s ease-in-out;
     width: 100%;
-    background: #F6FBF4;
+    background: #F1f2f3;
 }
 
 /* Sidebar Elements Style */
@@ -66,7 +66,7 @@ h4 {
 }
 
 .sidebar-logo a{
-    color: #FFFFFF;
+    color: #007BFF;
     font-size: 1.15rem;
     font-weight: 600;
 }
@@ -79,7 +79,7 @@ h4 {
     margin-left: 0;
 }
 
-.sidebar-heade{
+.sidebar-header{
     color: #e9ecef;
     font-size: 75rem;
     padding: 1.5rem 1.5rem .375rem;
@@ -87,7 +87,7 @@ h4 {
 
 a.sidebar-link{
     padding: .625rem 1.625rem;
-    color: #cccccc;
+    color: #7D7C7C;
     position: relative;
     display: block;
     font-size: 0.875rem;
@@ -112,22 +112,23 @@ a.sidebar-link{
 }
 
 .sidebar-link:hover {
-    background-color: #090F6B; /* Warna biru saat dihover */
-    color: #FFFFFF; /* Warna teks putih saat dihover */
+    background-color: #007BFF; /* Warna biru saat dihover */
+    color: #FFF; /* Warna teks putih saat dihover */
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 
 .sidebar-link.active {
-    background-color: #090F6B; /* Warna biru saat aktif */
-    color: #FFFFFF; /* Warna teks putih saat aktif */
+    background-color: #007BFF; /* Warna biru saat aktif */
+    color: #FFF; /* Warna teks putih saat aktif */
     border-radius: 5px;
 }
 
 
 .avatar {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
 }
 
 .navbar-expand .navbar-nav{
@@ -148,15 +149,27 @@ a.sidebar-link{
 }
 
 .card {
-    box-shadow: 0 0 .875rem 0 rgba(34, 46, 60, 05);
+    /* box-shadow: 0 0 .875rem 0 rgba(34, 46, 60, 05); */
     margin-bottom: 24px;
     border-radius: 5px;
 }
 
 .illustration{
-    background-color: var(--bs-primary-bg-subtle);
-    color: var(--bs-emphasis-color);
-    border-radius: 8px;
+    background-color: #fff;
+    color: red;
+    border-radius: 5px;
+}
+
+.illustration1{
+    background-color: #fff;
+    color: green;
+    border-radius: 5px;
+}
+
+.illustration2{
+    background-color: #fff;
+    color: blue;
+    border-radius: 5px;
 }
 
 .illustration-img{
@@ -206,6 +219,6 @@ html[data-bs-theme="light"] .theme-toggle .fa-sun {
 }
 
 .custom-header th {
-    background-color: #0D1282; /* Ganti dengan warna yang diinginkan */
-    color: #fff; /* Warna teks */
+    background-color: #fff; /* Ganti dengan warna yang diinginkan */
+    color: #000000; /* Warna teks */
 }

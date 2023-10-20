@@ -139,7 +139,7 @@ if (isset($_GET['ubah'])) {
                 <div class="content-fluid">
                     <!-- Table Element -->
                     <div class="card border-0">
-                        <div class="card-header" style="background-color: #0D1282;">
+                        <div class="card-header" style="background-color: #FFFFFF;">
                             <!-- <h5 class="card-tittle">Data Kelas</h5>
                             <h6 class="card-subtitle text-muted">
                                 Halaman untuk mengelola data kelas
@@ -147,7 +147,7 @@ if (isset($_GET['ubah'])) {
                             <?php
                             if (isset($_GET['ubah'])) {
                                 ?>
-                                <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: white;">
+                                <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
                                     <i class="fa fa-pen"></i> Edit Data Guru</h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
@@ -155,7 +155,7 @@ if (isset($_GET['ubah'])) {
                                 <?php
                             } else {
                                 ?>
-                                <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: white;">
+                                <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
                                     <i class="fas fa-plus"></i> Tambah Data Guru</h6>
                                 <!-- <h6 class="card-subtitle text-muted" style="color: white;">
                                     Form untuk menambah data kelas

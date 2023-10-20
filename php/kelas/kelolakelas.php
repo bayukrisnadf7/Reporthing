@@ -52,7 +52,7 @@ $result1 = $conn->query($sql1);
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
                         style="width: 10%; margin-right: 2px; margin-bottom: 3px;"/> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -133,7 +133,7 @@ $result1 = $conn->query($sql1);
                 <div class="content-fluid">
                     <!-- Table Element -->
                     <div class="card border-0">
-                        <div class="card-header" style="background-color: #0D1282;">
+                        <div class="card-header">
                             <!-- <h5 class="card-tittle">Data Kelas</h5>
                             <h6 class="card-subtitle text-muted">
                                 Halaman untuk mengelola data kelas
@@ -141,7 +141,7 @@ $result1 = $conn->query($sql1);
                             <?php
                             if (isset($_GET['ubah'])) {
                                 ?>
-                                <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: white;">
+                                <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
                                     <i class="fa fa-pen"></i> Edit Data Kelas</h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
@@ -149,7 +149,7 @@ $result1 = $conn->query($sql1);
                                 <?php
                             } else {
                                 ?>
-                                <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: white;">
+                                <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
                                     <i class="fas fa-plus"></i> Tambah Data Kelas</h6>
                                 <!-- <h6 class="card-subtitle text-muted" style="color: white;">
                                     Form untuk menambah data kelas

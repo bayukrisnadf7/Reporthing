@@ -36,7 +36,7 @@ $no = 0;
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
                         style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -136,7 +136,7 @@ $no = 0;
                     
                     <!-- Table Element -->
                     <div class="card border-0">
-                        <div class="card-header">
+                        <div class="card-header" style="background-color: #FFFFFF;">
                             <a href="kelolamapel.php" type="button" class="btn btn-success btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Data
                             </a>
