@@ -56,7 +56,7 @@ h4 {
     overflow: hidden;
     transition: all 0.35s ease-in-out;
     width: 100%;
-    background: #F1f2f3;
+    background: #F1F6F9;
 }
 
 /* Sidebar Elements Style */
@@ -112,16 +112,16 @@ a.sidebar-link{
 }
 
 .sidebar-link:hover {
-    background-color: #007BFF; /* Warna biru saat dihover */
-    color: #FFF; /* Warna teks putih saat dihover */
+    background-color: #F1F6F9; /* Warna biru saat dihover */
+    color: #007BFF; /* Warna teks putih saat dihover */
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 
 .sidebar-link.active {
-    background-color: #007BFF; /* Warna biru saat aktif */
-    color: #FFF; /* Warna teks putih saat aktif */
+    background-color: #F1F6F9; /* Warna biru saat aktif */
+    color: #007BFF; /* Warna teks putih saat aktif */
     border-radius: 5px;
 }
 
@@ -180,7 +180,7 @@ a.sidebar-link{
 /* Sidebar Toggle */
 
 #sidebar.collapsed {
-    margin-left: -264px;
+    margin-left: -254px;
 }
 
 /* Footer and Nav */
