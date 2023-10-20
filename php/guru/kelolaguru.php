@@ -138,7 +138,7 @@ if (isset($_GET['ubah'])) {
                 <div class="content-fluid">
                     <!-- Table Element -->
                     <div class="card border-0">
-                        <div class="card-header">
+                        <div class="card-header" style="background-color: #0D1282;">
                             <!-- <h5 class="card-tittle">Data Kelas</h5>
                             <h6 class="card-subtitle text-muted">
                                 Halaman untuk mengelola data kelas
@@ -146,19 +146,19 @@ if (isset($_GET['ubah'])) {
                             <?php
                             if (isset($_GET['ubah'])) {
                                 ?>
-                                <h5 type="submit" name="aksi" value="edit" class="card-tittle">
-                                    Edit Data Guru</h5>
-                                <h6 class="card-subtitle text-muted">
-                                    Form untuk meng-edit data guru
-                                </h6>
+                                <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: white;">
+                                    <i class="fa fa-pen"></i> Edit Data Guru</h6>
+                                <!-- <h6 class="card-subtitle" style="color: white;">
+                                    Form untuk meng-edit data kelas
+                                </h6> -->
                                 <?php
                             } else {
                                 ?>
-                                <h5 type="submit" name="aksi" value="add" class="card-tittle">
-                                    Tambah Data Guru</h5>
-                                <h6 class="card-subtitle text-muted">
-                                    Form untuk menambah data guru
-                                </h6>
+                                <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: white;">
+                                    <i class="fas fa-plus"></i> Tambah Data Guru</h6>
+                                <!-- <h6 class="card-subtitle text-muted" style="color: white;">
+                                    Form untuk menambah data kelas
+                                </h6> -->
                                 <?php
                             }
                             ?>

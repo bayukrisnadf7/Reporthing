@@ -121,14 +121,14 @@ $no = 0;
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header">
-                            <a href="kelolamapel.php" type="button" class="btn btn-primary btn-sm">
+                            <a href="kelolamapel.php" type="button" class="btn btn-success btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Data
                             </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">Id Mapel</th>

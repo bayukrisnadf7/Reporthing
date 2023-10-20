@@ -150,7 +150,7 @@ a.sidebar-link{
 .card {
     box-shadow: 0 0 .875rem 0 rgba(34, 46, 60, 05);
     margin-bottom: 24px;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 .illustration{
@@ -203,4 +203,9 @@ html[data-bs-theme="dark"] .theme-toggle .fa-moon {
 
 html[data-bs-theme="light"] .theme-toggle .fa-sun {
     display: none;
+}
+
+.custom-header th {
+    background-color: #0D1282; /* Ganti dengan warna yang diinginkan */
+    color: #fff; /* Warna teks */
 }
