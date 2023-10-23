@@ -9,27 +9,32 @@ if (isset($_POST["login"])) {
 	$password = mysqli_real_escape_string($conn, $password);
 
 	if (!empty(trim($username)) && !empty(trim($password))) {
-
+      
 		//select data sesuai database
-		$query = "SELECT * FROM tb_user WHERE username='$username' AND password='$password'";
-		$result = mysqli_query($conn, $query);
+		$query = "SELECT * FROM tb_user_guru WHERE username='$username' AND password='$password'";
+		$result = mysqli_query($conn,$query);
 		$num = mysqli_num_rows($result);
-
+  
 		$row = mysqli_fetch_array($result);
-		$usernameVar = $row['username'];
-		$passwordVar = $row['password'];
-
-	}
-	if ($usernameVar == $username && $passwordVar == $password) {
-		header("location:../sidebar/index.php");
+		$usernameVar = $row['username']; 
+		$passwordVar = $row['password']; 
+  
+	  }
+  
+	  if($username == "admin" && $password == "admin" ){
+		header("location:../../index.html");
 		echo '<script language = "javascript">
-        alert ("Login Berhasil"); document.location="../sidebar/dasboard.php"; </script>';
-	} else if ($usernameVar != $username && $passwordVar != $password) {
-		echo '<script language = "javascript">
-    alert ("Username atau Password salah"); document.location="index.php"; </script>';
-	}
-
-}
+		alert ("Login Berhasil"); document.location="index2.php"; </script>';
+	  // if ($usernameVar== $username && $passwordVar==$password) {
+	  //     // header("location:../sidebar/index.php");
+	  //     echo '<script language = "javascript">
+	  //     alert ("Login Berhasil"); document.location="../guru/indexguru.php"; </script>';
+	  // } else if($usernameVar!= $username && $passwordVar!=$password){
+	  //   echo '<scri language = "javascript">
+	  //   alert ("Username atau Password salah"); document.location="index.php"; </script>';
+	  // } 
+	  }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -44,31 +49,31 @@ if (isset($_POST["login"])) {
 </head>
 
 <body>
-
 	<div class="container">
-		<form action="#" class="login active">
+		<form action="index2.php" class="login active" method="POST">
 			<h2 class="title">Login</h2>
 			<div class="form-group">
 				<label for="email">Username</label>
 				<div class="input-group">
-					<input type="text" id="text" placeholder="Masukkan username" required oninvalid="this.setCustomValidity('Username tidak boleh kosong')" oninput="setCustomValidity('')">
+					<input type="text" name="txt_username" placeholder="Masukkan username" required oninvalid="this.setCustomValidity('Username tidak boleh kosong')" oninput="setCustomValidity('')">
 					<i class='bx bx-user'></i>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
 				<div class="input-group">
-					<input type="password" pattern=".{5,}" id="password" placeholder="Masukkan password" required oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')">
+					<input type="password" pattern=".{5,}" name="txt_password" placeholder="Masukkan password" required oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')">
 					<i class='bx bx-lock-alt'></i>
 				</div>
 				<span class="help-text">Minimal 5 karakter</span>
 			</div>
-			<button type="submit" class="btn-submit" name="login" value="Login">Login</button>
+			<!-- <button type="submit" class="btn-submit" name="login" value="Login">Login</button> -->
+			<input type="submit" class="btn-submit" name="login" value="Login">
 			<a href="#" onclick="switchForm('register', event)">Lupa password?</a>
 		</form>
 
 		<form action="#" class="register">
-			<h2 class="title">Register your account</h2>
+			<h2 class="title">Lupa Password</h2>
 			<div class="form-group">
 				<label for="email">Email</label>
 				<div class="input-group">
