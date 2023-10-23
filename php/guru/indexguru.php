@@ -137,7 +137,7 @@ $no = 0;
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
-                            <a href="kelolaguru.php" type="button" class="btn btn-success btn-sm">
+                            <a href="kelolaguru.php" type="button" class="btn btn-primary btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Data
                             </a>
                         </div>
