@@ -99,9 +99,9 @@ $no = 0;
                 </button>
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown-toggle d-flex align-items-center">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="image/profile.jpg" class="avatar img-fluid rounded" alt="" />
+                                <img src="../../img/seiya.png" class="avatar img-fluid rounded-circle" alt="" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
@@ -137,7 +137,7 @@ $no = 0;
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
-                            <a href="kelolamapel.php" type="button" class="btn btn-success btn-sm">
+                            <a href="kelolamapel.php" type="button" class="btn btn-primary btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Data
                             </a>
                         </div>
