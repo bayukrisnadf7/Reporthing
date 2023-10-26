@@ -5,32 +5,32 @@ session_start();
 
 $nip = '';
 $nama_guru = '';
-$tempat_lahir = '';
-$tanggal_lahir = '';
-$no_telp = '';
-$jenis_kelamin = '';
-$alamat = '';
+$username = '';
+$password = '';
+$repassword = '';
 
 
 
 if (isset($_GET['ubah'])) {
     $nip = $_GET['ubah'];
 
-    $query = "SELECT * FROM tb_guru WHERE nip = '$nip';";
+    $query = "SELECT tb_user_guru.nip, tb_guru.nama_guru, tb_user_guru.username, tb_user_guru.password FROM tb_user_guru JOIN tb_guru on tb_user_guru.nip = tb_guru.nip WHERE tb_user_guru.nip = '$nip';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
 
     $nip = $result['nip'];
     $nama_guru = $result['nama_guru'];
-    $tempat_lahir = $result['tempat_lahir'];
-    $tanggal_lahir = $result['tanggal_lahir'];
-    $no_telp = $result['no_telp'];
-    $jenis_kelamin = $result['jenis_kelamin'];
-    $alamat = $result['alamat'];
-
+    $username = $result['username'];
+    $password = $result['password'];
+    $repassword = $result['password'];
 }
+
+$sql1 = "SELECT nip FROM tb_user_guru";
+$result1 = $conn->query($sql1);
 ?>
+
+
 
 <html lang="en" data-bs-theme="light">
 
@@ -65,7 +65,7 @@ if (isset($_GET['ubah'])) {
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../../index.html" class="sidebar-link">
+                        <a href="../../../index.html" class="sidebar-link">
                             <i class="fa-solid fa-gauge pe-2"></i>
                             Dashboard
                         </a>
@@ -170,29 +170,26 @@ if (isset($_GET['ubah'])) {
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <form method="POST" action="prosesguru.php" enctype="multipart/form-data">
-                                    <input type="hidden" value="<?php echo $nip ?>" name="nip">
+                                <form method="POST" action="kelolaguru.php" enctype="multipart/form-data">
+                                    
                                     <div class="mb-3 row">
                                         <label for="nip" class="col-sm-2 col-form-label">
                                             NIP
                                         </label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10" >                                           
                                             <select name="nip" class="form-select" id="nip" onchange="displayData()">
-                                                <option value="">PILIH</option>
+                                            <option value="">PILIH</option>
+
+                                                <!-- untuk menampilkan isi ketika diedit -->
+                                                
+                                                <!-- untuk menampilkan isi dropdown -->
                                                 <?php
-                                                $query = "SELECT * FROM tb_user_guru";
+                                                $query = "SELECT tb_user_guru.nip, tb_guru.nama_guru, tb_user_guru.username, tb_user_guru.password FROM tb_user_guru JOIN tb_guru on tb_user_guru.nip = tb_guru.nip;";
                                                 $sql = mysqli_query($conn, $query);
                                                 while ($data = mysqli_fetch_assoc($sql)) {
-                                                    echo '<option value="' . $data['nip'] . '" data-info="' . $data['nama_guru'] . '">' . $data['username'] . '</option>';
-                                                    ?>
-
-
-
-                                                    <?php
+                                                    echo '<option value="' . $data['tb_user_guru.nip'] . '" data-info="' . $data['nama_guru'] . '">' . $data['nip'] . '</option>';
                                                 }
-
-
-                                                ?>
+                                                    ?>
                                             </select>
                                         </div>
                                     </div>
@@ -201,35 +198,35 @@ if (isset($_GET['ubah'])) {
                                             Nama Guru
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="nama_guru"
+                                            <input type="text" class="form-control" id="nama_guru" value="<?php echo $nama_guru ?>"
                                                 readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="tempat_lahir" class="col-sm-2 col-form-label">
+                                        <label for="username" class="col-sm-2 col-form-label">
                                             Username
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="username" class="form-control"
-                                                id="tempat_lahir" placeholder="Ex: Bayukrisna123">
+                                                id="username" placeholder="Ex: Bayukrisna123" value="<?php echo $username ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="tempat_lahir" class="col-sm-2 col-form-label">
+                                        <label for="password" class="col-sm-2 col-form-label">
                                             Password
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="password" name="password" class="form-control"
-                                                id="tempat_lahir" placeholder="Ex: @Bayukrisna123">
+                                            placeholder="Ex: Bayukrisna123"  value="<?php echo $password ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="tempat_lahir" class="col-sm-2 col-form-label">
+                                        <label for="repassword" class="col-sm-2 col-form-label">
                                             Confirm Password
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="password2" name="password" class="form-control"
-                                                id="tempat_lahir" placeholder="Ex: @Bayukrisna123">
+                                            <input required type="password" name="repassword" class="form-control"
+                                                placeholder="Ex: @Bayukrisna123" value="<?php echo $password ?>">
                                         </div>
                                     </div>
 
@@ -254,7 +251,7 @@ if (isset($_GET['ubah'])) {
                                                 <?php
                                             }
                                             ?>
-                                            <a href="indexguru.php" type="button" class="btn btn-danger btn-sm">
+                                            <a href="indexpenggunaguru.php" type="button" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                                 Batal
                                             </a>
@@ -297,8 +294,8 @@ if (isset($_GET['ubah'])) {
     <script>
         function displayData() {
             var selected_nip = document.getElementById("nip");
-            var carInfo = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info=');
-            document.getElementById("nama_guru").value = carInfo;
+            var nip = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info');
+            document.getElementById("nama_guru").value = nip;
         }
     </script>
 </body>

@@ -24,7 +24,7 @@ if (isset($_POST["login"])) {
 	  if($username == "admin" && $password == "admin" ){
 		header("location:../../index.html");
 		echo '<script language = "javascript">
-		alert ("Login Berhasil"); document.location="index2.php"; </script>';
+    	alert ("Anda Berhasil Login"); document.location="index2.php"; </script>';
 	  // if ($usernameVar== $username && $passwordVar==$password) {
 	  //     // header("location:../sidebar/index.php");
 	  //     echo '<script language = "javascript">
