@@ -47,25 +47,25 @@ $no = 0;
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="indexguru.php" class="sidebar-link ">
+                        <a href="../../guru/indexguru.php" class="sidebar-link ">
                             <i class="fa-solid fa-user-tie pe-2"></i>
                             Guru
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../siswa/indexsiswa.php" class="sidebar-link">
+                        <a href="../../siswa/indexsiswa.php" class="sidebar-link">
                             <i class="fa-solid fa-user-graduate pe-2"></i>
                             Siswa
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../kelas/indexkelas.php" class="sidebar-link">
+                        <a href="../../kelas/indexkelas.php" class="sidebar-link">
                             <i class="fa-solid fa-chalkboard pe-2"></i>
                             Kelas
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../mapel/indexmapel.php" class="sidebar-link">
+                        <a href="../../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
                         </a>
@@ -78,7 +78,7 @@ $no = 0;
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="" class="sidebar-link active   ">Guru</a>
+                                <a href="" class="sidebar-link active">Guru</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Siswa</a>
@@ -174,7 +174,7 @@ $no = 0;
                                             </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
-                                                <a href="kelolaguru.php?ubah=<?php echo $result['nip']; ?>" type="button"
+                                                <a href="editguru.php?ubah=<?php echo $result['nip']; ?>" type="button"
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fa fa-pen"></i>
                                                 </a>

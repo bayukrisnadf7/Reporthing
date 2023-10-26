@@ -78,10 +78,12 @@ $no = 0;
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Guru</a>
+                                <a href="../pengguna/guru/indexpenggunaguru.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Siswa</a>
+                                <a href="../pengguna/siswa/indexpenggunasiswa.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
                     </li>
