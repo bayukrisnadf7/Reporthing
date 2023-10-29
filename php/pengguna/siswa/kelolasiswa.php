@@ -3,8 +3,8 @@
 include '../../../koneksi.php';
 session_start();
 
-$nip = '';
-$nama_guru = '';
+$nisn = '';
+$nama_siswa = '';
 $username = '';
 $password = '';
 $repassword = '';
@@ -14,17 +14,18 @@ $repassword = '';
 if (isset($_GET['ubah'])) {
     $nip = $_GET['ubah'];
 
-    $query = "SELECT tb_guru.nip, tb_guru.nama_guru, tb_user_guru.username, tb_user_guru.password FROM tb_user_guru JOIN tb_guru on tb_user_guru.nip = tb_guru.nip WHERE tb_guru.nip = '$nip';";
+    $query = "SELECT tb_user_siswa.nisn, tb_siswa.nama_siswa, tb_user_siswa.username, tb_user_siswa.password FROM tb_user_siswa JOIN tb_siswa on tb_user_siswa.nisn = tb_siswa.nisn WHERE tb_user_siswa.nisn = '$nisn';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
 
-    $nip = $result['nip'];
-    $nama_guru = $result['nama_guru'];
+    $nip = $result['nisn'];
+    $nama_guru = $result['nama_siswa'];
     $username = $result['username'];
     $password = $result['password'];
     $repassword = $result['password'];
 }
+
 ?>
 
 
@@ -57,7 +58,7 @@ if (isset($_GET['ubah'])) {
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -147,7 +148,7 @@ if (isset($_GET['ubah'])) {
                             if (isset($_GET['ubah'])) {
                                 ?>
                                 <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fa fa-pen"></i> Edit Data Pengguna Guru
+                                    <i class="fa fa-pen"></i> Edit Data Pengguna Siswa
                                 </h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
@@ -156,10 +157,10 @@ if (isset($_GET['ubah'])) {
                             } else {
                                 ?>
                                 <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fas fa-plus"></i> Tambah Data Guru
+                                    <i class="fas fa-plus"></i> Tambah Data Siswa
                                 </h6>
                                 <!-- <h6 class="card-subtitle text-muted" style="color: white;">
-                                    Form untuk menambah data kelas
+                                    Form unttbuk menambah data kelas
                                 </h6> -->
                                 <?php
                             }
@@ -167,23 +168,30 @@ if (isset($_GET['ubah'])) {
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <form method="POST" action="prosesguru.php" enctype="multipart/form-data">
-                                <div class="mb-3 row">
-                                        <label for="nip" class="col-sm-2 col-form-label">
-                                            Nip
+                                <form method="POST" action="prosessiswa.php" enctype="multipart/form-data">
+                                    <div class="mb-3 row">
+                                        <label for="nisn" class="col-sm-2 col-form-label">
+                                            NIP
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="nip" value="<?php echo $nip ?>"
-                                                readonly>
+                                            <select name="nisn" class="form-select" id="nisn" onchange="displayData()">
+                                                <option value="">PILIH</option>
+                                                <?php
+                                                $query = "SELECT nisn, nama_siswa FROM tb_siswa";
+                                                $sql = mysqli_query($conn, $query);
+                                                while ($data = mysqli_fetch_assoc($sql)) {
+                                                    echo '<option value="' . $data['nisn'] . '" data-info="'. $data['nama_siswa'] . '">' . $data['nisn'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="nama_guru" class="col-sm-2 col-form-label">
-                                            Nama Guru
+                                        <label for="nama_siswa" class="col-sm-2 col-form-label">
+                                            Nama Siswa
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="nama_guru" value="<?php echo $nama_guru ?>"
-                                                readonly>
+                                            <input type="text" class="form-control" name="nama_guru" id="nama_siswa" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -192,7 +200,8 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="username" class="form-control"
-                                                id="username" placeholder="Ex: Bayukrisna123" value="<?php echo $username ?>">
+                                                id="username" placeholder="Ex: Bayukrisna123"
+                                                value="<?php echo $username ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -201,7 +210,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="password" name="password" class="form-control"
-                                            placeholder="Ex: Bayukrisna123"  value="<?php echo $password ?>">
+                                                placeholder="Ex: Bayukrisna123" value="<?php echo $password ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -235,7 +244,7 @@ if (isset($_GET['ubah'])) {
                                                 <?php
                                             }
                                             ?>
-                                            <a href="indexpenggunaguru.php" type="button" class="btn btn-danger btn-sm">
+                                            <a href="indexpenggunasiswa.php" type="button" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                                 Batal
                                             </a>
@@ -277,9 +286,9 @@ if (isset($_GET['ubah'])) {
 
     <script>
         function displayData() {
-            var selected_nip = document.getElementById("nip");
+            var selected_nip = document.getElementById("nisn");
             var nip = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info');
-            document.getElementById("nama_guru").value = nip;
+            document.getElementById("nama_siswa").value = nip;
         }
     </script>
 </body>

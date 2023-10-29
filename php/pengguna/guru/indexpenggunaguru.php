@@ -37,7 +37,7 @@ $no = 0;
             <div class="h-100">
                 <div class="sidebar-logo">
                     <a href="#"><img src="../../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
-                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
+                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;" />Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
@@ -81,7 +81,7 @@ $no = 0;
                                 <a href="" class="sidebar-link active">Guru</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Siswa</a>
+                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">Siswa</a>
                             </li>
                         </ul>
                     </li>

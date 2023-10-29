@@ -3,8 +3,8 @@
 include '../../../koneksi.php';
 session_start();
 
-$nip = '';
-$nama_guru = '';
+$nisn = '';
+$nama_siswa = '';
 $username = '';
 $password = '';
 $repassword = '';
@@ -12,15 +12,15 @@ $repassword = '';
 
 
 if (isset($_GET['ubah'])) {
-    $nip = $_GET['ubah'];
+    $nisn = $_GET['ubah'];
 
-    $query = "SELECT tb_guru.nip, tb_guru.nama_guru, tb_user_guru.username, tb_user_guru.password FROM tb_user_guru JOIN tb_guru on tb_user_guru.nip = tb_guru.nip WHERE tb_guru.nip = '$nip';";
+    $query = "SELECT tb_user_siswa.nisn, tb_siswa.nama_siswa, tb_user_siswa.username, tb_user_siswa.password FROM tb_user_siswa JOIN tb_siswa on tb_user_siswa.nisn = tb_siswa.nisn WHERE tb_siswa.nisn = '$nisn';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
 
-    $nip = $result['nip'];
-    $nama_guru = $result['nama_guru'];
+    $nisn = $result['nisn'];
+    $nama_siswa = $result['nama_siswa'];
     $username = $result['username'];
     $password = $result['password'];
     $repassword = $result['password'];
@@ -167,13 +167,13 @@ if (isset($_GET['ubah'])) {
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <form method="POST" action="prosesguru.php" enctype="multipart/form-data">
+                                <form method="POST" action="prosessiswa.php" enctype="multipart/form-data">
                                 <div class="mb-3 row">
                                         <label for="nip" class="col-sm-2 col-form-label">
                                             Nip
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="nip" value="<?php echo $nip ?>"
+                                            <input type="text" class="form-control" name="nisn" value="<?php echo $nisn ?>"
                                                 readonly>
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@ if (isset($_GET['ubah'])) {
                                             Nama Guru
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="nama_guru" value="<?php echo $nama_guru ?>"
+                                            <input type="text" class="form-control" id="nama_siswa" value="<?php echo $nama_siswa ?>"
                                                 readonly>
                                         </div>
                                     </div>
@@ -235,7 +235,7 @@ if (isset($_GET['ubah'])) {
                                                 <?php
                                             }
                                             ?>
-                                            <a href="indexpenggunaguru.php" type="button" class="btn btn-danger btn-sm">
+                                            <a href="indexpenggunasiswa.php" type="button" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                                 Batal
                                             </a>
@@ -277,9 +277,9 @@ if (isset($_GET['ubah'])) {
 
     <script>
         function displayData() {
-            var selected_nip = document.getElementById("nip");
+            var selected_nip = document.getElementById("nisn");
             var nip = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info');
-            document.getElementById("nama_guru").value = nip;
+            document.getElementById("nama_siswa").value = nip;
         }
     </script>
 </body>
