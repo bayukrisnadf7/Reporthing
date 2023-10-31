@@ -47,13 +47,13 @@ $no = 0;
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="indexsumatif.php" class="sidebar-link active">
+                        <a href="../nilai_sumatif/indexsumatif.php" class="sidebar-link">
                             <i class="fa-solid fa-chalkboard pe-2"></i>
                             Nilai Sumatif
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../nilai_sikap/indexsikap.php" class="sidebar-link">
+                        <a href="indexsikap.php" class="sidebar-link active">
                             <i class="fa-solid fa-book pe-2"></i>
                             Nilai Sikap
                         </a>
@@ -90,7 +90,7 @@ $no = 0;
                 <div class="content-fluid">
                     <div class="mb-3">
                         <h4>Daftar Mata Pelajaran</h4>
-                        <h6>Halaman untuk mengelola nilai sumatif</h6>
+                        <h6>Halaman untuk mengelola nilai sikap</h6>
                     </div>
 
                     <?php
