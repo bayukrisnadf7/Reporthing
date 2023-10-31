@@ -19,23 +19,24 @@ if (isset($_POST["login"])) {
 		$usernameVar = $row['username']; 
 		$passwordVar = $row['password']; 
 
-		if($username == "admin" && $password == "admin" ){
-			header("location:../../index.html");
-			echo '<script language = "javascript">
-			alert ("Anda Berhasil Login"); document.location="index2.php"; </script>';
-		  if ($usernameVar==$username && $passwordVar==$password) {
-			  header("location:../sidebar/index.php");
-			  echo '<script language = "javascript">
-			  alert ("Login Berhasil"); document.location="../guru/indexguru.php"; </script>';
-		  } else if($usernameVar!= $username && $passwordVar!=$password){
-			echo '<script language = "javascript">
-			alert ("Username atau Password salah"); document.location="index.php"; </script>';
-		  } 
-		  }
+		
+	  }
+
+	  if($username == "admin" && $password == "admin" ){
+		header("location:../../index.html");
+		echo '<script language = "javascript">
+		alert ("Anda Berhasil Login"); document.location="indexlogin.php"; </script>';
+	  }else if ($usernameVar==$username && $passwordVar==$password) {
+		  header("location:../nilai_sumatif/indexsumatif.php");
+		  echo '<script language = "javascript">
+		  alert ("Login Berhasil"); document.location="../nilai_sumatif/indexsumatif.php"; </script>';
+	  } else if($usernameVar!= $username && $passwordVar!=$password){
+		echo '<script language = "javascript">
+		alert ("Username atau Password salah"); document.location="indexlogin.php"; </script>';
+	  } 
 	  }
   
 	  
-  }
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +52,7 @@ if (isset($_POST["login"])) {
 
 <body>
 	<div class="container">
-		<form action="index2.php" class="login active" method="POST">
+		<form action="indexlogin.php" class="login active" method="POST">
 			<h2 class="title">Login</h2>
 			<div class="form-group">
 				<label for="email">Username</label>
