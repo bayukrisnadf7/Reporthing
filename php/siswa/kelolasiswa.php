@@ -127,13 +127,13 @@ $result1 = $conn->query($sql1);
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="image/profile.jpg" class="avatar img-fluid rounded" alt="" />
+                            <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img src="../../img/profile.png" class="avatar img-fluid rounded-circle" alt="" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
                                 <a href="#" class="dropdown-item">Setting</a>
-                                <a href="#" class="dropdown-item">Logout</a>
+                                <a href="../login/indexlogin.php" class="dropdown-item">Logout</a>
                             </div>
                         </li>
                     </ul>
