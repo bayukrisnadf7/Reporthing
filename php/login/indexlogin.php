@@ -9,34 +9,34 @@ if (isset($_POST["login"])) {
 	$password = mysqli_real_escape_string($conn, $password);
 
 	if (!empty(trim($username)) && !empty(trim($password))) {
-      
+
 		//select data sesuai database
 		$query = "SELECT * FROM tb_user_guru WHERE username='$username' AND password='$password'";
-		$result = mysqli_query($conn,$query);
+		$result = mysqli_query($conn, $query);
 		$num = mysqli_num_rows($result);
-  
+
 		$row = mysqli_fetch_array($result);
-		$usernameVar = $row['username']; 
-		$passwordVar = $row['password']; 
+		$usernameVar = $row['username'];
+		$passwordVar = $row['password'];
 
-		
-	  }
 
-	  if($username == "admin" && $password == "admin" ){
+	}
+
+	if ($username == "admin" && $password == "admin") {
 		header("location:../../index.html");
 		echo '<script language = "javascript">
 		alert ("Anda Berhasil Login"); document.location="indexlogin.php"; </script>';
-	  }else if ($usernameVar==$username && $passwordVar==$password) {
-		  header("location:../nilai_sumatif/indexsumatif.php");
-		  echo '<script language = "javascript">
-		  alert ("Login Berhasil"); document.location="../nilai_sumatif/indexsumatif.php"; </script>';
-	  } else if($usernameVar!= $username && $passwordVar!=$password){
+	} else if ($usernameVar == $username && $passwordVar == $password) {
+		header("location:../nilai_sumatif/indexsumatif.php");
+		echo '<script language = "javascript">
+		alert ("Login Berhasil"); document.location="../nilai_sumatif/indexsumatif.php"; </script>';
+	} else if ($usernameVar != $username && $passwordVar != $password) {
 		echo '<script language = "javascript">
 		alert ("Username atau Password salah"); document.location="indexlogin.php"; </script>';
-	  } 
-	  }
-  
-	  
+	}
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,14 +57,18 @@ if (isset($_POST["login"])) {
 			<div class="form-group">
 				<label for="email">Username</label>
 				<div class="input-group">
-					<input type="text" name="txt_username" placeholder="Masukkan username" required oninvalid="this.setCustomValidity('Username tidak boleh kosong')" oninput="setCustomValidity('')">
+					<input type="text" name="txt_username" placeholder="Masukkan username" required
+						oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
+						oninput="setCustomValidity('')">
 					<i class='bx bx-user'></i>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
 				<div class="input-group">
-					<input type="password" pattern=".{5,}" name="txt_password" placeholder="Masukkan password" required oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')">
+					<input type="password" pattern=".{5,}" name="txt_password" placeholder="Masukkan password" required
+						oninvalid="this.setCustomValidity('Password tidak boleh kosong')"
+						oninput="setCustomValidity('')">
 					<i class='bx bx-lock-alt'></i>
 				</div>
 				<span class="help-text">Minimal 5 karakter</span>
