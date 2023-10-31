@@ -27,9 +27,9 @@ if (isset($_POST["login"])) {
 		echo '<script language = "javascript">
 		alert ("Anda Berhasil Login"); document.location="../../index.html"; </script>';
 	} else if ($usernameVar == $username && $passwordVar == $password) {
-		header("location:../nilai_sumatif/indexsumatif.php");
+		header("location:../../indexguru.html");
 		echo '<script language = "javascript">
-		alert ("Guru Login Berhasil"); document.location="../nilai_sumatif/indexsumatif.php"; </script>';
+		alert ("Guru Login Berhasil"); document.location="../../indexguru.html"; </script>';
 	} else if ($usernameVar != $username && $passwordVar != $password) {
 		echo '<script language = "javascript">
 		alert ("Username atau Password salah"); document.location="indexlogin.php"; </script>';
