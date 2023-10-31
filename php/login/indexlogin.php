@@ -18,22 +18,23 @@ if (isset($_POST["login"])) {
 		$row = mysqli_fetch_array($result);
 		$usernameVar = $row['username']; 
 		$passwordVar = $row['password']; 
-  
+
+		if($username == "admin" && $password == "admin" ){
+			header("location:../../index.html");
+			echo '<script language = "javascript">
+			alert ("Anda Berhasil Login"); document.location="index2.php"; </script>';
+		  if ($usernameVar==$username && $passwordVar==$password) {
+			  header("location:../sidebar/index.php");
+			  echo '<script language = "javascript">
+			  alert ("Login Berhasil"); document.location="../guru/indexguru.php"; </script>';
+		  } else if($usernameVar!= $username && $passwordVar!=$password){
+			echo '<script language = "javascript">
+			alert ("Username atau Password salah"); document.location="index.php"; </script>';
+		  } 
+		  }
 	  }
   
-	  if($username == "admin" && $password == "admin" ){
-		header("location:../../index.html");
-		echo '<script language = "javascript">
-    	alert ("Anda Berhasil Login"); document.location="index2.php"; </script>';
-	  // if ($usernameVar== $username && $passwordVar==$password) {
-	  //     // header("location:../sidebar/index.php");
-	  //     echo '<script language = "javascript">
-	  //     alert ("Login Berhasil"); document.location="../guru/indexguru.php"; </script>';
-	  // } else if($usernameVar!= $username && $passwordVar!=$password){
-	  //   echo '<scri language = "javascript">
-	  //   alert ("Username atau Password salah"); document.location="index.php"; </script>';
-	  // } 
-	  }
+	  
   }
 ?>
 
