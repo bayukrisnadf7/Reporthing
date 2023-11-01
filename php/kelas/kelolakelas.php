@@ -127,7 +127,7 @@ $result1 = $conn->query($sql1);
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
                                 <a href="#" class="dropdown-item">Setting</a>
-                                <a href="../../logout.php" class="dropdown-item">Logout</a>
+                                <a href="../../logout.php" class="dropdown-item" onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
