@@ -1,10 +1,15 @@
 <?php
+include 'koneksi.php';
 session_start();
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: php/login/indexlogin.php");
     exit();
 }
+
+$query = "SELECT * FROM tb_guru;";
+$sql = mysqli_query($conn, $query);
+$no = 0;
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +97,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <ul class="sidebar-nav"></ul>
             </div>
         </aside>
-        
+
         <!-- ========= Main section of dashboard ======= -->
         <div class="main">
             <!-- ========= Main navbar section of dashboard ======= -->
@@ -142,131 +147,161 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <main class="content px-3 py-2">
                 <div class="content-fluid">
                     <div class="mb-3">
-                        <h4>Admin Dashboard</h4>
+                        <h4>Dashboard Admin</h4>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-md-4 d-flex">
-                            <div class="card flex-fill border-0 illustration">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-6">
-                                            <div class="p-3 m-1">
-                                                <h4>Welcome Back, Admin</h4>
-                                                <p class="mb-0">Admin Dashboard, Reporthing</p>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-6 align-self-end text-end">
-                                            <img src="image/customer-support.jpg" class="img-fluid illustration-img"
-                                                alt="" />
-                                        </div> -->
-                                    </div>
+                        <style>
+                            .custom-card {
+                                position: relative;
+                                overflow: hidden;
+                                border: none;
+                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                                width: 250px;
+                                /* Atur lebar card sesuai keinginan Anda */
+                                height: 100px;
+                                /* Atur tinggi card sesuai keinginan Anda */
+                            }
+
+                            .custom-bg-danger,
+                            .custom-bg-primary,
+                            .custom-bg-warning,
+                            .custom-bg-success {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                width: 3%;
+                            }
+
+                            .custom-bg-danger {
+                                background-color: #dc3545;
+                            }
+
+                            .custom-bg-primary {
+                                background-color: #0d6efd;
+                            }
+
+                            .custom-bg-warning {
+                                background-color: #ffc107;
+                            }
+
+                            .custom-bg-success {
+                                background-color: #198754;
+                            }
+                        </style>
+
+
+                        <div class="col-12 col-md-3 d-flex">
+                            <div class="card flex-fill border-0 custom-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card Merah</h4>
+                                    <p class="card-text">Isi card merah</p>
                                 </div>
+                                <div class="custom-bg-danger"></div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 d-flex">
-                            <div class="card flex-fill border-0 illustration1">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-6">
-                                            <div class="p-3 m-1">
-                                                <h4>Welcome Back, Admin</h4>
-                                                <p class="mb-0">Admin Dashboard, Reporthing</p>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-6 align-self-end text-end">
-                                            <img src="image/customer-support.jpg" class="img-fluid illustration-img"
-                                                alt="" />
-                                        </div> -->
-                                    </div>
+
+                        <div class="col-12 col-md-3 d-flex">
+                            <div class="card flex-fill border-0 custom-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card Biru</h4>
+                                    <p class="card-text">Isi card biru</p>
                                 </div>
+                                <div class="custom-bg-primary"></div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 d-flex">
-                            <div class="card flex-fill border-0 illustration2">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-6">
-                                            <div class="p-3 m-1">
-                                                <h4>Welcome Back, Admin</h4>
-                                                <p class="mb-0">Admin Dashboard, Reporthing</p>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-6 align-self-end text-end">
-                                            <img src="image/customer-support.jpg" class="img-fluid illustration-img"
-                                                alt="" />
-                                        </div> -->
-                                    </div>
+
+                        <div class="col-12 col-md-3 d-flex">
+                            <div class="card flex-fill border-0 custom-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card Kuning</h4>
+                                    <p class="card-text">Isi card kuning</p>
                                 </div>
+                                <div class="custom-bg-warning"></div>
                             </div>
                         </div>
-                        <!-- <div class="col-12 col-md-6 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-body py-4">
-                                    <div class="d-flex align-items-start">
-                                        <div class="flex-grow-1">
-                                            <h4 class="mb-2"></h4>
-                                        </div>
-                                    </div>
+
+                        <div class="col-12 col-md-3 d-flex">
+                            <div class="card flex-fill border-0 custom-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card Hijau</h4>
+                                    <p class="card-text">Isi card hijau</p>
                                 </div>
+                                <div class="custom-bg-success"></div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <!-- Table Element -->
-                    <!-- <div class="card border-0">
-                        <div class="card-header">
-                            <h5 class="card-tittle">Basic Table</h5>
-                            <h6 class="card-subtitle text-muted">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-                                minima ullam eum in adipisci placeat magnam reprehenderit
-                                odio, expedita incidunt tempora ab modi dolorum magni deserunt
-                                ducimus soluta nisi? Aliquid!
-                            </h6>
+                    <div class="card border-0">
+                        <div class="card-header mt-2" style="background-color: #FFFFFF;">
+                            <h6>Tabel Guru</h6>
                         </div>
                         <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="custom-header">
+                                        <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">NIP</th>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Tempat & Tgl Lahir</th>
+                                            <th scope="col">No Telp</th>
+                                            <th scope="col">Jenis Kelamin</th>
+                                            <th scope="col">Foto</th>
+                                            <th scope="col">Alamat</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($result = mysqli_fetch_assoc($sql)) {
+                                            ?>
+                                            <td>
+                                                <?php echo ++$no; ?>.
+                                            </td>
+                                            <td>
+                                                <?php echo $result['nip']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['nama_guru']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['tempat_lahir'] . ', ' . $result['tanggal_lahir']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['no_telp']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['jenis_kelamin']; ?>
+                                            </td>
+                                            <td>
+                                                <img src="img/<?php echo $result['foto_guru']; ?>"
+                                                    style="width: 50px; height: 50px;">
+                                            </td>
+                                            <td>
+                                                <?php echo $result['alamat']; ?>
+                                            </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </main>
+        </div>
 
-            <!-- ========= light and dark mode toggle button ======= -->
+        <!-- ========= light and dark mode toggle button ======= -->
 
-            <!-- <a href="#" class="theme-toggle">
+        <!-- <a href="#" class="theme-toggle">
                 <i class="fa-regular fa-moon"></i>
                 <i class="fa-regular fa-sun"></i>
             </a> -->
 
-            <!-- ========= footer section of dashboard ======= -->
+        <!-- ========= footer section of dashboard ======= -->
 
-            <!-- <footer class="footer">
+        <!-- <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
                         <div class="col-6 text-start">
@@ -279,7 +314,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     </div>
                 </div>
             </footer> -->
-        </div>
+    </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="asset/js/script.js"></script>
