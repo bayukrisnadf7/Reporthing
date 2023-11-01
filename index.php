@@ -158,8 +158,10 @@ $no = 0;
                                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
                                 width: 250px;
                                 /* Atur lebar card sesuai keinginan Anda */
-                                height: 100px;
+                                height: 80px;
                                 /* Atur tinggi card sesuai keinginan Anda */
+                                text-indent: 5px;
+                                line-height: 20px;
                             }
 
                             .custom-bg-danger,
@@ -188,24 +190,20 @@ $no = 0;
                             .custom-bg-success {
                                 background-color: #198754;
                             }
+
+                            .card-title {
+                                font-size: 20px;
+                            }
                         </style>
 
 
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card Merah</h4>
-                                    <p class="card-text">Isi card merah</p>
-                                </div>
-                                <div class="custom-bg-danger"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-3 d-flex">
-                            <div class="card flex-fill border-0 custom-card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card Biru</h4>
-                                    <p class="card-text">Isi card biru</p>
+                                <div class="card-body position-relative">
+                                    <i class="fas fa-user fa-3x"
+                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
+                                    <p class="card-title">200</p>
+                                    <h6 class="card-text" style="color: #0d6efd">Pengguna Guru</h6>
                                 </div>
                                 <div class="custom-bg-primary"></div>
                             </div>
@@ -214,8 +212,22 @@ $no = 0;
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card Kuning</h4>
-                                    <p class="card-text">Isi card kuning</p>
+                                    <i class="fas fa-user fa-3x"
+                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
+                                    <p class="card-title">20</p>
+                                    <h6 class="card-text" style="color: #198754">Pengguna Siswa</h6>
+                                </div>
+                                <div class="custom-bg-success"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3 d-flex">
+                            <div class="card flex-fill border-0 custom-card">
+                                <div class="card-body">
+                                    <i class="fas fa-user fa-3x"
+                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
+                                    <p class="card-title">20</p>
+                                    <h6 class="card-text" style="color: #ffc107">Jumlah Guru</h6>
                                 </div>
                                 <div class="custom-bg-warning"></div>
                             </div>
@@ -224,10 +236,12 @@ $no = 0;
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card Hijau</h4>
-                                    <p class="card-text">Isi card hijau</p>
+                                    <i class="fas fa-user fa-3x"
+                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
+                                    <p class="card-title">20</p>
+                                    <h6 class="card-text" style="color: #dc3545">Jumlah Guru</h6>
                                 </div>
-                                <div class="custom-bg-success"></div>
+                                <div class="custom-bg-danger"></div>
                             </div>
                         </div>
                     </div>
