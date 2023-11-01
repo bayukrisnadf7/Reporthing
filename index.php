@@ -229,7 +229,7 @@ $no = 0;
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <i class="fas fa-user fa-3x"
+                                    <i class="fa-solid fa-user-group fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
                                     <p class="card-title"><?php echo $total_pengguna_siswa; ?></p>
                                     <h6 class="card-text" style="color: #198754">Pengguna Siswa</h6>
@@ -241,7 +241,7 @@ $no = 0;
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <i class="fas fa-user fa-3x"
+                                    <i class="fa-solid fa-user-tie fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
                                     <p class="card-title"><?php echo $total_guru; ?></p>
                                     <h6 class="card-text" style="color: #ffc107">Jumlah Guru</h6>
@@ -253,7 +253,7 @@ $no = 0;
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <i class="fas fa-user fa-3x"
+                                    <i class="fa-solid fa-user-graduate fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
                                     <p class="card-title"><?php echo $total_siswa; ?></p>
                                     <h6 class="card-text" style="color: #dc3545">Jumlah Siswa</h6>
