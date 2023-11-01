@@ -132,7 +132,8 @@ $result1 = $conn->query($sql1);
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../../img/profile.png" class="avatar img-fluid rounded-circle" alt="" />
+                                <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
+                                <i class="fas fa-caret-down"></i>   
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
