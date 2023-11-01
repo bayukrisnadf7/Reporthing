@@ -68,7 +68,7 @@ if (isset($_GET['ubah'])) {
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../../index.html" class="sidebar-link">
+                        <a href="../../index.php" class="sidebar-link">
                             <i class="fa-solid fa-gauge pe-2"></i>
                             Dashboard
                         </a>
