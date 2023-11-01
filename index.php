@@ -7,6 +7,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }
 
+$result1 = mysqli_query($conn, "SELECT COUNT(*) as total_guru FROM tb_guru");
+$row = mysqli_fetch_assoc($result1);
+$total_guru = $row['total_guru'];
+
+$result2 = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa");
+$row = mysqli_fetch_assoc($result2);
+$total_siswa = $row['total_siswa'];
+
+$result3 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_guru FROM tb_user_guru");
+$row = mysqli_fetch_assoc($result3);
+$total_pengguna_guru = $row['total_pengguna_guru'];
+
+$result4 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_siswa FROM tb_user_siswa");
+$row = mysqli_fetch_assoc($result4);
+$total_pengguna_siswa = $row['total_pengguna_siswa'];
+
 $query = "SELECT * FROM tb_guru;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
@@ -203,7 +219,7 @@ $no = 0;
                                 <div class="card-body position-relative">
                                     <i class="fas fa-user fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">200</p>
+                                    <p class="card-title"><?php echo $total_pengguna_guru; ?></p>
                                     <h6 class="card-text" style="color: #0d6efd">Pengguna Guru</h6>
                                 </div>
                                 <div class="custom-bg-primary"></div>
@@ -215,7 +231,7 @@ $no = 0;
                                 <div class="card-body">
                                     <i class="fas fa-user fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">20</p>
+                                    <p class="card-title"><?php echo $total_pengguna_siswa; ?></p>
                                     <h6 class="card-text" style="color: #198754">Pengguna Siswa</h6>
                                 </div>
                                 <div class="custom-bg-success"></div>
@@ -227,7 +243,7 @@ $no = 0;
                                 <div class="card-body">
                                     <i class="fas fa-user fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">20</p>
+                                    <p class="card-title"><?php echo $total_guru; ?></p>
                                     <h6 class="card-text" style="color: #ffc107">Jumlah Guru</h6>
                                 </div>
                                 <div class="custom-bg-warning"></div>
@@ -239,8 +255,8 @@ $no = 0;
                                 <div class="card-body">
                                     <i class="fas fa-user fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">20</p>
-                                    <h6 class="card-text" style="color: #dc3545">Jumlah Guru</h6>
+                                    <p class="card-title"><?php echo $total_siswa; ?></p>
+                                    <h6 class="card-text" style="color: #dc3545">Jumlah Siswa</h6>
                                 </div>
                                 <div class="custom-bg-danger"></div>
                             </div>
