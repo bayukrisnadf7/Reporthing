@@ -36,10 +36,8 @@ $result1 = $conn->query($sql1);
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
-
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
-
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
@@ -100,6 +98,7 @@ $result1 = $conn->query($sql1);
                 <ul class="sidebar-nav"></ul>
             </div>
         </aside>
+
         <!-- ========= Main section of dashboard ======= -->
         <div class="main">
             <!-- ========= Main navbar section of dashboard ======= -->
@@ -114,14 +113,37 @@ $result1 = $conn->query($sql1);
                                 <img src="../../img/profile.png" class="avatar img-fluid rounded-circle" alt="" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item">Setting</a>
-                                <a href="../../logout.php" class="dropdown-item" onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#editProfileModal">Profile</a>
+                                <a href="../../logout.php" class="dropdown-item"
+                                    onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+
+            <!-- Modal untuk Profile -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form untuk mengedit profil -->
+                            <form action="editprofile.php" method="post">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Admin</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
@@ -129,20 +151,25 @@ $result1 = $conn->query($sql1);
                         <h4>Data Siswa</h4>
                         <h6>Halaman untuk mengelola data siswa</h6>
                     </div>
-
+                    
+                    <!-- Alert Eksekusi-->
                     <?php
                     if (isset($_SESSION['eksekusi'])):
                         ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php
-                            echo $_SESSION['eksekusi'];
-                            ?>
+                        <div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo $_SESSION['eksekusi']; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php
-                        session_destroy();
+                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan sukses
                     endif;
                     ?>
+
+                    <script>
+                        setTimeout(function () {
+                            document.getElementById("alertDiv").style.display = "none";
+                        }, 5000); // Alert akan hilang setelah 5 detik (5000 milidetik)
+                    </script>
 
                     <!-- Table Element -->
                     <div class="card border-0">
@@ -197,6 +224,7 @@ $result1 = $conn->query($sql1);
                                             <td>
                                                 <?php echo $result['alamat']; ?>
                                             </td>
+
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
                                                 <a href="kelolasiswa.php?ubah=<?php echo $result['nisn']; ?>" type="button"

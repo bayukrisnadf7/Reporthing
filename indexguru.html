@@ -72,13 +72,49 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
-                                <a href="" class="dropdown-item">Setting</a>
-                                <a href="../php/login/indexlogin.php" class="dropdown-item">Logout</a>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#changePasswordModal">Ganti Password</a>
+                                <a href="logout.php" class="dropdown-item"
+                                    onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+            <!-- Modal for Change Password -->
+            <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ganti Password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form untuk mengganti password -->
+                            <form action="changepassword.php" method="post">
+                                <div class="mb-3">
+                                    <label for="currentPassword" class="form-label">Current Password</label>
+                                    <input type="password" class="form-control" id="currentPassword"
+                                        name="currentPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newPassword" class="form-label">New Password</label>
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        name="confirmPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">

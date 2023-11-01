@@ -46,7 +46,7 @@ if (isset($_GET['ubah'])) {
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">   
+    <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
     <title>Reporthing</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
@@ -63,8 +63,8 @@ if (isset($_GET['ubah'])) {
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
-                        style="width: 10%; margin-right: 2px; margin-bottom: 3px;"/> Reporthing</a>
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
@@ -131,14 +131,37 @@ if (isset($_GET['ubah'])) {
                                 <img src="../../img/profile.png" class="avatar img-fluid rounded-circle" alt="" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item">Setting</a>
-                                <a href="../../logout.php" class="dropdown-item" onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#editProfileModal">Profile</a>
+                                <a href="../../logout.php" class="dropdown-item"
+                                    onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+
+            <!-- Modal untuk Profile -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form untuk mengedit profil -->
+                            <form action="editprofile.php" method="post">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Admin</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
@@ -153,7 +176,8 @@ if (isset($_GET['ubah'])) {
                             if (isset($_GET['ubah'])) {
                                 ?>
                                 <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fa fa-pen"></i> Edit Data Guru</h6>
+                                    <i class="fa fa-pen"></i> Edit Data Guru
+                                </h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
                                 </h6> -->
@@ -161,7 +185,8 @@ if (isset($_GET['ubah'])) {
                             } else {
                                 ?>
                                 <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fas fa-plus"></i> Tambah Data Guru</h6>
+                                    <i class="fas fa-plus"></i> Tambah Data Guru
+                                </h6>
                                 <!-- <h6 class="card-subtitle text-muted" style="color: white;">
                                     Form untuk menambah data kelas
                                 </h6> -->
@@ -260,14 +285,16 @@ if (isset($_GET['ubah'])) {
                                             <?php
                                             if (isset($_GET['ubah'])) {
                                                 ?>
-                                                <button type="submit" name="aksi" value="edit" class="btn btn-primary btn-sm">
+                                                <button type="submit" name="aksi" value="edit"
+                                                    class="btn btn-primary btn-sm">
                                                     <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
                                                     Simpan Perubahan
                                                 </button>
                                                 <?php
                                             } else {
                                                 ?>
-                                                <button type="submit" name="aksi" value="add" class="btn btn-primary btn-sm">
+                                                <button type="submit" name="aksi" value="add"
+                                                    class="btn btn-primary btn-sm">
                                                     <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
                                                     Tambahkan
                                                 </button>
