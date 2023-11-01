@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: php/login/indexlogin.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 
@@ -100,7 +109,7 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
                                 <a href="" class="dropdown-item">Setting</a>
-                                <a href="../php/login/indexlogin.php" class="dropdown-item">Logout</a>
+                                <a href="logout.php" class="dropdown-item">Logout</a>
                             </div>
                         </li>
                     </ul>

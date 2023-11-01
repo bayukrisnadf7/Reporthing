@@ -23,13 +23,23 @@ if (isset($_POST["login"])) {
 	}
 
 	if ($username == "admin" && $password == "admin") {
-		header("location:../../index.html");
-		echo '<script language = "javascript">
-		alert ("Anda Berhasil Login"); document.location="../../index.html"; </script>';
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['username'] = $username;
+		header("location:../../index.php");
+		exit();
+		// header("location:../../index.html");
+		// echo '<script language = "javascript">
+		// alert ("Anda Berhasil Login"); document.location="../../index.html"; </script>';
 	} else if ($usernameVar == $username && $passwordVar == $password) {
+		// header("location:../../indexguru.html");
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['username'] = $username;
 		header("location:../../indexguru.html");
-		echo '<script language = "javascript">
-		alert ("Guru Login Berhasil"); document.location="../../indexguru.html"; </script>';
+		exit();
+		// echo '<script language = "javascript">
+		// alert ("Guru Login Berhasil"); document.location="../../indexguru.html"; </script>';
 	} else if ($usernameVar != $username && $passwordVar != $password) {
 		echo '<script language = "javascript">
 		alert ("Username atau Password salah"); document.location="indexlogin.php"; </script>';

@@ -2,6 +2,11 @@
 include '../../koneksi.php';
 session_start();
 
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../login/indexlogin.php");
+    exit();
+}
+
 $query = "SELECT * FROM tb_mapel";
 $sql = mysqli_query($conn, $query);
 $no = 0;
@@ -108,7 +113,7 @@ $no = 0;
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
                                 <a href="#" class="dropdown-item">Setting</a>
-                                <a href="../login/indexlogin.php" class="dropdown-item">Logout</a>
+                                <a href="../../logout.php" class="dropdown-item">Logout</a>
                             </div>
                         </li>
                     </ul>
