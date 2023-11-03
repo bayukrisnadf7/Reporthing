@@ -25,11 +25,20 @@ $no = 0;
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
-    <title>Reporthing</title>
+    <!-- Data Tables-->
+    <link rel="stylesheet" type="text/css" href="../../asset/datatables/datatables.css">
+    <script type="text/javascript" src="../../asset/datatables/datatables.js"></script>
+    
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#dt').DataTable();
+    });
+</script>
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
@@ -109,7 +118,7 @@ $no = 0;
                         <li class="nav-item dropdown">
                             <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>   
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
@@ -179,7 +188,7 @@ $no = 0;
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table id="dt" class="table table-hover">
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>

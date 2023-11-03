@@ -25,11 +25,20 @@ $no = 0;
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
-    <title>Reporthing</title>
+    <!-- Data Tables-->
+    <link rel="stylesheet" type="text/css" href="../../asset/datatables/datatables.css">
+    <script type="text/javascript" src="../../asset/datatables/datatables.js"></script>
+
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#dt').DataTable();
+    });
+</script>
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
@@ -178,7 +187,7 @@ $no = 0;
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table id="dt" class="table table-hover">
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>

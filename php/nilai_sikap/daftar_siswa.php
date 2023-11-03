@@ -1,11 +1,14 @@
 <?php
 include '../../koneksi.php';
-session_start();
 
-$query = "SELECT * FROM tb_mapel";
+$query = "SELECT tb_nilai_sikap WHERE id_mapel";
 $sql = mysqli_query($conn, $query);
 $no = 0;
+
+$sql1 = "SELECT nisn, nama_siswa FROM tb_siswa";
+$result1 = $conn->query($sql1);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
@@ -37,7 +40,7 @@ $no = 0;
             <div class="h-100">
                 <div class="sidebar-logo">
                     <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
-                        style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
+                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
@@ -72,7 +75,7 @@ $no = 0;
                 </button>
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="../../img/profile.png" class="avatar img-fluid rounded-circle" alt="" />
                             </a>
@@ -89,30 +92,17 @@ $no = 0;
             <main class="content px-3 py-2">
                 <div class="content-fluid">
                     <div class="mb-3">
-                        <h4>Daftar Mata Pelajaran</h4>
+                        <h4>Daftar Nama Siswa</h4>
                         <h6>Halaman untuk mengelola nilai sikap</h6>
                     </div>
 
-                    <?php
-                    if (isset($_SESSION['eksekusi'])):
-                        ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php
-                            echo $_SESSION['eksekusi'];
-                            ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php
-                        session_destroy();
-                    endif;
-                    ?>
-                    
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
-                            <!-- <a href="kelolamapel.php" type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-plus"></i> Tambah Data
-                            </a> -->
+                            <a href="indexsikap.php" type="button" class="btn btn-danger btn-sm">
+                                <i class="fa fa-reply" aria-hidden="true"></i>
+                                Batal
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -120,9 +110,9 @@ $no = 0;
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">Id Mapel</th>
-                                            <th scope="col">Nama Mapel</th>
-                                            <th scope="col">Aksi</th>
+                                            <th scope="col">NISN</th>
+                                            <th scope="col">Spiritual</th>
+                                            <th scope="col">Sosial</th>
                                     </thead>
                                     <tbody>
                                         <?php
@@ -132,20 +122,15 @@ $no = 0;
                                                 <?php echo ++$no; ?>.
                                             </td>
                                             <td>
-                                                <?php echo $result['id_mapel']; ?>
+                                                <?php echo $result['nisn']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['nama_mapel']; ?>
+                                                <?php echo $result['spiritual']; ?>
                                             </td>
-                                            <!-- Button UBAH dan HAPUS-->
                                             <td>
-                                                <a href="daftar_siswa.php?ubah=<?php echo $result['id_mapel']; ?>"
-                                                    type="button" class="btn btn-warning btn-sm">
-                                                    <i class="fa fa-pen"></i>
-                                                </a>
-                                                
+                                                <?php echo $result['sosial']; ?>
                                             </td>
-                                            </tr>
+                                        </tr>
                                             <?php
                                         }
                                         ?>

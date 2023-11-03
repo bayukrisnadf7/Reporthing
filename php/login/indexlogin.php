@@ -36,7 +36,7 @@ if (isset($_POST["login"])) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
-		header("location:../../indexguru.html");
+		header("location:../../indexguru.php");
 		exit();
 		// echo '<script language = "javascript">
 		// alert ("Guru Login Berhasil"); document.location="../../indexguru.html"; </script>';
