@@ -63,31 +63,31 @@ if (isset($_GET['ubah'])) {
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../../../index.html" class="sidebar-link">
+                        <a href="../../../index.php" class="sidebar-link">
                             <i class="fa-solid fa-gauge pe-2"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="indexguru.php" class="sidebar-link">
+                        <a href="../../guru/indexguru.php" class="sidebar-link">
                             <i class="fa-solid fa-user-tie pe-2"></i>
                             Guru
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../siswa/indexsiswa.php" class="sidebar-link">
+                        <a href="../../siswa/indexsiswa.php" class="sidebar-link">
                             <i class="fa-solid fa-user-graduate pe-2"></i>
                             Siswa
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../kelas/indexkelas.php" class="sidebar-link">
+                        <a href="../../kelas/indexkelas.php" class="sidebar-link">
                             <i class="fa-solid fa-chalkboard pe-2"></i>
                             Kelas
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
+                        <a href="../../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
                         </a>
@@ -100,10 +100,12 @@ if (isset($_GET['ubah'])) {
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link active">Guru</a>
+                                <a href="../guru/indexpenggunaguru.php" class="sidebar-link active">
+                                <i class="fa-regular fa-circle pe-2"></i> Guru</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Siswa</a>
+                                <a href="indexpenggunasiswa.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
                     </li>

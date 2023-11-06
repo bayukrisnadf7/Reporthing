@@ -105,10 +105,12 @@ if (isset($_GET['ubah'])) {
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Guru</a>
+                                <a href="../pengguna/guru/indexpenggunaguru.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Siswa</a>
+                                <a href="../pengguna/siswa/indexpenggunasiswa.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
                     </li>
@@ -129,7 +131,7 @@ if (isset($_GET['ubah'])) {
                         <li class="nav-item dropdown">
                             <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>   
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
@@ -257,7 +259,7 @@ if (isset($_GET['ubah'])) {
                                                 </option>
                                                 <option <?php if ($jenis_kelamin == 'Perempuan') {
                                                     echo "selected";
-                                                } ?>  value="Perempuan">Perempuan
+                                                } ?>   value="Perempuan">Perempuan
                                                 </option>
                                             </select>
                                         </div>

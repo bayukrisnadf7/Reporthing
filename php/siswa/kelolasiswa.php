@@ -71,31 +71,31 @@ $result1 = $conn->query($sql1);
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../../index.php" class="sidebar-link">
+                        <a href="../../../index.php" class="sidebar-link">
                             <i class="fa-solid fa-gauge pe-2"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../guru/indexguru.php" class="sidebar-link">
+                        <a href="../../guru/indexguru.php" class="sidebar-link">
                             <i class="fa-solid fa-user-tie pe-2"></i>
                             Guru
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="indexsiswa.php" class="sidebar-link active">
+                        <a href="../../siswa/indexsiswa.php" class="sidebar-link active">
                             <i class="fa-solid fa-user-graduate pe-2"></i>
                             Siswa
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../kelas/indexkelas.php" class="sidebar-link">
+                        <a href="../../kelas/indexkelas.php" class="sidebar-link">
                             <i class="fa-solid fa-chalkboard pe-2"></i>
                             Kelas
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../mapel/indexmapel.php" class="sidebar-link">
+                        <a href="../../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
                         </a>
@@ -108,10 +108,12 @@ $result1 = $conn->query($sql1);
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Guru</a>
+                                <a href="../pengguna/guru/indexpenggunaguru.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Siswa</a>
+                                <a href="../pengguna/siswa/indexpenggunasiswa.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
                     </li>

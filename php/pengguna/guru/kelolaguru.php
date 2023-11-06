@@ -63,7 +63,7 @@ if (isset($_GET['ubah'])) {
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../../../index.html" class="sidebar-link">
+                        <a href="../../../index.php" class="sidebar-link">
                             <i class="fa-solid fa-gauge pe-2"></i>
                             Dashboard
                         </a>
@@ -87,7 +87,7 @@ if (isset($_GET['ubah'])) {
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
+                        <a href="../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
                         </a>
@@ -100,10 +100,12 @@ if (isset($_GET['ubah'])) {
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link active">Guru</a>
+                                <a href="indexpenggunaguru.php" class="sidebar-link active">
+                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Siswa</a>
+                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
                     </li>
