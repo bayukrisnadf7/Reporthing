@@ -201,7 +201,7 @@ $result1 = $conn->query($sql1);
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="id_kelas" class="form-control"
-                                                id="id_kelas" placeholder="Ex: 1A" value="<?php echo $id_kelas; ?>">
+                                                id="id_kelas" placeholder="Id Kelas" value="<?php echo $id_kelas; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -210,7 +210,7 @@ $result1 = $conn->query($sql1);
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="nama_kelas" class="form-control" id="nama"
-                                                placeholder="Ex: 1A" value="<?php echo $nama_kelas; ?>">
+                                                placeholder="Nama Kelas" value="<?php echo $nama_kelas; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">

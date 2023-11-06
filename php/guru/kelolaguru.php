@@ -63,7 +63,7 @@ if (isset($_GET['ubah'])) {
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -92,7 +92,7 @@ if (isset($_GET['ubah'])) {
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
+                        <a href="../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
                         </a>
@@ -207,7 +207,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="nip" class="form-control" id="nip"
-                                                placeholder="Ex: 112233" value="<?php echo $nip; ?>">
+                                                placeholder="NIP" value="<?php echo $nip; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -216,7 +216,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="nama_guru" class="form-control" id="nama"
-                                                placeholder="Ex: Naufal" value="<?php echo $nama_guru; ?>">
+                                                placeholder="Nama Guru" value="<?php echo $nama_guru; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -225,7 +225,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="tempat_lahir" class="form-control"
-                                                id="tempat_lahir" placeholder="Ex: Jember"
+                                                id="tempat_lahir" placeholder="Tempat Lahir"
                                                 value="<?php echo $tempat_lahir; ?>">
                                         </div>
                                     </div>
@@ -244,7 +244,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="no_telp" class="form-control" id="notelp"
-                                                placeholder="Ex: 085XXXXXXXXX" value="<?php echo $no_telp; ?>">
+                                                placeholder="Nomor Telepon" value="<?php echo $no_telp; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -279,7 +279,7 @@ if (isset($_GET['ubah'])) {
                                             Alamat Lengkap
                                         </label>
                                         <div class="col-sm-10">
-                                            <textarea required class="form-control" id="alamat" name="alamat"
+                                            <textarea required class="form-control" id="alamat" name="alamat" placeholder="Alamat Lengkap"
                                                 rows="3"><?php echo $alamat; ?></textarea>
                                         </div>
                                     </div>

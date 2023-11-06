@@ -66,36 +66,36 @@ $result1 = $conn->query($sql1);
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../../../index.php" class="sidebar-link">
+                        <a href="../../index.php" class="sidebar-link">
                             <i class="fa-solid fa-gauge pe-2"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../guru/indexguru.php" class="sidebar-link">
+                        <a href="../guru/indexguru.php" class="sidebar-link">
                             <i class="fa-solid fa-user-tie pe-2"></i>
                             Guru
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../siswa/indexsiswa.php" class="sidebar-link active">
+                        <a href="indexsiswa.php" class="sidebar-link active">
                             <i class="fa-solid fa-user-graduate pe-2"></i>
                             Siswa
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../kelas/indexkelas.php" class="sidebar-link">
+                        <a href="../kelas/indexkelas.php" class="sidebar-link">
                             <i class="fa-solid fa-chalkboard pe-2"></i>
                             Kelas
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../mapel/indexmapel.php" class="sidebar-link">
+                        <a href="../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
                         </a>
@@ -215,7 +215,7 @@ $result1 = $conn->query($sql1);
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="nisn" class="form-control" id="nisn"
-                                                placeholder="Ex: 1A" value="<?php echo $nisn; ?>">
+                                                placeholder="NISN" value="<?php echo $nisn; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -224,7 +224,7 @@ $result1 = $conn->query($sql1);
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="nama_siswa" class="form-control" id="nama"
-                                                placeholder="Ex: Naufal" value="<?php echo $nama_siswa; ?>">
+                                                placeholder="Nama Siswa" value="<?php echo $nama_siswa; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -253,7 +253,7 @@ $result1 = $conn->query($sql1);
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="tempat_lahir" class="form-control"
-                                                id="tempat_lahir" placeholder="Ex: Jember"
+                                                id="tempat_lahir" placeholder="Tempat Lahir"
                                                 value="<?php echo $tempat_lahir; ?>">
                                         </div>
                                     </div>
@@ -272,7 +272,7 @@ $result1 = $conn->query($sql1);
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="no_telp" class="form-control" id="notelp"
-                                                placeholder="Ex: 085XXXXXXXXX" value="<?php echo $no_telp; ?>">
+                                                placeholder="Nomor Telepon" value="<?php echo $no_telp; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -307,7 +307,7 @@ $result1 = $conn->query($sql1);
                                             Alamat Lengkap
                                         </label>
                                         <div class="col-sm-10">
-                                            <textarea required class="form-control" id="alamat" name="alamat"
+                                            <textarea required class="form-control" id="alamat" name="alamat"placeholder="Alamat Lengkap"
                                                 rows="3"><?php echo $alamat; ?></textarea>
                                         </div>
                                     </div>

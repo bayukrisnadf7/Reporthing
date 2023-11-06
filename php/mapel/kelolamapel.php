@@ -199,7 +199,7 @@ $result1 = $conn->query($sql1);
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="id_mapel" class="form-control"
-                                                id="id_mapel" placeholder="Ex: BI1" value="<?php echo $id_mapel; ?>">
+                                                id="id_mapel" placeholder="Id Mata Pelajaran" value="<?php echo $id_mapel; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -208,7 +208,7 @@ $result1 = $conn->query($sql1);
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="nama_mapel" class="form-control"
-                                                id="nama_mapel" placeholder="Ex: Bahasa Indonesia"
+                                                id="nama_mapel" placeholder="Nama Mata Pelajaran"
                                                 value="<?php echo $nama_mapel; ?>">
                                         </div>
                                     </div>
