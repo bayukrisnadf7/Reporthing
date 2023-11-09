@@ -204,15 +204,6 @@ if (isset($_GET['ubah'])) {
                                             placeholder="Ex: Bayukrisna123"  value="<?php echo $password ?>">
                                         </div>
                                     </div>
-                                    <div class="mb-3 row">
-                                        <label for="repassword" class="col-sm-2 col-form-label">
-                                            Confirm Password
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <input required type="password" name="repassword" class="form-control"
-                                                placeholder="Ex: @Bayukrisna123" value="<?php echo $password ?>">
-                                        </div>
-                                    </div>
 
                                     <div class="mb-3 row mt-4">
                                         <div class="col">

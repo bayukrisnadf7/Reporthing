@@ -172,28 +172,28 @@ if (isset($_GET['ubah'])) {
                             <div class="container">
                                 <form method="POST" action="prosessiswa.php" enctype="multipart/form-data">
                                     <div class="mb-3 row">
-                                        <label for="nisn" class="col-sm-2 col-form-label">
-                                            NIP
+                                        <label for="nama_siswa" class="col-sm-2 col-form-label">
+                                            Nama Siswa
                                         </label>
                                         <div class="col-sm-10">
-                                            <select name="nisn" class="form-select" id="nisn" onchange="displayData()">
+                                            <select name="nama_siswa" class="form-select" id="nama_siswa" onchange="displayData()">
                                                 <option value="">PILIH</option>
                                                 <?php
                                                 $query = "SELECT nisn, nama_siswa FROM tb_siswa";
                                                 $sql = mysqli_query($conn, $query);
                                                 while ($data = mysqli_fetch_assoc($sql)) {
-                                                    echo '<option value="' . $data['nisn'] . '" data-info="'. $data['nama_siswa'] . '">' . $data['nisn'] . '</option>';
+                                                    echo '<option value="' . $data['nama_siswa'] . '" data-info="'. $data['nisn'] . '">' . $data['nama_siswa'] . '</option>';
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="nama_siswa" class="col-sm-2 col-form-label">
-                                            Nama Siswa
+                                        <label for="nisn" class="col-sm-2 col-form-label">
+                                            NISN
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="nama_guru" id="nama_siswa" readonly>
+                                            <input type="text" class="form-control" name="nisn" id="nisn" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -213,15 +213,6 @@ if (isset($_GET['ubah'])) {
                                         <div class="col-sm-10">
                                             <input required type="password" name="password" class="form-control"
                                                 placeholder="Ex: Bayukrisna123" value="<?php echo $password ?>">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label for="repassword" class="col-sm-2 col-form-label">
-                                            Confirm Password
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <input required type="password" name="repassword" class="form-control"
-                                                placeholder="Ex: @Bayukrisna123" value="<?php echo $password ?>">
                                         </div>
                                     </div>
 
@@ -288,9 +279,9 @@ if (isset($_GET['ubah'])) {
 
     <script>
         function displayData() {
-            var selected_nip = document.getElementById("nisn");
+            var selected_nip = document.getElementById("nama_siswa");
             var nip = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info');
-            document.getElementById("nama_siswa").value = nip;
+            document.getElementById("nisn").value = nip;
         }
     </script>
 </body>

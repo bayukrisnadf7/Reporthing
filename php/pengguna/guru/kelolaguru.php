@@ -172,28 +172,28 @@ if (isset($_GET['ubah'])) {
                             <div class="container">
                                 <form method="POST" action="prosesguru.php" enctype="multipart/form-data">
                                     <div class="mb-3 row">
-                                        <label for="nip" class="col-sm-2 col-form-label">
-                                            NIP
+                                        <label for="nama_guru" class="col-sm-2 col-form-label">
+                                            Nama Guru
                                         </label>
                                         <div class="col-sm-10">
-                                            <select name="nip" class="form-select" id="nip" onchange="displayData()">
+                                            <select name="nama_guru" class="form-select" id="nama_guru" onchange="displayData()">
                                                 <option value="">PILIH</option>
                                                 <?php
                                                 $query = "SELECT nip, nama_guru FROM tb_guru";
                                                 $sql = mysqli_query($conn, $query);
                                                 while ($data = mysqli_fetch_assoc($sql)) {
-                                                    echo '<option value="' . $data['nip'] . '" data-info="'. $data['nama_guru'] . '">' . $data['nip'] . '</option>';
+                                                    echo '<option value="' . $data['nama_guru'] . '" data-info="'. $data['nip'] . '">' . $data['nama_guru'] . '</option>';
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="nama_guru" class="col-sm-2 col-form-label">
+                                        <label for="nip" class="col-sm-2 col-form-label">
                                             Nama Guru
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="nama_guru" id="nama_guru" readonly>
+                                            <input type="text" class="form-control" name="nip" id="nip" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -213,15 +213,6 @@ if (isset($_GET['ubah'])) {
                                         <div class="col-sm-10">
                                             <input required type="password" name="password" class="form-control"
                                                 placeholder="Ex: Bayukrisna123" value="<?php echo $password ?>">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label for="repassword" class="col-sm-2 col-form-label">
-                                            Confirm Password
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <input required type="password" name="repassword" class="form-control"
-                                                placeholder="Ex: @Bayukrisna123" value="<?php echo $password ?>">
                                         </div>
                                     </div>
 
@@ -288,9 +279,9 @@ if (isset($_GET['ubah'])) {
 
     <script>
         function displayData() {
-            var selected_nip = document.getElementById("nip");
+            var selected_nip = document.getElementById("nama_guru");
             var nip = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info');
-            document.getElementById("nama_guru").value = nip;
+            document.getElementById("nip").value = nip;
         }
     </script>
 </body>
