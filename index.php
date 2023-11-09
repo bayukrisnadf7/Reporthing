@@ -58,10 +58,8 @@ $no = 0;
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
-
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
-
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
@@ -222,7 +220,6 @@ $no = 0;
                             }
                         </style>
 
-
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body position-relative">
@@ -354,7 +351,7 @@ $no = 0;
                     </div>
                 </div>
             </footer> -->
-    </div>
+        </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="asset/js/script.js"></script>

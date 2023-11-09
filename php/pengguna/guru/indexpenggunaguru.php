@@ -2,6 +2,11 @@
 include '../../../koneksi.php';
 session_start();
 
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../../login/indexlogin.php");
+    exit();
+}
+
 $query = "SELECT tb_user_guru.nip, tb_guru.nama_guru, tb_user_guru.username, tb_user_guru.password FROM tb_user_guru JOIN tb_guru on tb_user_guru.nip = tb_guru.nip;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
@@ -37,10 +42,8 @@ $no = 0;
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
-
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
-
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
@@ -81,11 +84,11 @@ $no = 0;
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="false">
+                            aria-expanded="true">
                             <i class="fa-solid fa-list pe-2"></i>
                             Pengguna
                         </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="indexpenggunaguru.php" class="sidebar-link active">
                                 <i class="fa-regular fa-circle pe-2"></i> Guru</a>
@@ -112,38 +115,67 @@ $no = 0;
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="image/profile.jpg" class="avatar img-fluid rounded" alt="" />
+                                <img src="../../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item">Setting</a>
-                                <a href="#" class="dropdown-item">Logout</a>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#editProfileModal">Profile</a>
+                                <a href="../../../logout.php" class="dropdown-item"
+                                    onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+
+            <!-- Modal untuk Profile -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form untuk mengedit profil -->
+                            <form action="editprofile.php" method="post">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Admin</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
                     <div class="mb-3">
                         <h4>Pengguna Guru</h4>
-                        <h6>Halaman untuk mengelola user guru</h6>
+                        <h6>Halaman untuk mengelola pengguna guru</h6>
                     </div>
 
+                    <!-- Alert Eksekusi-->
                     <?php
                     if (isset($_SESSION['eksekusi'])):
                         ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php
-                            echo $_SESSION['eksekusi'];
-                            ?>
+                        <div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo $_SESSION['eksekusi']; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <?php
-                        session_destroy();
+                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan sukses
                     endif;
                     ?>
+
+                    <script>
+                        setTimeout(function () {
+                            document.getElementById("alertDiv").style.display = "none";
+                        }, 5000); // Alert akan hilang setelah 5 detik (5000 milidetik)
+                    </script>
 
                     <!-- Table Element -->
                     <div class="card border-0">
@@ -194,7 +226,6 @@ $no = 0;
                                                     onClick="return confirm('Ingin menghapus data tersebut?')">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
-
                                             </td>
                                             </tr>
                                             <?php
@@ -233,7 +264,7 @@ $no = 0;
         </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="../../asset/js/script.js"></script>
+    <script src="../../../asset/js/script.js"></script>
 </body>
 
 </html>

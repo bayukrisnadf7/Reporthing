@@ -21,7 +21,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <script src="asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="asset/fontawesome/css/all.min.css">
-    <title>Reporthing</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="asset/css/style.css" />
@@ -29,10 +28,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
-
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
-
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
@@ -54,14 +51,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 Nilai Sumatif
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="php/nilai_sikap/indexsikap.php" class="sidebar-link">
-                                <i class="fa-solid fa-book pe-2"></i>
-                                Nilai Sikap
-                            </a>
-                        </li>
                     </ul>
-
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -78,7 +68,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="img/profile2.png" class="avatar img-fluid rounded-circle" alt="" />
+                                <img src="img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
                                 <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -199,7 +189,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 font-size: 20px;
                             }
                         </style>
-
 
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">

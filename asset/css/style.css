@@ -45,7 +45,7 @@ h4 {
     max-width: 254px;
     min-width: 254px;
     background: #FFFFFF;
-    transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;  
 }
 
 .main{
@@ -184,8 +184,6 @@ a.sidebar-link{
 }
 
 /* Footer and Nav */
-
-@media (max-width:767.98px) {}
 
 /* Theme Toggler */
 
