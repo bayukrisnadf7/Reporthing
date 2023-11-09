@@ -3,6 +3,11 @@
 include '../../../koneksi.php';
 session_start();
 
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../../login/indexlogin.php");
+    exit();
+}
+
 $nisn = '';
 $nama_siswa = '';
 $username = '';
@@ -42,7 +47,6 @@ if (isset($_GET['ubah'])) {
     <script src="../../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../../asset/fontawesome/css/all.min.css">
-    <title>Reporthing</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../../asset/css/style.css" />
@@ -50,10 +54,8 @@ if (isset($_GET['ubah'])) {
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
-
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
-
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
@@ -94,17 +96,17 @@ if (isset($_GET['ubah'])) {
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="false">
+                            aria-expanded="true">
                             <i class="fa-solid fa-list pe-2"></i>
                             Pengguna
                         </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="../guru/indexpenggunaguru.php" class="sidebar-link active">
+                                <a href="../guru/indexpenggunaguru.php" class="sidebar-link">
                                 <i class="fa-regular fa-circle pe-2"></i> Guru</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="indexpenggunasiswa.php" class="sidebar-link">
+                                <a href="indexpenggunasiswa.php" class="sidebar-link active">
                                 <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
@@ -125,17 +127,41 @@ if (isset($_GET['ubah'])) {
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="image/profile.jpg" class="avatar img-fluid rounded" alt="" />
+                                <img src="../../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item">Setting</a>
-                                <a href="#" class="dropdown-item">Logout</a>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#editProfileModal">Profile</a>
+                                <a href="../../../logout.php" class="dropdown-item"
+                                    onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+
+            <!-- Modal untuk Profile -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form untuk mengedit profil -->
+                            <form action="editprofile.php" method="post">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Admin</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
@@ -275,7 +301,7 @@ if (isset($_GET['ubah'])) {
         </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="../../asset/js/script.js"></script>
+    <script src="../../../asset/js/script.js"></script>
 
     <script>
         function displayData() {
