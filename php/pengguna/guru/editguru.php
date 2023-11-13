@@ -40,7 +40,8 @@ if (isset($_GET['ubah'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GACOR KANG</title>
+    <title>Edit Pengguna Guru - Reporthing</title>
+    <link href="../../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../../asset/js/bootstrap.bundle.min.js"></script>
@@ -59,7 +60,7 @@ if (isset($_GET['ubah'])) {
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -91,6 +92,12 @@ if (isset($_GET['ubah'])) {
                         <a href="../../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../../tahunajaran/indexajaran.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">

@@ -6,16 +6,24 @@ function tambah_data($data, $files)
     $nisn = $data['nisn'];
     $nama_siswa = $data['nama_siswa'];
     $kelas = $data['id_kelas'];
-    $tempat_lahir = $data['tempat_lahir'];
-    $tanggal_lahir = $data['tanggal_lahir'];
+    $tahun_ajaran = $data['id_tahunajaran'];
     $no_telp = $data['no_telp'];
-    $jenis_kelamin = $data['jenis_kelamin'];
+    $tanggal_lahir = $data['tanggal_lahir'];
+
+    // Cek apakah NISN sudah ada
+    $queryCekNISN = "SELECT * FROM tb_siswa WHERE nisn = '$nisn'";
+    $resultCekNISN = mysqli_query($GLOBALS['conn'], $queryCekNISN);
+
+    if (mysqli_num_rows($resultCekNISN) > 0) {
+        $_SESSION['eksekusi'] = "Gagal menambahkan data. NISN sudah terdaftar.";
+        header("location: indexsiswa.php");
+        return false;
+    }
 
     $split = explode('.', $files['foto']['name']);
     $ekstensi = $split[count($split) - 1];
 
     $foto = $nisn . '.' . $ekstensi;
-    $alamat = $data['alamat'];
 
     //destination
     $dir = "../../img/";
@@ -24,7 +32,7 @@ function tambah_data($data, $files)
     //memindahkan
     move_uploaded_file($tmpFile, $dir . $foto);
 
-    $query = "INSERT INTO tb_siswa VALUES('$nisn', '$nama_siswa', '$kelas', '$tempat_lahir', '$tanggal_lahir', '$no_telp', '$jenis_kelamin', '$foto', '$alamat')";
+    $query = "INSERT INTO tb_siswa VALUES('$nisn', '$nama_siswa', '$kelas', '$tahun_ajaran', '$no_telp', '$tanggal_lahir', '$foto')";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
     return true;
@@ -35,12 +43,10 @@ function ubah_data($data, $files)
     $nisn = $data['nisn'];
     $nama_siswa = $data['nama_siswa'];
     $kelas = $data['id_kelas'];
-    $tempat_lahir = $data['tempat_lahir'];
-    $tanggal_lahir = $data['tanggal_lahir'];
+    $tahun_ajaran = $data['id_tahunajaran'];
     $no_telp = $data['no_telp'];
-    $jenis_kelamin = $data['jenis_kelamin'];
-    $alamat = $data['alamat'];
-
+    $tanggal_lahir = $data['tanggal_lahir'];
+    
     $queryShow = "SELECT * FROM tb_siswa WHERE nisn = '$nisn';";
     $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
     $result = mysqli_fetch_assoc($sqlShow);
@@ -57,7 +63,7 @@ function ubah_data($data, $files)
         move_uploaded_file($files['foto']['tmp_name'], '../../img/' . $foto);
     }
 
-    $query = "UPDATE tb_siswa SET nisn='$nisn', nama_siswa='$nama_siswa', id_kelas='$kelas', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', no_telp='$no_telp', jenis_kelamin='$jenis_kelamin',alamat='$alamat', foto_siswa='$foto' WHERE nisn='$nisn';";
+    $query = "UPDATE tb_siswa SET nisn='$nisn', nama_siswa='$nama_siswa', id_kelas='$kelas', id_tahunajaran='$tahun_ajaran',  no_telp='$no_telp', tanggal_lahir='$tanggal_lahir', foto_siswa='$foto' WHERE nisn='$nisn';";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
     return true;

@@ -41,7 +41,8 @@ if (isset($_GET['ubah'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GACOR KANG</title>
+    <title>Tambah Pengguna Siswa - Reporthing</title>
+    <link href="../../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../../asset/js/bootstrap.bundle.min.js"></script>
@@ -60,7 +61,7 @@ if (isset($_GET['ubah'])) {
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -92,6 +93,12 @@ if (isset($_GET['ubah'])) {
                         <a href="../../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../../tahunajaran/indexajaran.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -185,7 +192,7 @@ if (isset($_GET['ubah'])) {
                             } else {
                                 ?>
                                 <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fas fa-plus"></i> Tambah Data Siswa
+                                    <i class="fas fa-plus"></i> Tambah Data Pengguna Siswa
                                 </h6>
                                 <!-- <h6 class="card-subtitle text-muted" style="color: white;">
                                     Form unttbuk menambah data kelas
@@ -203,7 +210,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <select name="nama_siswa" class="form-select" id="nama_siswa" onchange="displayData()">
-                                                <option value="">PILIH</option>
+                                                <option value="">-- Pilih Nama Siswa --</option>
                                                 <?php
                                                 $query = "SELECT nisn, nama_siswa FROM tb_siswa";
                                                 $sql = mysqli_query($conn, $query);
@@ -228,7 +235,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="username" class="form-control"
-                                                id="username" placeholder="Ex: Bayukrisna123"
+                                                id="username" placeholder="Username Siswa"
                                                 value="<?php echo $username ?>">
                                         </div>
                                     </div>
@@ -238,7 +245,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="password" name="password" class="form-control"
-                                                placeholder="Ex: Bayukrisna123" value="<?php echo $password ?>">
+                                                placeholder="Password Siswa" value="<?php echo $password ?>">
                                         </div>
                                     </div>
 

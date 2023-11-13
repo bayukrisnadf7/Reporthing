@@ -15,7 +15,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GACOR KANG</title>
+    <title>Dashboard Guru - Reporthing</title>
+    <link href="img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="asset/js/bootstrap.bundle.min.js"></script>
@@ -34,7 +35,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">

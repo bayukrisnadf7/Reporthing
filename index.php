@@ -35,7 +35,8 @@ $no = 0;
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GACOR KANG</title>
+    <title>Dashboard Admin - Reporthing</title>
+    <link href="img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="asset/js/bootstrap.bundle.min.js"></script>
@@ -64,7 +65,7 @@ $no = 0;
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;"/> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -96,6 +97,12 @@ $no = 0;
                         <a href="php/mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="php/tahunajaran/indexajaran.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -280,12 +287,10 @@ $no = 0;
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">NIP</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Tempat & Tgl Lahir</th>
+                                            <th scope="col">Nama Guru</th>
                                             <th scope="col">No Telp</th>
-                                            <th scope="col">Jenis Kelamin</th>
+                                            <th scope="col">Tanggal Lahir</th>
                                             <th scope="col">Foto</th>
-                                            <th scope="col">Alamat</th>
                                     </thead>
                                     <tbody>
                                         <?php
@@ -301,20 +306,14 @@ $no = 0;
                                                 <?php echo $result['nama_guru']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['tempat_lahir'] . ', ' . $result['tanggal_lahir']; ?>
-                                            </td>
-                                            <td>
                                                 <?php echo $result['no_telp']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['jenis_kelamin']; ?>
+                                                <?php echo $result['tanggal_lahir']; ?>
                                             </td>
                                             <td>
                                                 <img src="img/<?php echo $result['foto_guru']; ?>"
                                                     style="width: 50px; height: 50px;">
-                                            </td>
-                                            <td>
-                                                <?php echo $result['alamat']; ?>
                                             </td>
                                             </tr>
                                             <?php

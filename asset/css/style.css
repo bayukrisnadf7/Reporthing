@@ -44,7 +44,7 @@ h4 {
 #sidebar{
     max-width: 254px;
     min-width: 254px;
-    background: #FFFFFF;
+    background: #2E84D9;
     transition: all 0.35s ease-in-out;  
 }
 
@@ -66,7 +66,7 @@ h4 {
 }
 
 .sidebar-logo a{
-    color: #007BFF;
+    color: #fff;
     font-size: 1.15rem;
     font-weight: 600;
 }
@@ -87,7 +87,7 @@ h4 {
 
 a.sidebar-link{
     padding: .625rem 1.625rem;
-    color: #7D7C7C;
+    color: #fff;
     position: relative;
     display: block;
     font-size: 0.875rem;
@@ -184,6 +184,13 @@ a.sidebar-link{
 }
 
 /* Footer and Nav */
+
+@media (max-width: 767.98px){
+    .navbar,
+    footer {
+        width: 100vw;
+    }
+}
 
 /* Theme Toggler */
 

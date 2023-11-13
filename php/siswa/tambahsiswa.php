@@ -11,11 +11,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $nisn = '';
 $nama_siswa = '';
 $kelas = '';
-$tempat_lahir = '';
-$tanggal_lahir = '';
+$tahun_ajaran = '';
 $no_telp = '';
-$jenis_kelamin = '';
-$alamat = '';
+$tanggal_lahir = '';
 
 if (isset($_GET['ubah'])) {
     $nisn = $_GET['ubah'];
@@ -28,16 +26,16 @@ if (isset($_GET['ubah'])) {
     $nisn = $result['nisn'];
     $nama_siswa = $result['nama_siswa'];
     $kelas = $result['id_kelas'];
-    $tempat_lahir = $result['tempat_lahir'];
-    $tanggal_lahir = $result['tanggal_lahir'];
+    $tahun_ajaran = $result['id_tahunajaran'];
     $no_telp = $result['no_telp'];
-    $jenis_kelamin = $result['jenis_kelamin'];
-    $alamat = $result['alamat'];
+    $tanggal_lahir = $result['tanggal_lahir'];
 
 }
 
 $sql1 = "SELECT id_kelas, nama_kelas FROM tb_kelas";
 $result1 = $conn->query($sql1);
+$sql2 = "SELECT id_tahunajaran, tahun_ajaran FROM tb_tahunajaran";
+$result2 = $conn->query($sql2);
 ?>
 
 <html lang="en" data-bs-theme="light">
@@ -46,13 +44,13 @@ $result1 = $conn->query($sql1);
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GACOR KANG</title>
+    <title>Tambah Siswa - Reporthing</title>
+    <link href="../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
-    <title>Reporthing</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
@@ -66,7 +64,7 @@ $result1 = $conn->query($sql1);
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -98,6 +96,12 @@ $result1 = $conn->query($sql1);
                         <a href="../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -242,28 +246,27 @@ $result1 = $conn->query($sql1);
                                                 } else {
                                                     echo "0 hasil";
                                                 }
-                                                $conn->close();
                                                 ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="tempat_lahir" class="col-sm-2 col-form-label">
-                                            Tempat Lahir
+                                        <label for="tahunajaran" class="col-sm-2 col-form-label">
+                                            Tahun Ajaran
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="tempat_lahir" class="form-control"
-                                                id="tempat_lahir" placeholder="Tempat Lahir"
-                                                value="<?php echo $tempat_lahir; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label for="tanggal_lahir" class="col-sm-2 col-form-label">
-                                            Tanggal Lahir
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <input required type="date" name="tanggal_lahir" class="form-control"
-                                                id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>">
+                                            <select required id="tahunajaran" name="id_tahunajaran" class="form-select">
+                                                <?php
+                                                if ($result2->num_rows > 0) {
+                                                    while ($row = $result2->fetch_assoc()) {
+                                                        $selected = ($row['id_tahunajaran'] == $tahun_ajaran) ? "selected" : "";
+                                                        echo "<option $selected value='" . $row["id_tahunajaran"] . "'>" . $row["tahun_ajaran"] . "</option>";
+                                                    }
+                                                } else {
+                                                    echo "0 hasil";
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -276,20 +279,12 @@ $result1 = $conn->query($sql1);
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="jkel" class="col-sm-2 col-form-label">
-                                            Jenis Kelamin
+                                        <label for="tanggal_lahir" class="col-sm-2 col-form-label">
+                                            Tanggal Lahir
                                         </label>
                                         <div class="col-sm-10">
-                                            <select required id="jkel" name="jenis_kelamin" class="form-select">
-                                                <option <?php if ($jenis_kelamin == 'Laki-laki') {
-                                                    echo "selected";
-                                                } ?>   value="Laki-laki">Laki-laki
-                                                </option>
-                                                <option <?php if ($jenis_kelamin == 'Perempuan') {
-                                                    echo "selected";
-                                                } ?>   value="Perempuan">Perempuan
-                                                </option>
-                                            </select>
+                                            <input required type="date" name="tanggal_lahir" class="form-control"
+                                                id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -299,16 +294,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input <?php if (!isset($_GET['ubah'])) {
                                                 echo "require";
-                                            } ?>         class="form-control" type="file" name="foto" id="foto" accept="image/*">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label for="alamat" class="col-sm-2 col-form-label">
-                                            Alamat Lengkap
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <textarea required class="form-control" id="alamat" name="alamat"placeholder="Alamat Lengkap"
-                                                rows="3"><?php echo $alamat; ?></textarea>
+                                            } ?> class="form-control" type="file" name="foto" id="foto" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="mb-3 row mt-4">

@@ -4,16 +4,23 @@
 
         $nip = $data['nip'];
         $nama_guru = $data['nama_guru'];
-        $tempat_lahir = $data['tempat_lahir'];
-        $tanggal_lahir = $data['tanggal_lahir'];
         $no_telp = $data['no_telp'];
-        $jenis_kelamin = $data['jenis_kelamin'];
+        $tanggal_lahir = $data['tanggal_lahir'];
+
+        // Cek apakah NIP sudah ada
+    $queryCekNIP = "SELECT * FROM tb_guru WHERE nip = '$nip'";
+    $resultCekNIP = mysqli_query($GLOBALS['conn'], $queryCekNIP);
+
+    if (mysqli_num_rows($resultCekNIP) > 0) {
+        $_SESSION['eksekusi'] = "Gagal menambahkan data. NIP sudah terdaftar.";
+        header("location: indexguru.php");
+        return false;
+    }
         
         $split = explode('.', $files['foto']['name']);
         $ekstensi = $split[count($split)-1];
 
         $foto = $nip.'.'.$ekstensi;
-        $alamat = $data['alamat'];
 
         //destination
         $dir = "../../img/";
@@ -22,7 +29,7 @@
         //memindahkan
         move_uploaded_file($tmpFile, $dir . $foto);
 
-        $query = "INSERT INTO tb_guru VALUES('$nip', '$nama_guru', '$tempat_lahir', '$tanggal_lahir', '$no_telp', '$jenis_kelamin', '$foto', '$alamat')";
+        $query = "INSERT INTO tb_guru VALUES('$nip', '$nama_guru', '$no_telp', '$tanggal_lahir', '$foto')";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         return true;
@@ -31,11 +38,8 @@
     function ubah_data($data, $files){
         $nip = $data['nip'];
         $nama_guru = $data['nama_guru'];
-        $tempat_lahir = $data['tempat_lahir'];
-        $tanggal_lahir = $data['tanggal_lahir'];
         $no_telp = $data['no_telp'];
-        $jenis_kelamin = $data['jenis_kelamin'];
-        $alamat = $data['alamat'];
+        $tanggal_lahir = $data['tanggal_lahir'];
 
         $queryShow = "SELECT * FROM tb_guru WHERE nip = '$nip';";
         $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
@@ -53,7 +57,7 @@
             move_uploaded_file($files['foto']['tmp_name'], '../../img/'.$foto);
         }
 
-        $query = "UPDATE tb_guru SET nip='$nip', nama_guru='$nama_guru', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', no_telp='$no_telp', jenis_kelamin='$jenis_kelamin',alamat='$alamat', foto_guru='$foto' WHERE nip='$nip';";
+        $query = "UPDATE tb_guru SET nip='$nip', nama_guru='$nama_guru', no_telp='$no_telp', tanggal_lahir='$tanggal_lahir', foto_guru='$foto' WHERE nip='$nip';";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         return true;

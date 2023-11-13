@@ -19,7 +19,8 @@ $no = 0;
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GACOR KANG</title>
+    <title>Guru - Reporthing</title>
+    <link href="../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
@@ -42,15 +43,13 @@ $no = 0;
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
-
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
-
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -82,6 +81,12 @@ $no = 0;
                         <a href="../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -163,13 +168,33 @@ $no = 0;
                     <!-- Alert Eksekusi-->
                     <?php
                     if (isset($_SESSION['eksekusi'])):
-                        ?>
-                        <div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo $_SESSION['eksekusi']; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php
-                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan sukses
+                        if ($_SESSION['eksekusi'] === "Data Berhasil Ditambahkan") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Diperbaharui") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Dihapus") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }   else {
+                            // Tampilkan pesan kesalahan
+                            echo '<div id="alertDiv" class="alert alert-danger alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }
+                    
+                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan
                     endif;
                     ?>
 
@@ -182,7 +207,7 @@ $no = 0;
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
-                            <a href="kelolaguru.php" type="button" class="btn btn-primary btn-sm">
+                            <a href="tambahguru.php" type="button" class="btn btn-primary btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Data
                             </a>
                         </div>
@@ -193,12 +218,10 @@ $no = 0;
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">NIP</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Tempat & Tgl Lahir</th>
+                                            <th scope="col">Nama Guru</th>
                                             <th scope="col">No Telp</th>
-                                            <th scope="col">Jenis Kelamin</th>
+                                            <th scope="col">Tanggal Lahir</th>
                                             <th scope="col">Foto</th>
-                                            <th scope="col">Alamat</th>
                                             <th scope="col">Aksi</th>
                                     </thead>
                                     <tbody>
@@ -215,24 +238,18 @@ $no = 0;
                                                 <?php echo $result['nama_guru']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['tempat_lahir'] . ', ' . $result['tanggal_lahir']; ?>
-                                            </td>
-                                            <td>
                                                 <?php echo $result['no_telp']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['jenis_kelamin']; ?>
+                                                <?php echo $result['tanggal_lahir']; ?>
                                             </td>
                                             <td>
                                                 <img src="../../img/<?php echo $result['foto_guru']; ?>"
                                                     style="width: 50px; height: 50px;">
                                             </td>
-                                            <td>
-                                                <?php echo $result['alamat']; ?>
-                                            </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
-                                                <a href="kelolaguru.php?ubah=<?php echo $result['nip']; ?>" type="button"
+                                                <a href="editguru.php?ubah=<?php echo $result['nip']; ?>" type="button"
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fa fa-pen"></i>
                                                 </a>

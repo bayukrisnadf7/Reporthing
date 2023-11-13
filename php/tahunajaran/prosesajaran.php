@@ -1,5 +1,5 @@
 <?php
-include 'fungsikelas.php';
+include 'fungsiajaran.php';
 session_start();
 
 if (isset($_POST['aksi'])) {
@@ -9,7 +9,7 @@ if (isset($_POST['aksi'])) {
 
         if ($berhasil) {
             $_SESSION['eksekusi'] = "Data Berhasil Ditambahkan";
-            header("location: indexkelas.php");
+            header("location: indexajaran.php");
         } else {
             echo $berhasil;
         }
@@ -19,8 +19,8 @@ if (isset($_POST['aksi'])) {
         $berhasil = ubah_data($_POST);
         
         if ($berhasil) {
-            $_SESSION['eksekusi'] = "Data Berhasil Diperbaharui";
-            header("location: indexkelas.php");
+            $_SESSION['eksekusi'] = "Data Berhasil Diperbarui";
+            header("location: indexajaran.php");
         } else {
             echo $berhasil;
         }
@@ -35,7 +35,7 @@ if (isset($_GET['hapus'])) {
 
     if ($berhasil) {
         $_SESSION['eksekusi'] = "Data Berhasil Dihapus";
-        header("location: indexkelas.php");
+        header("location: indexajaran.php");
     } else {
         echo $berhasil;
     }

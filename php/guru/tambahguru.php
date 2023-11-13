@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <?php
-include '../../../koneksi.php';
+include '../../koneksi.php';
 session_start();
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: ../../login/indexlogin.php");
+    header("Location: ../login/indexlogin.php");
     exit();
 }
 
 $nip = '';
 $nama_guru = '';
-$username = '';
-$password = '';
-$repassword = '';
-
-
+$no_telp = '';
+$tanggal_lahir = '';
 
 if (isset($_GET['ubah'])) {
     $nip = $_GET['ubah'];
 
-    $query = "SELECT tb_user.nip, tb_guru.nama_guru, tb_user_guru.username, tb_user_guru.password FROM tb_user_guru JOIN tb_guru on tb_user_guru.nip = tb_guru.nip WHERE tb_user.nip = '$nip';";
+    $query = "SELECT * FROM tb_guru WHERE nip = '$nip';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
 
     $nip = $result['nip'];
     $nama_guru = $result['nama_guru'];
-    $username = $result['username'];
-    $password = $result['password'];
-    $repassword = $result['password'];
+    $no_telp = $result['no_telp'];
+    $tanggal_lahir = $result['tanggal_lahir'];
+
 }
-
 ?>
-
-
 
 <html lang="en" data-bs-theme="light">
 
@@ -41,80 +35,82 @@ if (isset($_GET['ubah'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tambah Pengguna Guru - Reporthing</title>
-    <link href="../../../img/logo_putih.png" rel="shortcut icon">
+    <title> Tambah Guru - Reporthing</title>
+    <link href="../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
-    <link href="../../../asset/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../../asset/js/bootstrap.bundle.min.js"></script>
+    <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../../asset/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="../../../asset/css/style.css" />
+    <link rel="stylesheet" href="../../asset/css/style.css" />
 </head>
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
+
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
+
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../../../index.php" class="sidebar-link">
+                        <a href="../../index.php" class="sidebar-link">
                             <i class="fa-solid fa-gauge pe-2"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../guru/indexguru.php" class="sidebar-link">
+                        <a href="indexguru.php" class="sidebar-link active">
                             <i class="fa-solid fa-user-tie pe-2"></i>
                             Guru
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../siswa/indexsiswa.php" class="sidebar-link">
+                        <a href="../siswa/indexsiswa.php" class="sidebar-link">
                             <i class="fa-solid fa-user-graduate pe-2"></i>
                             Siswa
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../kelas/indexkelas.php" class="sidebar-link">
+                        <a href="../kelas/indexkelas.php" class="sidebar-link">
                             <i class="fa-solid fa-chalkboard pe-2"></i>
                             Kelas
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../mapel/indexmapel.php" class="sidebar-link">
+                        <a href="../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../tahunajaran/indexajaran.php" class="sidebar-link">
+                        <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
                             <i class="fa-solid fa-calendar-days pe-2"></i>
                             Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="true">
+                            aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
                             Pengguna
                         </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="indexpenggunaguru.php" class="sidebar-link active">
-                                <i class="fa-regular fa-circle pe-2"></i> Guru</a>
+                                <a href="../pengguna/guru/indexpenggunaguru.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
+                                <a href="../pengguna/siswa/indexpenggunasiswa.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
                     </li>
@@ -133,14 +129,14 @@ if (isset($_GET['ubah'])) {
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
+                            <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
                                 <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
                                     data-bs-target="#editProfileModal">Profile</a>
-                                <a href="../../../logout.php" class="dropdown-item"
+                                <a href="../../logout.php" class="dropdown-item"
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
@@ -183,7 +179,7 @@ if (isset($_GET['ubah'])) {
                             if (isset($_GET['ubah'])) {
                                 ?>
                                 <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fa fa-pen"></i> Edit Data Pengguna Guru
+                                    <i class="fa fa-pen"></i> Edit Data Guru
                                 </h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
@@ -192,10 +188,10 @@ if (isset($_GET['ubah'])) {
                             } else {
                                 ?>
                                 <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fas fa-plus"></i> Tambah Data Pengguna Guru
+                                    <i class="fas fa-plus"></i> Tambah Data Guru
                                 </h6>
                                 <!-- <h6 class="card-subtitle text-muted" style="color: white;">
-                                    Form unttbuk menambah data kelas
+                                    Form untuk menambah data kelas
                                 </h6> -->
                                 <?php
                             }
@@ -204,51 +200,53 @@ if (isset($_GET['ubah'])) {
                         <div class="card-body">
                             <div class="container">
                                 <form method="POST" action="prosesguru.php" enctype="multipart/form-data">
-                                    <div class="mb-3 row">
-                                        <label for="nama_guru" class="col-sm-2 col-form-label">
-                                            Nama Guru
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <select name="nama_guru" class="form-select" id="nama_guru" onchange="displayData()">
-                                                <option value="">-- Pilih Nama Guru--</option>
-                                                <?php
-                                                $query = "SELECT nip, nama_guru FROM tb_guru";
-                                                $sql = mysqli_query($conn, $query);
-                                                while ($data = mysqli_fetch_assoc($sql)) {
-                                                    echo '<option value="' . $data['nama_guru'] . '" data-info="'. $data['nip'] . '">' . $data['nama_guru'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    <input type="hidden" value="<?php echo $nip ?>" name="nip">
                                     <div class="mb-3 row">
                                         <label for="nip" class="col-sm-2 col-form-label">
                                             NIP
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="nip" id="nip" readonly>
+                                            <input required type="text" name="nip" class="form-control" id="nip"
+                                                placeholder="NIP" value="<?php echo $nip; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="username" class="col-sm-2 col-form-label">
-                                            Username
+                                        <label for="nama" class="col-sm-2 col-form-label">
+                                            Nama Guru
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="username" class="form-control"
-                                                id="username" placeholder="Username Guru"
-                                                value="<?php echo $username ?>">
+                                            <input required type="text" name="nama_guru" class="form-control" id="nama"
+                                                placeholder="Nama Guru" value="<?php echo $nama_guru; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="password" class="col-sm-2 col-form-label">
-                                            Password
+                                        <label for="notelp" class="col-sm-2 col-form-label">
+                                            No Telp
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="password" name="password" class="form-control"
-                                                placeholder="Password Guru" value="<?php echo $password ?>">
+                                            <input required type="text" name="no_telp" class="form-control" id="notelp"
+                                                placeholder="Nomor Telepon" value="<?php echo $no_telp; ?>">
                                         </div>
                                     </div>
-
+                                    <div class="mb-3 row">
+                                        <label for="tanggal_lahir" class="col-sm-2 col-form-label">
+                                            Tanggal Lahir
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="date" name="tanggal_lahir" class="form-control"
+                                                id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="foto" class="col-sm-2 col-form-label">
+                                            Foto Guru
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input <?php if (!isset($_GET['ubah'])) {
+                                                echo "require";
+                                            } ?> class="form-control" type="file" name="foto" id="foto" accept="image/*">
+                                        </div>
+                                    </div>
                                     <div class="mb-3 row mt-4">
                                         <div class="col">
                                             <?php
@@ -270,7 +268,7 @@ if (isset($_GET['ubah'])) {
                                                 <?php
                                             }
                                             ?>
-                                            <a href="indexpenggunaguru.php" type="button" class="btn btn-danger btn-sm">
+                                            <a href="indexguru.php" type="button" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                                 Batal
                                             </a>
@@ -308,15 +306,7 @@ if (isset($_GET['ubah'])) {
         </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="../../../asset/js/script.js"></script>
-
-    <script>
-        function displayData() {
-            var selected_nip = document.getElementById("nama_guru");
-            var nip = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info');
-            document.getElementById("nip").value = nip;
-        }
-    </script>
+    <script src="../../asset/js/script.js"></script>
 </body>
 
 </html>

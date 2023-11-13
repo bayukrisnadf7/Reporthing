@@ -19,7 +19,8 @@ $no = 0;
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GACOR KANG</title>
+    <title>Mata Pelajaran - Reporthing</title>
+    <link href="../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
@@ -48,7 +49,7 @@ $no = 0;
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -80,6 +81,12 @@ $no = 0;
                         <a href="indexmapel.php" class="sidebar-link active">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -191,7 +198,6 @@ $no = 0;
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">Id Mapel</th>
                                             <th scope="col">Nama Mapel</th>
                                             <th scope="col">Aksi</th>
                                     </thead>
@@ -201,9 +207,6 @@ $no = 0;
                                             ?>
                                             <td>
                                                 <?php echo ++$no; ?>.
-                                            </td>
-                                            <td>
-                                                <?php echo $result['id_mapel']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $result['nama_mapel']; ?>

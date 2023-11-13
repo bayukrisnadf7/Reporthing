@@ -7,12 +7,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }
 
-$query = "SELECT * FROM tb_siswa;";
+$query = "SELECT tb_siswa.nisn, tb_siswa.nama_siswa, tb_kelas.nama_kelas, tb_tahunajaran.tahun_ajaran, tb_siswa.no_telp, tb_siswa.tanggal_lahir, tb_siswa.foto_siswa FROM tb_siswa JOIN tb_kelas on tb_siswa.id_kelas = tb_kelas.id_kelas JOIN tb_tahunajaran on tb_siswa.id_tahunajaran = tb_tahunajaran.id_tahunajaran;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 
-$sql1 = "SELECT id_kelas, nama_kelas FROM tb_kelas";
-$result1 = $conn->query($sql1);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +20,8 @@ $result1 = $conn->query($sql1);
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GACOR KANG</title>
+    <title>Siswa - Reporthing</title>
+    <link href="../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
@@ -31,14 +30,14 @@ $result1 = $conn->query($sql1);
     <!-- Data Tables-->
     <link rel="stylesheet" type="text/css" href="../../asset/datatables/datatables.css">
     <script type="text/javascript" src="../../asset/datatables/datatables.js"></script>
-    
+
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
 </head>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#dt').DataTable();
     });
 </script>
@@ -51,7 +50,7 @@ $result1 = $conn->query($sql1);
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -83,6 +82,12 @@ $result1 = $conn->query($sql1);
                         <a href="../mapel/indexmapel.php" class="sidebar-link">
                             <i class="fa-solid fa-book pe-2"></i>
                             Mata Pelajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -120,7 +125,7 @@ $result1 = $conn->query($sql1);
                         <li class="nav-item dropdown">
                             <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>   
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
@@ -153,7 +158,7 @@ $result1 = $conn->query($sql1);
                     </div>
                 </div>
             </div>
-            
+
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
@@ -161,17 +166,37 @@ $result1 = $conn->query($sql1);
                         <h4>Data Siswa</h4>
                         <h6>Halaman untuk mengelola data siswa</h6>
                     </div>
-                    
+
                     <!-- Alert Eksekusi-->
                     <?php
                     if (isset($_SESSION['eksekusi'])):
-                        ?>
-                        <div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo $_SESSION['eksekusi']; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php
-                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan sukses
+                        if ($_SESSION['eksekusi'] === "Data Berhasil Ditambahkan") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Diperbaharui") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Dihapus") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }   else {
+                            // Tampilkan pesan kesalahan
+                            echo '<div id="alertDiv" class="alert alert-danger alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }
+                    
+                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan
                     endif;
                     ?>
 
@@ -184,7 +209,7 @@ $result1 = $conn->query($sql1);
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
-                            <a href="kelolasiswa.php" type="button" class="btn btn-primary btn-sm">
+                            <a href="tambahsiswa.php" type="button" class="btn btn-primary btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Data
                             </a>
                         </div>
@@ -195,13 +220,12 @@ $result1 = $conn->query($sql1);
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">NISN</th>
-                                            <th scope="col">Nama</th>
+                                            <th scope="col">Nama Siswa</th>
                                             <th scope="col">Kelas</th>
-                                            <th scope="col">Tempat & Tgl Lahir</th>
+                                            <th scope="col">Tahun Ajaran</th>
                                             <th scope="col">No. Telp</th>
-                                            <th scope="col">L / P</th>
+                                            <th scope="col">Tanggal Lahir</th>
                                             <th scope="col">Foto</th>
-                                            <th scope="col">Alamat</th>
                                             <th scope="col">Aksi</th>
                                     </thead>
                                     <tbody>
@@ -218,26 +242,24 @@ $result1 = $conn->query($sql1);
                                                 <?php echo $result['nama_siswa']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['id_kelas']; ?>
+                                                <?php echo $result['nama_kelas']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['tempat_lahir'] . ', ' . $result['tanggal_lahir']; ?>
+                                                <?php echo $result['tahun_ajaran']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $result['no_telp']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['jenis_kelamin']; ?>
+                                                <?php echo $result['tanggal_lahir']; ?>
                                             </td>
-                                            <td><img src="../../img/<?php echo $result['foto_siswa']; ?>"
-                                                    style="width: 50px; height: 50px;"></td>
                                             <td>
-                                                <?php echo $result['alamat']; ?>
-                                            </td>
+                                                <img src="../../img/<?php echo $result['foto_siswa']; ?>"
+                                                    style="width: 50px; height: 50px;"></td>
 
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
-                                                <a href="kelolasiswa.php?ubah=<?php echo $result['nisn']; ?>" type="button"
+                                                <a href="editsiswa.php?ubah=<?php echo $result['nisn']; ?>" type="button"
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fa fa-pen"></i>
                                                 </a>

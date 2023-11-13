@@ -16,7 +16,7 @@ if (isset($_POST['aksi'])) {
         $berhasil = ubah_data($_POST, $_FILES);
 
         if ($berhasil) {
-            $_SESSION['eksekusi'] = "Data Berhasil Diperbarui";
+            $_SESSION['eksekusi'] = "Data Berhasil Diperbaharui";
             header("location: indexguru.php");
         } else {
             echo $berhasil;
