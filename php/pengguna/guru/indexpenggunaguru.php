@@ -224,10 +224,10 @@ $no = 0;
                                             </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
-                                                <a href="editguru.php?ubah=<?php echo $result['nip']; ?>" type="button"
+                                                <!-- <a href="editguru.php?ubah=<?php echo $result['nip']; ?>" type="button"
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fa fa-pen"></i>
-                                                </a>
+                                                </a> -->
                                                 <a href="prosesguru.php?hapus=<?php echo $result['nip']; ?>" type="button"
                                                     class="btn btn-danger btn-sm"
                                                     onClick="return confirm('Ingin menghapus data tersebut?')">
