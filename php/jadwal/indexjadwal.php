@@ -7,9 +7,13 @@ session_start();
 //     exit();
 // }
 
-$query = "SELECT tb_guru.nip, tb_guru.nama_guru, tb_guru.no_telp, tb_guru.tanggal_lahir, tb_guru.username, tb_guru.password, tb_kelas.nama_kelas, tb_guru.foto_guru FROM tb_guru JOIN tb_kelas on tb_guru.id_kelas = tb_kelas.id_kelas;";
+$query = "SELECT tb_jadwal.id_jadwal, tb_guru.nama_guru, tb_kelas.nama_kelas, tb_mapel.nama_mapel, tb_jadwal.hari, tb_jadwal.jam_mulai, tb_jadwal.jam_selesai
+            FROM tb_jadwal JOIN tb_guru on tb_jadwal.nip = tb_guru.nip
+            JOIN tb_kelas on tb_jadwal.id_kelas = tb_kelas.id_kelas
+            JOIN tb_mapel on tb_jadwal.id_mapel = tb_mapel.id_mapel;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +23,7 @@ $no = 0;
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guru - Reporthing</title>
+    <title>Jadwal - Reporthing</title>
     <link href="../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +64,7 @@ $no = 0;
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="indexguru.php" class="sidebar-link active">
+                        <a href="../guru/indexguru.php" class="sidebar-link">
                             <i class="fa-solid fa-user-tie pe-2"></i>
                             Guru
                         </a>
@@ -90,7 +94,7 @@ $no = 0;
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../jadwal/indexjadwal.php" class="sidebar-link">
+                        <a href="indexjadwal.php" class="sidebar-link active">
                             <i class="fa-solid fa-calendar-days pe-2"></i>
                             Jadwal
                         </a>
@@ -117,6 +121,7 @@ $no = 0;
                 <ul class="sidebar-nav"></ul>
             </div>
         </aside>
+
         <!-- ========= Main section of dashboard ======= -->
         <div class="main">
             <!-- ========= Main navbar section of dashboard ======= -->
@@ -127,7 +132,7 @@ $no = 0;
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                            <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
                                 <i class="fas fa-caret-down"></i>
                             </a>
@@ -156,8 +161,8 @@ $no = 0;
                             <form action="editprofile.php" method="post">
                                 <div class="mb-3 text-center">
                                     <!-- Foto profil dengan border bulat -->
-                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle"
-                                        width="100" height="100">
+                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
                                     <!-- Label Admin -->
                                     <h5>
                                         <p class="mt-3">Admin</p>
@@ -173,47 +178,27 @@ $no = 0;
             <main class="content px-3 py-2">
                 <div class="content-fluid">
                     <div class="mb-3">
-                        <h4>Data Guru</h4>
-                        <h6>Halaman untuk mengelola data guru</h6>
+                        <h4>Data Jadwal</h4>
+                        <h6>Halaman untuk mengelola data jadwal</h6>
                     </div>
 
-                    <!-- Alert Eksekusi-->
+                    <!-- Alert Eksekusi -->
                     <?php
                     if (isset($_SESSION['eksekusi'])):
-                        if ($_SESSION['eksekusi'] === "Data Berhasil Ditambahkan") {
-                            // Tampilkan pesan sukses
-                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
-                            echo $_SESSION['eksekusi'];
-                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-                            echo '</div>';
-                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Diperbaharui") {
-                            // Tampilkan pesan sukses
-                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
-                            echo $_SESSION['eksekusi'];
-                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-                            echo '</div>';
-                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Dihapus") {
-                            // Tampilkan pesan sukses
-                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
-                            echo $_SESSION['eksekusi'];
-                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-                            echo '</div>';
-                        } else {
-                            // Tampilkan pesan kesalahan
-                            echo '<div id="alertDiv" class="alert alert-danger alert-dismissible fade show" role="alert">';
-                            echo $_SESSION['eksekusi'];
-                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-                            echo '</div>';
-                        }
-
-                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan
+                        ?>
+                        <div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo $_SESSION['eksekusi']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php
+                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan sukses
                     endif;
                     ?>
 
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
-                            <a href="tambahguru.php" type="button" class="btn btn-primary btn-sm">
+                            <a href="tambahjadwal.php" type="button" class="btn btn-primary btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Data
                             </a>
                         </div>
@@ -223,14 +208,11 @@ $no = 0;
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">NIP</th>
-                                            <th scope="col">Nama Guru</th>
-                                            <th scope="col">No Telp</th>
-                                            <th scope="col">Tanggal Lahir</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Password</th>
-                                            <th scope="col">Wali Kelas</th>
-                                            <th scope="col">Foto</th>
+                                            <th scope="col">Hari</th>
+                                            <th scope="col">Jam</th>
+                                            <th scope="col">Nama Pelajaran</th>
+                                            <th scope="col">Guru</th>
+                                            <th scope="col">Kelas</th>
                                             <th scope="col">Aksi</th>
                                     </thead>
                                     <tbody>
@@ -241,37 +223,28 @@ $no = 0;
                                                 <?php echo ++$no; ?>.
                                             </td>
                                             <td>
-                                                <?php echo $result['nip']; ?>
+                                                <?php echo $result['hari']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['jam_mulai'] . ' - ' . $result['jam_selesai']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['nama_mapel']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $result['nama_guru']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['no_telp']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['tanggal_lahir']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['username']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo str_repeat('*', strlen($result['password'])); ?>
-                                            </td>
-                                            <td>
                                                 <?php echo $result['nama_kelas']; ?>
                                             </td>
-                                            <td>
-                                                <img src="../../img/<?php echo $result['foto_guru']; ?>"
-                                                    style="width: 40px; height: 40px;">
-                                            </td>
+
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
-                                                <a href="editguru.php?ubah=<?php echo $result['nip']; ?>" type="button"
+                                                <a href="editjadwal.php?ubah=<?php echo $result['id_jadwal']; ?>" type="button"
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fa fa-pen"></i>
                                                 </a>
-                                                <a href="prosesguru.php?hapus=<?php echo $result['nip']; ?>" type="button"
+                                                <a href="prosesjadwal.php?hapus=<?php echo $result['id_jadwal']; ?>" type="button"
                                                     class="btn btn-danger btn-sm"
                                                     onClick="return confirm('Ingin menghapus data tersebut?')">
                                                     <i class="fa fa-trash"></i>
@@ -297,15 +270,20 @@ $no = 0;
             </a> -->
 
             <!-- ========= footer section of dashboard ======= -->
-            <!-- <footer class="footer mt-auto py-2">
-                <hr class="my-2">
+
+            <!-- <footer class="footer">
                 <div class="container-fluid">
-                    <strong class="text-muted">Reporthing &copy;
-                        <?php echo date("Y"); ?>
-                    </strong>
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a href="#" class="text-muted">
+                                    <strong>Reporthing</strong>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </footer> -->
-
         </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->

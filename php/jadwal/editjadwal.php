@@ -8,34 +8,38 @@ session_start();
 //     exit();
 // }
 
-$nip = '';
+$id_jadwal = '';
 $nama_guru = '';
-$no_telp = '';
-$tanggal_lahir = '';
-$username = '';
-$password = '';
-$walikelas = '';
+$kelas = '';
+$nama_mapel = '';
+$hari = '';
+$jam_mulai = '';
+$jam_selesai = '';
 
 if (isset($_GET['ubah'])) {
-    $nip = $_GET['ubah'];
+    $id_jadwal = $_GET['ubah'];
 
-    $query = "SELECT * FROM tb_guru WHERE nip = '$nip';";
+    $query = "SELECT * FROM tb_jadwal WHERE id_jadwal = '$id_jadwal';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
 
-    $nip = $result['nip'];
-    $nama_guru = $result['nama_guru'];
-    $no_telp = $result['no_telp'];
-    $tanggal_lahir = $result['tanggal_lahir'];
-    $username = $result['username'];
-    $password = $result['password'];
-    $walikelas = $result['id_kelas'];
+    $id_jadwal = $result['id_jadwal'];
+    $nama_guru = $result['nip'];
+    $kelas = $result['id_kelas'];
+    $nama_mapel = $result['id_mapel'];
+    $hari = $result['hari'];
+    $jam_mulai = $result['jam_mulai'];
+    $jam_selesai = $result['jam_selesai'];
 
 }
 
 $sql1 = "SELECT id_kelas, nama_kelas FROM tb_kelas";
 $result1 = $conn->query($sql1);
+$sql2 = "SELECT nip, nama_guru FROM tb_guru";
+$result2 = $conn->query($sql2);
+$sql3 = "SELECT id_mapel, nama_mapel FROM tb_mapel";
+$result3 = $conn->query($sql3);
 ?>
 
 <html lang="en" data-bs-theme="light">
@@ -44,7 +48,7 @@ $result1 = $conn->query($sql1);
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Tambah Guru - Reporthing</title>
+    <title>Edit Jadwal - Reporthing</title>
     <link href="../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
@@ -58,10 +62,8 @@ $result1 = $conn->query($sql1);
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
-
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
-
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
@@ -77,7 +79,7 @@ $result1 = $conn->query($sql1);
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="indexguru.php" class="sidebar-link active">
+                        <a href="../guru/indexguru.php" class="sidebar-link">
                             <i class="fa-solid fa-user-tie pe-2"></i>
                             Guru
                         </a>
@@ -107,33 +109,17 @@ $result1 = $conn->query($sql1);
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../jadwal/indexjadwal.php" class="sidebar-link">
+                        <a href="indexjadwal.php" class="sidebar-link active">
                             <i class="fa-solid fa-calendar-days pe-2"></i>
                             Jadwal
                         </a>
                     </li>
-                    <!-- <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
-                            Pengguna
-                        </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="../pengguna/guru/indexpenggunaguru.php" class="sidebar-link">
-                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../pengguna/siswa/indexpenggunasiswa.php" class="sidebar-link">
-                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
-                            </li>
-                        </ul>
-                    </li> -->
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
             </div>
         </aside>
+
         <!-- ========= Main section of dashboard ======= -->
         <div class="main">
             <!-- ========= Main navbar section of dashboard ======= -->
@@ -173,8 +159,8 @@ $result1 = $conn->query($sql1);
                             <form action="editprofile.php" method="post">
                                 <div class="mb-3 text-center">
                                     <!-- Foto profil dengan border bulat -->
-                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle" width="100"
-                                        height="100">
+                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle"
+                                        width="100" height="100">
                                     <!-- Label Admin -->
                                     <h5>
                                         <p class="mt-3">Admin</p>
@@ -189,6 +175,10 @@ $result1 = $conn->query($sql1);
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
+                    <!-- <div class="mb-3">
+                        <h4>Data Siswa</h4>
+                        <h6>Halaman untuk mengelola data siswa</h6>
+                    </div> -->
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
@@ -200,7 +190,7 @@ $result1 = $conn->query($sql1);
                             if (isset($_GET['ubah'])) {
                                 ?>
                                 <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fa fa-pen"></i> Edit Data Guru
+                                    <i class="fa fa-pen"></i> Edit Data Siswa
                                 </h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
@@ -209,7 +199,7 @@ $result1 = $conn->query($sql1);
                             } else {
                                 ?>
                                 <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fas fa-plus"></i> Tambah Data Guru
+                                    <i class="fas fa-plus"></i> Tambah Data Siswa
                                 </h6>
                                 <!-- <h6 class="card-subtitle text-muted" style="color: white;">
                                     Form untuk menambah data kelas
@@ -220,65 +210,104 @@ $result1 = $conn->query($sql1);
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <form method="POST" action="prosesguru.php" enctype="multipart/form-data">
-                                    <input type="hidden" value="<?php echo $nip ?>" name="nip">
+                                <form method="POST" action="prosesjadwal.php" enctype="multipart/form-data">
+                                    <input type="hidden" value="<?php echo $id_jadwal ?>" name="id_jadwal">
                                     <div class="mb-3 row">
-                                        <label for="nip" class="col-sm-2 col-form-label">
-                                            NIP
+                                        <label for="hari" class="col-sm-2 col-form-label">
+                                            Hari
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="nip" class="form-control" id="nip"
-                                                placeholder="NIP" value="<?php echo $nip; ?>">
+                                            <select required id="hari" name="hari" class="form-select">
+                                                <option <?php if ($hari == 'Senin') {
+                                                    echo "selected";
+                                                } ?> value="Senin">Senin
+                                                </option>
+                                                <option <?php if ($hari == 'Selasa') {
+                                                    echo "selected";
+                                                } ?> value="Selasa">Selasa
+                                                </option>
+                                                <option <?php if ($hari == 'Rabu') {
+                                                    echo "selected";
+                                                } ?> value="Rabu">Rabu
+                                                </option>
+                                                <option <?php if ($hari == 'Kamis') {
+                                                    echo "selected";
+                                                } ?> value="Kamis">Kamis
+                                                </option>
+                                                <option <?php if ($hari == 'Jumat') {
+                                                    echo "selected";
+                                                } ?> value="Jumat">Jumat
+                                                </option>
+                                                <option <?php if ($hari == 'Sabtu') {
+                                                    echo "selected";
+                                                } ?> value="Sabtu">Sabtu
+                                                </option>
+                                                <option <?php if ($hari == 'Minggu') {
+                                                    echo "selected";
+                                                } ?> value="Minggu">Minggu
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="nama" class="col-sm-2 col-form-label">
-                                            Nama Guru
+                                        <label for="jam_mulai" class="col-sm-2 col-form-label">
+                                            Jam Mulai
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="nama_guru" class="form-control" id="nama"
-                                                placeholder="Nama Guru" value="<?php echo $nama_guru; ?>">
+                                            <input required type="text" name="jam_mulai" class="form-control"
+                                                id="jam_mulai" placeholder="Jam Mulai" value="<?php echo $jam_mulai; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="notelp" class="col-sm-2 col-form-label">
-                                            No Telp
+                                        <label for="jam_selesai" class="col-sm-2 col-form-label">
+                                            Jam Selesai
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="tel" pattern="[0-9]+" name="no_telp" class="form-control" id="notelp"
-                                                placeholder="Nomor Telepon" value="<?php echo $no_telp; ?>">
+                                            <input required type="text" name="jam_selesai" class="form-control"
+                                                id="jam_selesai" placeholder="Jam Selesai" value="<?php echo $jam_selesai; ?>">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="tanggal_lahir" class="col-sm-2 col-form-label">
-                                            Tanggal Lahir
+                                        <label for="mapel" class="col-sm-2 col-form-label">
+                                            Mata Pelajaran
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="date" name="tanggal_lahir" class="form-control"
-                                                id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>">
+                                            <select required id="mapel" name="id_mapel" class="form-select">
+                                                <?php
+                                                if ($result3->num_rows > 0) {
+                                                    while ($row = $result3->fetch_assoc()) {
+                                                        $selected = ($row['id_mapel'] == $nama_mapel) ? "selected" : "";
+                                                        echo "<option $selected value='" . $row["id_mapel"] . "'>" . $row["nama_mapel"] . "</option>";
+                                                    }
+                                                } else {
+                                                    echo "0 hasil";
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="username" class="col-sm-2 col-form-label">
-                                            Username
+                                        <label for="nama_guru" class="col-sm-2 col-form-label">
+                                            Guru
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="username" class="form-control" id="username"
-                                                placeholder="Username" value="<?php echo $username; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label for="password" class="col-sm-2 col-form-label">
-                                            Password
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <input required type="password" name="password" class="form-control" id="password"
-                                                placeholder="Password" value="<?php echo $password; ?>">
+                                            <select required id="nama_guru" name="nip" class="form-select">
+                                                <?php
+                                                if ($result2->num_rows > 0) {
+                                                    while ($row = $result2->fetch_assoc()) {
+                                                        $selected = ($row['nip'] == $nama_guru) ? "selected" : "";
+                                                        echo "<option $selected value='" . $row["nip"] . "'>" . $row["nama_guru"] . "</option>";
+                                                    }
+                                                } else {
+                                                    echo "0 hasil";
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="kelas" class="col-sm-2 col-form-label">
-                                            Wali Kelas
+                                            Kelas
                                         </label>
                                         <div class="col-sm-10">
                                             <select required id="kelas" name="id_kelas" class="form-select">
@@ -293,16 +322,6 @@ $result1 = $conn->query($sql1);
                                                 }
                                                 ?>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label for="foto" class="col-sm-2 col-form-label">
-                                            Foto Guru
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <input <?php if (!isset($_GET['ubah'])) {
-                                                echo "require";
-                                            } ?> class="form-control" type="file" name="foto" id="foto" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="mb-3 row mt-4">
@@ -326,7 +345,7 @@ $result1 = $conn->query($sql1);
                                                 <?php
                                             }
                                             ?>
-                                            <a href="indexguru.php" type="button" class="btn btn-danger btn-sm">
+                                            <a href="indexjadwal.php" type="button" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                                 Batal
                                             </a>
@@ -361,16 +380,6 @@ $result1 = $conn->query($sql1);
                     </div>
                 </div>
             </footer> -->
-
-            <!-- <footer class="footer mt-auto py-2">
-                <hr class="my-2">
-                <div class="container-fluid">
-                    <strong class="text-muted">Reporthing &copy;
-                        <?php echo date("Y"); ?>
-                    </strong>
-                </div>
-            </footer> -->
-            
         </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->

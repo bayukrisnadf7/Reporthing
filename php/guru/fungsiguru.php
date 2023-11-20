@@ -6,10 +6,13 @@
         $nama_guru = $data['nama_guru'];
         $no_telp = $data['no_telp'];
         $tanggal_lahir = $data['tanggal_lahir'];
+        $username = $data['username'];
+        $password = $data['password'];
+        $walikelas = $data['id_kelas'];
 
         // Cek apakah NIP sudah ada
-    $queryCekNIP = "SELECT * FROM tb_guru WHERE nip = '$nip'";
-    $resultCekNIP = mysqli_query($GLOBALS['conn'], $queryCekNIP);
+        $queryCekNIP = "SELECT * FROM tb_guru WHERE nip = '$nip'";
+        $resultCekNIP = mysqli_query($GLOBALS['conn'], $queryCekNIP);
 
     if (mysqli_num_rows($resultCekNIP) > 0) {
         $_SESSION['eksekusi'] = "Gagal menambahkan data. NIP sudah terdaftar.";
@@ -29,7 +32,7 @@
         //memindahkan
         move_uploaded_file($tmpFile, $dir . $foto);
 
-        $query = "INSERT INTO tb_guru VALUES('$nip', '$nama_guru', '$no_telp', '$tanggal_lahir', '$foto')";
+        $query = "INSERT INTO tb_guru VALUES('$nip', '$nama_guru', '$no_telp', '$tanggal_lahir', '$username', '$password', '$walikelas', '$foto')";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         return true;
@@ -40,6 +43,9 @@
         $nama_guru = $data['nama_guru'];
         $no_telp = $data['no_telp'];
         $tanggal_lahir = $data['tanggal_lahir'];
+        $username = $data['username'];
+        $password = $data['password'];
+        $walikelas = $data['id_kelas'];
 
         $queryShow = "SELECT * FROM tb_guru WHERE nip = '$nip';";
         $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
@@ -57,7 +63,7 @@
             move_uploaded_file($files['foto']['tmp_name'], '../../img/'.$foto);
         }
 
-        $query = "UPDATE tb_guru SET nip='$nip', nama_guru='$nama_guru', no_telp='$no_telp', tanggal_lahir='$tanggal_lahir', foto_guru='$foto' WHERE nip='$nip';";
+        $query = "UPDATE tb_guru SET nip='$nip', nama_guru='$nama_guru', no_telp='$no_telp', tanggal_lahir='$tanggal_lahir', username='$username', password='$password', id_kelas='$walikelas', foto_guru='$foto' WHERE nip='$nip';";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         return true;
