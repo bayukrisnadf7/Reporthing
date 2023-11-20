@@ -1,8 +1,8 @@
 <?php
-include '../../koneksi.php';
+include '../../../koneksi.php';
 session_start();
 
-$query = "SELECT tb_siswa.nama_siswa, tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor FROM tb_siswa JOIN tb_nilai ON tb_siswa.nisn = tb_nilai.nisn";
+$query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel where id_kelas = 1 AND tb_nilai.id_mapel = 2";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -16,13 +16,13 @@ $no = 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GACOR KANG</title>
     <!-- Bootstrap -->
-    <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../asset/js/bootstrap.bundle.min.js"></script>
+    <link href="../../../asset/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../../../asset/fontawesome/css/all.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="../../asset/css/style.css" />
+    <link rel="stylesheet" href="../../../asset/css/style.css" />
 </head>
 
 <body>
@@ -33,7 +33,7 @@ $no = 0;
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../../img/logo_biru_muda2.png" alt="homepage" class="dark-logo"
                         style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
@@ -87,7 +87,7 @@ $no = 0;
             <main class="content px-3 py-2">
                 <div class="content-fluid">
                     <div class="mb-3">
-                        <h4>Daftar Mata Pelajaran</h4>
+                        <h4>Mata Pelajaran Ilmu Pengetahuan Alam dan Sosial</h4>
                         <h6>Halaman untuk mengelola nilai sumatif</h6>
                     </div>
 
@@ -119,6 +119,7 @@ $no = 0;
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>
+                                            <th scope="col">NISN</th>
                                             <th scope="col">Nama Siswa</th>
                                             <th scope="col">Sumatif</th>
                                             <th scope="col">Sumatif Akhir Semester</th>
@@ -137,6 +138,9 @@ $no = 0;
                                             ?>
                                             <td>
                                                 <?php echo ++$no; ?>.
+                                            </td>
+                                            <td>
+                                                <?php echo $result['nisn']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $result['nama_siswa']; ?>

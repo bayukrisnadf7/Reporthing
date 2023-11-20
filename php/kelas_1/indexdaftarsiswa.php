@@ -2,7 +2,7 @@
 include '../../koneksi.php';
 session_start();
 
-$query = "SELECT tb_siswa.nama_siswa, tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor FROM tb_siswa JOIN tb_nilai ON tb_siswa.nisn = tb_nilai.nisn";
+$query = "select tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_tahunajaran.tahun_ajaran, tb_tahunajaran.semester, tb_siswa.no_telp, tb_siswa.tanggal_lahir from tb_siswa join tb_tahunajaran on tb_siswa.id_tahunajaran = tb_tahunajaran.id_tahunajaran join tb_kelas on tb_siswa.id_kelas = tb_kelas.id_kelas where tb_siswa.id_kelas = 1";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -44,13 +44,13 @@ $no = 0;
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="indexdaftarsiswa.php" class="sidebar-link">
+                        <a href="indexdaftarsiswa.php" class="sidebar-link active">
                             <i class="fa-solid fa-gauge pe-2"></i>
                             Daftar Siswa
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="indexsumatif.php" class="sidebar-link active">
+                        <a href="indexsumatif.php" class="sidebar-link">
                             <i class="fa-solid fa-chalkboard pe-2"></i>
                             Nilai Sumatif
                         </a>
@@ -87,8 +87,7 @@ $no = 0;
             <main class="content px-3 py-2">
                 <div class="content-fluid">
                     <div class="mb-3">
-                        <h4>Daftar Mata Pelajaran</h4>
-                        <h6>Halaman untuk mengelola nilai sumatif</h6>
+                        <h4>Daftar Siswa</h4>
                     </div>
 
                     <?php
@@ -118,13 +117,15 @@ $no = 0;
                                 <table id="dt" class="table table-hover">
                                     <thead class="custom-header">
                                         <tr>
-                                            <th scope="col">No.</th>
+                                            <th scope="col">No</th>
+                                            <th scope="col">NISN</th>
                                             <th scope="col">Nama Siswa</th>
-                                            <th scope="col">Sumatif</th>
-                                            <th scope="col">Sumatif Akhir Semester</th>
-                                            <th scope="col">Nilai Rapor</th>
+                                            <th scope="col">Tahun Ajaran</th>
+                                            <th scope="col">Semester</th>
+                                            <th scope="col">No Telepon</th>
+                                            <th scope="col">Tanggal Lahir</th>
                                             <!-- <th scope="col">Tahun Ajaran</th> -->
-                                            <th scope="col">Aksi</th>
+                                            <!-- <th scope="col">Aksi</th> -->
                                     </thead>
                                     <tbody>
                                         <?php
@@ -139,16 +140,22 @@ $no = 0;
                                                 <?php echo ++$no; ?>.
                                             </td>
                                             <td>
+                                                <?php echo $result['nisn']; ?>
+                                            </td>
+                                            <td>
                                                 <?php echo $result['nama_siswa']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['sumatif']; ?>
+                                                <?php echo $result['tahun_ajaran']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['sumatif_akhir']; ?>
+                                                <?php echo $result['semester']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['nilai_rapor']; ?>
+                                                <?php echo $result['no_telp']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['tanggal_lahir']; ?>
                                             </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <!-- <td>

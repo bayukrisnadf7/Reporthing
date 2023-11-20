@@ -15,11 +15,11 @@ $result2 = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa");
 $row = mysqli_fetch_assoc($result2);
 $total_siswa = $row['total_siswa'];
 
-$result3 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_guru FROM tb_user_guru");
+$result3 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_guru FROM tb_guru");
 $row = mysqli_fetch_assoc($result3);
 $total_pengguna_guru = $row['total_pengguna_guru'];
 
-$result4 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_siswa FROM tb_user_siswa");
+$result4 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_siswa FROM tb_siswa");
 $row = mysqli_fetch_assoc($result4);
 $total_pengguna_siswa = $row['total_pengguna_siswa'];
 

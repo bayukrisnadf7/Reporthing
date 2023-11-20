@@ -1,5 +1,6 @@
+<!DOCTYPE html>
 <?php
-include '../../koneksi.php';
+include '../../../koneksi.php';
 session_start();
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
@@ -7,44 +8,50 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }
 
-$query = "SELECT tb_kelas.*, tb_guru.nama_guru FROM tb_kelas JOIN tb_guru ON tb_kelas.nip = tb_guru.nip ORDER BY nama_kelas ASC;";
-$sql = mysqli_query($conn, $query);
-$no = 0;
+$nisn = '';
+$nama_siswa = '';
+
+if (isset($_GET['ubah'])) {
+    $nisn = $_GET['ubah'];
+
+    $query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where id_kelas = 1 AND tb_nilai.id_mapel = 1 AND tb_nilai.id_tahunajaran = 1 AND tb_siswa.nisn = '$nisn';";
+    $sql = mysqli_query($conn, $query);
+
+    $result = mysqli_fetch_assoc($sql);
+
+    $nisn = $result['nisn'];
+    $nama_siswa = $result['nama_siswa'];
+
+}
+
+$sql1 = "SELECT nisn,nama_siswa FROM tb_siswa WHERE id_kelas = 1";
+$result1 = $conn->query($sql1);
 ?>
 
-<!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kelas - Reporthing</title>
-    <link href="../../img/logo_putih.png" rel="shortcut icon">
+    <title>Kelola Kelas - Reporthing</title>
+    <link href="../../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
-    <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../asset/js/bootstrap.bundle.min.js"></script>
+    <link href="../../../asset/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
-    <!-- Data Tables-->
-    <link rel="stylesheet" type="text/css" href="../../asset/datatables/datatables.css">
-    <script type="text/javascript" src="../../asset/datatables/datatables.js"></script>
-
+    <link rel="stylesheet" href="../../../asset/fontawesome/css/all.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="../../asset/css/style.css" />
+    <link rel="stylesheet" href="../../../asset/css/style.css" />
 </head>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#dt').DataTable();
-    });
-</script>
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
+
     <div class="wrapper">
         <!-- =========== Sidebar for admin dashboard =========== -->
+
         <aside id="sidebar">
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
@@ -123,7 +130,7 @@ $no = 0;
                         <li class="nav-item dropdown">
                             <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>
+                                <i class="fas fa-caret-down"></i>   
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
@@ -160,87 +167,87 @@ $no = 0;
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
-                    <div class="mb-3">
-                        <h4>Data Kelas</h4>
-                        <h6>Halaman untuk mengelola data kelas</h6>
-                    </div>
-
-                    <!-- Alert Eksekusi-->
-                    <?php
-                    if (isset($_SESSION['eksekusi'])):
-                        ?>
-                        <div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo $_SESSION['eksekusi']; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php
-                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan sukses
-                    endif;
-                    ?>
-
-                    <script>
-                        setTimeout(function () {
-                            document.getElementById("alertDiv").style.display = "none";
-                        }, 5000); // Alert akan hilang setelah 5 detik (5000 milidetik)
-                    </script>
-
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
-                            <a href="kelolakelas.php" type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-plus"></i> Tambah Data
-                            </a>
+                            <!-- <h5 class="card-tittle">Data Kelas</h5>
+                            <h6 class="card-subtitle text-muted">
+                                Halaman untuk mengelola data kelas
+                            </h6> -->
+                            <?php
+                            if (isset($_GET['ubah'])) {
+                                ?>
+                                <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
+                                    <i class="fa fa-pen"></i> Edit Data Kelas
+                                </h6>
+                                <!-- <h6 class="card-subtitle" style="color: white;">
+                                    Form untuk meng-edit data kelas
+                                </h6> -->
+                                <?php
+                            } else {
+                                ?>
+                                <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
+                                    <i class="fas fa-plus"></i> Tambah Data Kelas
+                                </h6>
+                                <!-- <h6 class="card-subtitle text-muted" style="color: white;">
+                                    Form untuk menambah data kelas
+                                </h6> -->
+                                <?php
+                            }
+                            ?>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="dt" class="table table-hover">
-                                    <thead class="custom-header">
-                                        <tr>
-                                            <th scope="col">No.</th>
-                                            <th scope="col">Nama Kelas</th>
-                                            <th scope="col">Jumlah Siswa</th>
-                                            <th scope="col">Wali Kelas</th>
-                                            <th scope="col">Aksi</th>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        while ($result = mysqli_fetch_assoc($sql)) {
-                                            // Hitung jumlah siswa per kelas
-                                            $kelas_id = $result['id_kelas'];
-                                            $result_siswa = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa WHERE id_kelas = $kelas_id");
-                                            $row_siswa = mysqli_fetch_assoc($result_siswa);
-                                            $total_siswa = $row_siswa['total_siswa'];
-                                            ?>
-                                            <td>
-                                                <?php echo ++$no; ?>.
-                                            </td>
-                                            <td>
-                                                <?php echo $result['nama_kelas']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $total_siswa; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['nama_guru']; ?>
-                                            </td>
-                                            <!-- Button UBAH dan HAPUS-->
-                                            <td>
-                                                <a href="kelolakelas.php?ubah=<?php echo $result['id_kelas']; ?>"
-                                                    type="button" class="btn btn-warning btn-sm">
-                                                    <i class="fa fa-pen"></i>
-                                                </a>
-                                                <a href="proseskelas.php?hapus=<?php echo $result['id_kelas']; ?>"
-                                                    type="button" class="btn btn-danger btn-sm"
-                                                    onClick="return confirm('Ingin menghapus data tersebut?')">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            </td>
-                                            </tr>
+                            <div class="container">
+                                <form method="POST" action="proseskelas.php" enctype="multipart/form-data">
+                                    <input type="hidden" value="<?php echo $nisn ?>" name="nisn">
+                                    <div class="mb-3 row">
+                                        <label for="nip" class="col-sm-2 col-form-label">
+                                            Nama Siswa
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <select required id="nip" name="nip" class="form-select">
+                                                <?php
+                                                if ($result1->num_rows > 0) {
+                                                    while ($row = $result1->fetch_assoc()) {
+                                                        $selected = ($row['nisn'] == $nisn) ? "selected" : "";
+                                                        echo "<option $selected value='" . $row["nisn"] . "'>" . $row["nama_siswa"] . "</option>";
+                                                    }
+                                                } else {
+                                                    echo "0 hasil";
+                                                }
+                                                $conn->close();
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row mt-4">
+                                        <div class="col">
                                             <?php
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            if (isset($_GET['ubah'])) {
+                                                ?>
+                                                <button type="submit" name="aksi" value="edit"
+                                                    class="btn btn-primary btn-sm">
+                                                    <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
+                                                    Simpan Perubahan
+                                                </button>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <button type="submit" name="aksi" value="add"
+                                                    class="btn btn-primary btn-sm">
+                                                    <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
+                                                    Tambahkan
+                                                </button>
+                                                <?php
+                                            }
+                                            ?>
+                                            <a href="indexkelas.php" type="button" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-reply" aria-hidden="true"></i>
+                                                Batal
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
