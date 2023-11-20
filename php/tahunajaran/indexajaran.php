@@ -2,10 +2,10 @@
 include '../../koneksi.php';
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: ../login/indexlogin.php");
-    exit();
-}
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header("Location: ../login/indexlogin.php");
+//     exit();
+// }
 
 $query = "SELECT * FROM tb_tahunajaran";
 $sql = mysqli_query($conn, $query);
@@ -73,7 +73,7 @@ $no = 0;
                     </li>
                     <li class="sidebar-item">
                         <a href="../kelas/indexkelas.php" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard pe-2"></i>
+                            <i class="fa-solid fa-chalkboard pe-1"></i>
                             Kelas
                         </a>
                     </li>
@@ -85,11 +85,17 @@ $no = 0;
                     </li>
                     <li class="sidebar-item">
                         <a href="indexajaran.php" class="sidebar-link active">
-                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            <i class="fa-solid fa-graduation-cap pe-1"></i>
                             Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a href="../jadwal/indexjadwal.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Jadwal
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
                             aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
@@ -105,7 +111,7 @@ $no = 0;
                                     <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -149,8 +155,14 @@ $no = 0;
                         <div class="modal-body">
                             <!-- Form untuk mengedit profil -->
                             <form action="editprofile.php" method="post">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Admin</label>
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
                                 </div>
                             </form>
                         </div>
@@ -194,11 +206,12 @@ $no = 0;
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="dt" class="table table-hover">
+                                <table id="dt" class="table table-hover table-striped cell-border">
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">Tahun Ajaran</th>
+                                            <th scope="col">Semester</th>
                                             <th scope="col">Aksi</th>
                                     </thead>
                                     <tbody>
@@ -210,6 +223,9 @@ $no = 0;
                                             </td>
                                             <td>
                                                 <?php echo $result['tahun_ajaran']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['semester']; ?>
                                             </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>

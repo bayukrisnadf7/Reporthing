@@ -3,15 +3,18 @@
 include '../../koneksi.php';
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: ../login/indexlogin.php");
-    exit();
-}
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header("Location: ../login/indexlogin.php");
+//     exit();
+// }
 
 $nip = '';
 $nama_guru = '';
 $no_telp = '';
 $tanggal_lahir = '';
+$username = '';
+$password = '';
+$walikelas = '';
 
 if (isset($_GET['ubah'])) {
     $nip = $_GET['ubah'];
@@ -25,8 +28,12 @@ if (isset($_GET['ubah'])) {
     $nama_guru = $result['nama_guru'];
     $no_telp = $result['no_telp'];
     $tanggal_lahir = $result['tanggal_lahir'];
-
+    $username = $result['username'];
+    $password = $result['password'];
+    $walikelas = $result['id_kelas'];
 }
+$sql1 = "SELECT id_kelas, nama_kelas FROM tb_kelas";
+$result1 = $conn->query($sql1);
 ?>
 
 <html lang="en" data-bs-theme="light">
@@ -79,7 +86,7 @@ if (isset($_GET['ubah'])) {
                     </li>
                     <li class="sidebar-item">
                         <a href="../kelas/indexkelas.php" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard pe-2"></i>
+                            <i class="fa-solid fa-chalkboard pe-1"></i>
                             Kelas
                         </a>
                     </li>
@@ -91,11 +98,17 @@ if (isset($_GET['ubah'])) {
                     </li>
                     <li class="sidebar-item">
                         <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
-                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            <i class="fa-solid fa-graduation-cap pe-1"></i>
                             Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a href="../jadwal/indexjadwal.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Jadwal
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
                             aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
@@ -111,7 +124,7 @@ if (isset($_GET['ubah'])) {
                                     <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -154,8 +167,14 @@ if (isset($_GET['ubah'])) {
                         <div class="modal-body">
                             <!-- Form untuk mengedit profil -->
                             <form action="editprofile.php" method="post">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Admin</label>
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
                                 </div>
                             </form>
                         </div>
@@ -222,8 +241,45 @@ if (isset($_GET['ubah'])) {
                                             No Telp
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="no_telp" class="form-control" id="notelp"
+                                            <input required type="tel" pattern="[0-9]+" name="no_telp" class="form-control" id="notelp"
                                                 placeholder="Nomor Telepon" value="<?php echo $no_telp; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="username" class="col-sm-2 col-form-label">
+                                            Username
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="text" name="username" class="form-control" id="username"
+                                                placeholder="Username" value="<?php echo $username; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="password" class="col-sm-2 col-form-label">
+                                            Password
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="password" name="password" class="form-control" id="password"
+                                                placeholder="Password" value="<?php echo $password; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="kelas" class="col-sm-2 col-form-label">
+                                            Wali Kelas
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <select required id="kelas" name="id_kelas" class="form-select">
+                                                <?php
+                                                if ($result1->num_rows > 0) {
+                                                    while ($row = $result1->fetch_assoc()) {
+                                                        $selected = ($row['id_kelas'] == $kelas) ? "selected" : "";
+                                                        echo "<option $selected value='" . $row["id_kelas"] . "'>" . $row["nama_kelas"] . "</option>";
+                                                    }
+                                                } else {
+                                                    echo "0 hasil";
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">

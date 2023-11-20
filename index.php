@@ -2,28 +2,23 @@
 include 'koneksi.php';
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: php/login/indexlogin.php");
-    exit();
-}
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header("Location: php/login/indexlogin.php");
+//     exit();
+// }
 
-$result1 = mysqli_query($conn, "SELECT COUNT(*) as total_guru FROM tb_guru");
-$row = mysqli_fetch_assoc($result1);
-$total_guru = $row['total_guru'];
+// $result1 = mysqli_query($conn, "SELECT COUNT(*) as total_guru FROM tb_guru");
+// $row = mysqli_fetch_assoc($result1);
+// $total_guru = $row['total_guru'];
 
-$result2 = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa");
-$row = mysqli_fetch_assoc($result2);
-$total_siswa = $row['total_siswa'];
+// $result2 = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa");
+// $row = mysqli_fetch_assoc($result2);
+// $total_siswa = $row['total_siswa'];
 
-$result3 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_guru FROM tb_guru");
-$row = mysqli_fetch_assoc($result3);
-$total_pengguna_guru = $row['total_pengguna_guru'];
-
-$result4 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_siswa FROM tb_siswa");
-$row = mysqli_fetch_assoc($result4);
-$total_pengguna_siswa = $row['total_pengguna_siswa'];
-
-$query = "SELECT * FROM tb_guru;";
+$query = "SELECT tb_jadwal.id_jadwal, tb_guru.nama_guru, tb_kelas.nama_kelas, tb_mapel.nama_mapel, tb_jadwal.hari, tb_jadwal.jam_mulai, tb_jadwal.jam_selesai
+            FROM tb_jadwal JOIN tb_guru on tb_jadwal.nip = tb_guru.nip
+            JOIN tb_kelas on tb_jadwal.id_kelas = tb_kelas.id_kelas
+            JOIN tb_mapel on tb_jadwal.id_mapel = tb_mapel.id_mapel;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -52,7 +47,7 @@ $no = 0;
 </head>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#dt').DataTable();
     });
 </script>
@@ -66,7 +61,7 @@ $no = 0;
             <div class="h-100">
                 <div class="sidebar-logo">
                     <a href="#"><img src="img/logo_putih.png" alt="homepage" class="dark-logo"
-                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;"/> Reporthing</a>
+                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
@@ -89,7 +84,7 @@ $no = 0;
                     </li>
                     <li class="sidebar-item">
                         <a href="php/kelas/indexkelas.php" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard pe-2"></i>
+                            <i class="fa-solid fa-chalkboard pe-1"></i>
                             Kelas
                         </a>
                     </li>
@@ -101,11 +96,17 @@ $no = 0;
                     </li>
                     <li class="sidebar-item">
                         <a href="php/tahunajaran/indexajaran.php" class="sidebar-link">
-                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            <i class="fa-solid fa-graduation-cap pe-1"></i>
                             Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a href="php/jadwal/indexjadwal.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Jadwal
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
                             aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
@@ -121,7 +122,7 @@ $no = 0;
                                     <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -140,7 +141,7 @@ $no = 0;
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>   
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
@@ -232,7 +233,7 @@ $no = 0;
                                 <div class="card-body position-relative">
                                     <i class="fas fa-user fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title"><?php echo $total_pengguna_guru; ?></p>
+                                    <p class="card-title">100</p>
                                     <h6 class="card-text" style="color: #0d6efd">Pengguna Guru</h6>
                                 </div>
                                 <div class="custom-bg-primary"></div>
@@ -244,7 +245,7 @@ $no = 0;
                                 <div class="card-body">
                                     <i class="fa-solid fa-user-group fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title"><?php echo $total_pengguna_siswa; ?></p>
+                                    <p class="card-title">100</p>
                                     <h6 class="card-text" style="color: #198754">Pengguna Siswa</h6>
                                 </div>
                                 <div class="custom-bg-success"></div>
@@ -256,7 +257,7 @@ $no = 0;
                                 <div class="card-body">
                                     <i class="fa-solid fa-user-tie fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title"><?php echo $total_guru; ?></p>
+                                    <p class="card-title">100</p>
                                     <h6 class="card-text" style="color: #ffc107">Jumlah Guru</h6>
                                 </div>
                                 <div class="custom-bg-warning"></div>
@@ -268,7 +269,7 @@ $no = 0;
                                 <div class="card-body">
                                     <i class="fa-solid fa-user-graduate fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title"><?php echo $total_siswa; ?></p>
+                                    <p class="card-title">100</p>
                                     <h6 class="card-text" style="color: #dc3545">Jumlah Siswa</h6>
                                 </div>
                                 <div class="custom-bg-danger"></div>
@@ -278,7 +279,7 @@ $no = 0;
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header mt-2" style="background-color: #FFFFFF;">
-                            <h6>Tabel Guru</h6>
+                            <h6>Jadwal</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -286,11 +287,11 @@ $no = 0;
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">NIP</th>
-                                            <th scope="col">Nama Guru</th>
-                                            <th scope="col">No Telp</th>
-                                            <th scope="col">Tanggal Lahir</th>
-                                            <th scope="col">Foto</th>
+                                            <th scope="col">Hari</th>
+                                            <th scope="col">Jam</th>
+                                            <th scope="col">Nama Pelajaran</th>
+                                            <th scope="col">Guru</th>
+                                            <th scope="col">Kelas</th>
                                     </thead>
                                     <tbody>
                                         <?php
@@ -300,20 +301,19 @@ $no = 0;
                                                 <?php echo ++$no; ?>.
                                             </td>
                                             <td>
-                                                <?php echo $result['nip']; ?>
+                                                <?php echo $result['hari']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['jam_mulai'] . ' - ' . $result['jam_selesai']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['nama_mapel']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $result['nama_guru']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['no_telp']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['tanggal_lahir']; ?>
-                                            </td>
-                                            <td>
-                                                <img src="img/<?php echo $result['foto_guru']; ?>"
-                                                    style="width: 50px; height: 50px;">
+                                                <?php echo $result['nama_kelas']; ?>
                                             </td>
                                             </tr>
                                             <?php
@@ -325,32 +325,10 @@ $no = 0;
                         </div>
                     </div>
                 </div>
-            </main>
         </div>
-
-        <!-- ========= light and dark mode toggle button ======= -->
-
-        <!-- <a href="#" class="theme-toggle">
-                <i class="fa-regular fa-moon"></i>
-                <i class="fa-regular fa-sun"></i>
-            </a> -->
-
-        <!-- ========= footer section of dashboard ======= -->
-
-        <!-- <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6 text-start">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted">
-                                    <strong>Reporthing</strong>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
-        </div>
+        </main>
+    </div>
+    </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="asset/js/script.js"></script>

@@ -3,14 +3,13 @@
 include '../../koneksi.php';
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: ../login/indexlogin.php");
-    exit();
-}
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header("Location: ../login/indexlogin.php");
+//     exit();
+// }
 
 $id_kelas = '';
 $nama_kelas = '';
-$nip = '';
 
 if (isset($_GET['ubah'])) {
     $id_kelas = $_GET['ubah'];
@@ -22,11 +21,10 @@ if (isset($_GET['ubah'])) {
 
     $id_kelas = $result['id_kelas'];
     $nama_kelas = $result['nama_kelas'];
-    $nip = $result['nip'];
 }
 
-$sql1 = "SELECT nip, nama_guru FROM tb_guru";
-$result1 = $conn->query($sql1);
+// $sql1 = "SELECT nip, nama_guru FROM tb_guru";
+// $result1 = $conn->query($sql1);
 ?>
 
 <html lang="en" data-bs-theme="light">
@@ -81,7 +79,7 @@ $result1 = $conn->query($sql1);
                     </li>
                     <li class="sidebar-item">
                         <a href="indexkelas.php" class="sidebar-link active">
-                            <i class="fa-solid fa-chalkboard pe-2"></i>
+                            <i class="fa-solid fa-chalkboard pe-1"></i>
                             Kelas
                         </a>
                     </li>
@@ -93,11 +91,17 @@ $result1 = $conn->query($sql1);
                     </li>
                     <li class="sidebar-item">
                         <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
-                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            <i class="fa-solid fa-graduation-cap pe-1"></i>
                             Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a href="../jadwal/indexjadwal.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Jadwal
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
                             aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
@@ -113,7 +117,7 @@ $result1 = $conn->query($sql1);
                                     <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -156,8 +160,14 @@ $result1 = $conn->query($sql1);
                         <div class="modal-body">
                             <!-- Form untuk mengedit profil -->
                             <form action="editprofile.php" method="post">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Admin</label>
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
                                 </div>
                             </form>
                         </div>
@@ -210,26 +220,26 @@ $result1 = $conn->query($sql1);
                                                 placeholder="Nama Kelas" value="<?php echo $nama_kelas; ?>">
                                         </div>
                                     </div>
-                                    <div class="mb-3 row">
+                                    <!-- <div class="mb-3 row">
                                         <label for="nip" class="col-sm-2 col-form-label">
                                             Wali Kelas
                                         </label>
                                         <div class="col-sm-10">
                                             <select required id="nip" name="nip" class="form-select">
-                                                <?php
-                                                if ($result1->num_rows > 0) {
-                                                    while ($row = $result1->fetch_assoc()) {
-                                                        $selected = ($row['nip'] == $nip) ? "selected" : "";
-                                                        echo "<option $selected value='" . $row["nip"] . "'>" . $row["nama_guru"] . "</option>";
-                                                    }
-                                                } else {
-                                                    echo "0 hasil";
-                                                }
-                                                $conn->close();
-                                                ?>
+                                                
+                                                // if ($result1->num_rows > 0) {
+                                                //     while ($row = $result1->fetch_assoc()) {
+                                                //         $selected = ($row['nip'] == $nip) ? "selected" : "";
+                                                //         echo "<option $selected value='" . $row["nip"] . "'>" . $row["nama_guru"] . "</option>";
+                                                //     }
+                                                // } else {
+                                                //     echo "0 hasil";
+                                                // }
+                                                // $conn->close();
+                                                
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="mb-3 row mt-4">
                                         <div class="col">
                                             <?php

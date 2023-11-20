@@ -2,12 +2,12 @@
 include '../../koneksi.php';
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: ../login/indexlogin.php");
-    exit();
-}
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header("Location: ../login/indexlogin.php");
+//     exit();
+// }
 
-$query = "SELECT tb_siswa.nisn, tb_siswa.nama_siswa, tb_kelas.nama_kelas, tb_tahunajaran.tahun_ajaran, tb_siswa.no_telp, tb_siswa.tanggal_lahir, tb_siswa.foto_siswa FROM tb_siswa JOIN tb_kelas on tb_siswa.id_kelas = tb_kelas.id_kelas JOIN tb_tahunajaran on tb_siswa.id_tahunajaran = tb_tahunajaran.id_tahunajaran;";
+$query = "SELECT tb_siswa.nisn, tb_siswa.nama_siswa, tb_kelas.nama_kelas, tb_tahunajaran.tahun_ajaran, tb_tahunajaran.semester, tb_siswa.no_telp, tb_siswa.tanggal_lahir, tb_siswa.username, tb_siswa.password, tb_siswa.foto_siswa FROM tb_siswa JOIN tb_kelas on tb_siswa.id_kelas = tb_kelas.id_kelas JOIN tb_tahunajaran on tb_siswa.id_tahunajaran = tb_tahunajaran.id_tahunajaran;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 
@@ -74,7 +74,7 @@ $no = 0;
                     </li>
                     <li class="sidebar-item">
                         <a href="../kelas/indexkelas.php" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard pe-2"></i>
+                            <i class="fa-solid fa-chalkboard pe-1"></i>
                             Kelas
                         </a>
                     </li>
@@ -86,11 +86,17 @@ $no = 0;
                     </li>
                     <li class="sidebar-item">
                         <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
-                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            <i class="fa-solid fa-graduation-cap pe-1"></i>
                             Tahun Ajaran
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a href="../jadwal/indexjadwal.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Jadwal
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
                             aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
@@ -106,7 +112,7 @@ $no = 0;
                                     <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -150,8 +156,14 @@ $no = 0;
                         <div class="modal-body">
                             <!-- Form untuk mengedit profil -->
                             <form action="editprofile.php" method="post">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Admin</label>
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
                                 </div>
                             </form>
                         </div>
@@ -200,12 +212,6 @@ $no = 0;
                     endif;
                     ?>
 
-                    <script>
-                        setTimeout(function () {
-                            document.getElementById("alertDiv").style.display = "none";
-                        }, 5000); // Alert akan hilang setelah 5 detik (5000 milidetik)
-                    </script>
-
                     <!-- Table Element -->
                     <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
@@ -215,16 +221,18 @@ $no = 0;
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="dt" class="table table-hover">
+                                <table id="dt" class="table table-hover table-striped cell-border">
                                     <thead class="custom-header">
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">NISN</th>
-                                            <th scope="col">Nama Siswa</th>
+                                            <th scope="col">Nama</th>
                                             <th scope="col">Kelas</th>
-                                            <th scope="col">Tahun Ajaran</th>
+                                            <th scope="col">Thn Ajaran</th>
                                             <th scope="col">No. Telp</th>
-                                            <th scope="col">Tanggal Lahir</th>
+                                            <th scope="col">Tgl Lahir</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Password</th>
                                             <th scope="col">Foto</th>
                                             <th scope="col">Aksi</th>
                                     </thead>
@@ -245,7 +253,7 @@ $no = 0;
                                                 <?php echo $result['nama_kelas']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['tahun_ajaran']; ?>
+                                                <?php echo $result['tahun_ajaran'] . ' - ' . $result['semester']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $result['no_telp']; ?>
@@ -254,8 +262,14 @@ $no = 0;
                                                 <?php echo $result['tanggal_lahir']; ?>
                                             </td>
                                             <td>
+                                                <?php echo $result['username']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo str_repeat('*', strlen($result['password'])); ?>
+                                            </td>
+                                            <td>
                                                 <img src="../../img/<?php echo $result['foto_siswa']; ?>"
-                                                    style="width: 50px; height: 50px;"></td>
+                                                    style="width: 40px; height: 40px;"></td>
 
                                             <!-- Button UBAH dan HAPUS-->
                                             <td>
