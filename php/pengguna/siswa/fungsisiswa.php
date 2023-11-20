@@ -5,8 +5,9 @@ function tambah_data($data){
     $nisn = $data['nisn'];
     $username = $data['username'];
     $password = $data['password'];
+    $pass = md5($password);
 
-    $query = "INSERT INTO tb_user_siswa VALUES('','$nisn', '$username', '$password')";
+    $query = "INSERT INTO tb_user_siswa VALUES('','$nisn', '$username', '$pass')";
     $sql = mysqli_query($GLOBALS['conn'], $query);
     return true;
 }

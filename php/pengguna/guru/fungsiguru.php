@@ -5,8 +5,9 @@ function tambah_data($data){
     $nip = $data['nip'];
     $username = $data['username'];
     $password = $data['password'];
+    $pass = md5($password);
 
-    $query = "INSERT INTO tb_user_guru VALUES('','$nip', '$username', '$password')";
+    $query = "INSERT INTO tb_user_guru VALUES('','$nip', '$username', '$pass','1')";
     $sql = mysqli_query($GLOBALS['conn'], $query);
     return true;
 }
@@ -16,6 +17,7 @@ function ubah_data($data){
     $nip = $data['nip'];
     $username = $data['username'];
     $password = $data['password'];
+  
 
     $queryShow = "SELECT tb_guru.nip, tb_guru.nama_guru, tb_user_guru.username, tb_user_guru.password FROM tb_user_guru JOIN tb_guru on tb_user_guru.nip = tb_guru.nip WHERE tb_guru.nip = '$nip';";
     $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);

@@ -4,6 +4,7 @@ include '../../koneksi.php';
 if (isset($_POST["login"])) {
 	$username = $_POST["txt_username"];
 	$password = $_POST["txt_password"];
+	$pass = md5($password);
 
 	$username = mysqli_real_escape_string($conn, $username);
 	$password = mysqli_real_escape_string($conn, $password);
@@ -11,14 +12,14 @@ if (isset($_POST["login"])) {
 	if (!empty(trim($username)) && !empty(trim($password))) {
 
 		//select data sesuai database
-		$query = "SELECT * FROM tb_user_guru WHERE username='$username' AND password='$password'";
+		$query = "SELECT * FROM tb_user_guru WHERE username='$username' AND password='$pass'";
 		$result = mysqli_query($conn, $query);
 		$num = mysqli_num_rows($result);
 
 		$row = mysqli_fetch_array($result);
 		$usernameVar = $row['username'];
 		$passwordVar = $row['password'];
-
+		$id_kelasVar = $row['id_kelas'];	
 
 	}
 
@@ -31,20 +32,56 @@ if (isset($_POST["login"])) {
 		// header("location:../../index.html");
 		// echo '<script language = "javascript">
 		// alert ("Anda Berhasil Login"); document.location="../../index.html"; </script>';
-	} else if ($usernameVar == $username && $passwordVar == $password) {
-		// header("location:../../indexguru.html");
+	}else if ($usernameVar == $username && $passwordVar == $pass && $id_kelasVar == 1) {
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['username'] = $username;
+		header("location:../kelas_1/indexdasboard.php");
+		exit();
+	} else if ($usernameVar == $username && $passwordVar == $pass && $id_kelasVar == 2) {
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['username'] = $username;
+		header("location:../kelas_2/indexdasboard.php");
+		exit();
+	} else if ($usernameVar == $username && $passwordVar == $pass) {
+	// header("location:../../indexguru.html");
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
 		header("location:../../indexguru.php");
 		exit();
-		// echo '<script language = "javascript">
-		// alert ("Guru Login Berhasil"); document.location="../../indexguru.html"; </script>';
-	} else if ($usernameVar != $username && $passwordVar != $password) {
-		echo '<script language = "javascript">
-		alert ("Username atau Password salah"); document.location="indexlogin.php"; </script>';
 	}
+// echo '<script language = "javascript">
+// alert ("Guru Login Berhasil"); document.location="../../indexguru.html"; </script>';
+	else if ($usernameVar != $username && $passwordVar != $password) {
+	echo '<script language = "javascript">
+		alert ("Username atau Password salah"); document.location="indexlogin.php"; </script>';
 }
+} elseif(isset($_POST["register"])){
+
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$pass = md5($password);
+	$re_password = $_POST['confirm-pass'];
+
+	$username = mysqli_real_escape_string($conn, $username);
+	$password = mysqli_real_escape_string($conn, $password);
+	// $re_password = mysqli_real_escape_string ($conn, $pass);
+
+	if (!empty(trim($username)) && !empty(trim($password)) && !empty(trim($re_password))) {
+		if($password == $re_password){
+			$query = "UPDATE tb_user_guru SET password='$pass' WHERE username='$username'";
+			$result = mysqli_query($conn,$query);
+			echo '<script language = "javascript">
+			alert ("Password Berhasil Diubah"); document.location="indexlogin.php"; </script>';
+		}
+	}
+	
+
+
+}
+
 
 
 ?>
@@ -58,7 +95,7 @@ if (isset($_POST["login"])) {
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="../../asset/css/login1.css">
 	<title>Responsive Login And Register Form</title>
-    <link href="../../img/logo_putih.png" rel="shortcut icon">
+	<link href="../../img/logo_putih.png" rel="shortcut icon">
 </head>
 
 <body>
@@ -89,19 +126,19 @@ if (isset($_POST["login"])) {
 			<a href="#" onclick="switchForm('register', event)">Lupa password?</a>
 		</form>
 
-		<form action="#" class="register">
+		<form action="indexlogin.php" class="register" method="POST">
 			<h2 class="title">Lupa Password</h2>
 			<div class="form-group">
-				<label for="email">Email</label>
+				<label for="username">Username</label>
 				<div class="input-group">
-					<input type="email" id="email" placeholder="Email address">
+					<input type="username" name="username" placeholder="Username">
 					<i class='bx bx-envelope'></i>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
 				<div class="input-group">
-					<input type="password" pattern=".{5,}" id="password" placeholder="Your password">
+					<input type="password" pattern=".{5,}" name="password" placeholder="Your password">
 					<i class='bx bx-lock-alt'></i>
 				</div>
 				<span class="help-text">At least 5 characters</span>
@@ -109,12 +146,13 @@ if (isset($_POST["login"])) {
 			<div class="form-group">
 				<label for="confirm-pass">Confirm password</label>
 				<div class="input-group">
-					<input type="password" id="confirm-pass" placeholder="Enter password again">
+					<input type="password" name="confirm-pass" placeholder="Enter password again">
 					<i class='bx bx-lock-alt'></i>
 				</div>
 				<span class="help-text">Confirm password must be same with password</span>
 			</div>
-			<button type="submit" class="btn-submit">Register</button>
+			<!-- <button type="submit" class="btn-submit">Register</button> -->
+			<input type="submit" class="btn-submit" name="register" value="Register">
 			<p>I already have an account. <a href="#" onclick="switchForm('login', event)">Login</a></p>
 		</form>
 	</div>
