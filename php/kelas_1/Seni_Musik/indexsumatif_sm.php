@@ -2,7 +2,7 @@
 include '../../../koneksi.php';
 session_start();
 
-$query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_siswa.id_kelas = 7 AND tb_nilai.id_mapel = 2 AND tb_nilai.id_tahunajaran = 12";
+$query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_siswa.id_kelas = 7 AND tb_nilai.id_mapel = 4 AND tb_nilai.id_tahunajaran = 12";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -75,7 +75,7 @@ $no = 0;
                                         <i class="fa-regular fa-circle pe-2"></i>IPAS</a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="Matematika/indexsumatif_mtk.php" class="sidebar-link active">
+                                    <a href="../Matematika/indexsumatif_mtk.php" class="sidebar-link">
                                         <i class="fa-regular fa-circle pe-2"></i>Matematika</a>
                                 </li>
                                 <li class="sidebar-item">
@@ -83,7 +83,7 @@ $no = 0;
                                         <i class="fa-regular fa-circle pe-2"></i>Bahasa Indonesia</a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="../Seni_Musik/indexsumatif_sm.php" class="sidebar-link">
+                                    <a href="Seni_Musik/indexsumatif_sm.php" class="sidebar-link active">
                                         <i class="fa-regular fa-circle pe-2"></i>Seni Musik</a>
                                 </li>
                                 <li class="sidebar-item">
@@ -141,7 +141,7 @@ $no = 0;
             <main class="content px-3 py-2">
                 <div class="content-fluid">
                     <div class="mb-3">
-                        <h4>Mata Pelajaran Matematika</h4>
+                        <h4>Mata Pelajaran Seni Musik</h4>
                         <h6>Halaman untuk mengelola nilai sumatif</h6>
                     </div>
 
@@ -163,7 +163,7 @@ $no = 0;
                 <!-- Table Element -->
                 <div class="card border-0">
                     <div class="card-header" style="background-color: #FFFFFF;">
-                        <a href="tambah_mtk.php" type="button" class="btn btn-primary btn-sm">
+                        <a href="tambah_sm.php" type="button" class="btn btn-primary btn-sm">
                             <i class="fas fa-plus"></i> Tambah Data
                         </a>
                     </div>
@@ -184,12 +184,11 @@ $no = 0;
                                 <tbody>
                                     <?php
                                     while ($result = mysqli_fetch_assoc($sql)) {
+
                                         // Hitung jumlah siswa per kelas
                                         // $kelas_id = $result['id_kelas'];
-                                        // $result_siswa = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa WHERE id_kelas = $kelas_id");
-                                        // $row_siswa = mysqli_fetch_assoc($result_siswa);
-                                        // $total_siswa = $row_siswa['total_siswa'];
                                         ?>
+
                                         <td>
                                             <?php echo ++$no; ?>.
                                         </td>
@@ -208,13 +207,16 @@ $no = 0;
                                         <td>
                                             <?php echo $result['nilai_rapor']; ?>
                                         </td>
+
                                         <td>
-                                            <a href="edit_mtk.php?ubah=<?php echo $result['nisn']; ?>" type="button"
-                                                class="btn btn-warning btn-sm">
+                                            <a href="edit_sm.php?ubah=<?php
+                                            echo $result['nisn'];
+                                            ?>" type="button" class="btn btn-warning btn-sm">
                                                 <i class="fa fa-pen"></i>
                                             </a>
-                                            <a href="proses_mtk.php?hapus=<?php echo $result['nisn']; ?>" type="button"
-                                                class="btn btn-danger btn-sm"
+                                            <a href="proses_sm.php?hapus=<?php
+                                            echo $result['nisn'];
+                                            ?>" type="button" class="btn btn-danger btn-sm"
                                                 onClick="return confirm('Ingin menghapus data tersebut?')">
                                                 <i class="fa fa-trash"></i>
                                             </a>

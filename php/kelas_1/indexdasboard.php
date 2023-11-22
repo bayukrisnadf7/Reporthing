@@ -52,6 +52,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 Daftar Siswa
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a href="indexnilaisiswa.php" class="sidebar-link">
+                                <i class="fa-solid fa-gauge pe-2"></i>
+                                Daftar Nilai Siswa
+                            </a>
+                        </li>
                         <!-- <li class="sidebar-item">
                             <a href="indexsumatif.php" class="sidebar-link">
                                 <i class="fa-solid fa-chalkboard pe-2"></i>
@@ -74,28 +80,32 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 <i class="fa-regular fa-circle pe-2"></i>Matematika</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Agama Islam</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">
+                                <a href="Bahasa_Indonesia/indexsumatif_bi.php" class="sidebar-link">
                                 <i class="fa-regular fa-circle pe-2"></i>Bahasa Indonesia</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Seni Budaya</a>
+                                <a href="Seni_Musik/indexsumatif_sm.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Musik</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Bahasa Inggris</a>
+                                <a href="Seni_Tari/indexsumatif_st.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Tari</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>PPKN</a>
+                                <a href="Seni_Rupa/indexsumatif_sr.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Rupa</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../siswa/indexpenggunasiswa.php" class="sidebar-link">
+                                <a href="Seni_Teater/indexsumatif_st2.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Teater</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="PJOK/indexsumatif_pjok.php" class="sidebar-link">
                                 <i class="fa-regular fa-circle pe-2"></i>PJOK</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Bahasa_Inggris/indexsumatif_big.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Bahasa Inggris</a>
                             </li>
                         </ul>
                     </li>

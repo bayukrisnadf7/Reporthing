@@ -28,7 +28,7 @@ if (isset($_POST["login"])) {
 		$_SESSION['username'] = $username;
 		header("location:../../index.php");
 		exit();
-	}else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 1) {
+	}else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 7) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;

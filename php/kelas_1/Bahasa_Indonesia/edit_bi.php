@@ -14,17 +14,19 @@ $nama_siswa = '';
 if (isset($_GET['ubah'])) {
     $nisn = $_GET['ubah'];
 
-    $query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where id_kelas = 1 AND tb_nilai.id_mapel = 1 AND tb_nilai.id_tahunajaran = 1 AND tb_siswa.nisn = '$nisn';";
+    $query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where id_kelas = 7 AND tb_nilai.id_mapel = 3 AND tb_nilai.id_tahunajaran = 12 AND tb_siswa.nisn = '$nisn';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
 
     $nisn = $result['nisn'];
     $nama_siswa = $result['nama_siswa'];
-
+    $sumatif = $result['sumatif'];
+    $sumatif_akhir = $result['sumatif_akhir'];
+    $rapor = $result['nilai_rapor'];
 }
 
-$sql1 = "SELECT nisn,nama_siswa FROM tb_siswa WHERE id_kelas = 1";
+$sql1 = "SELECT nisn,nama_siswa FROM tb_siswa WHERE id_kelas = 7";
 $result1 = $conn->query($sql1);
 ?>
 
@@ -130,7 +132,7 @@ $result1 = $conn->query($sql1);
                         <li class="nav-item dropdown">
                             <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>   
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
@@ -198,8 +200,10 @@ $result1 = $conn->query($sql1);
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <form method="POST" action="proseskelas.php" enctype="multipart/form-data">
+                                <form method="POST" action="proses_bi.php" enctype="multipart/form-data" name="autosumForm">
                                     <input type="hidden" value="<?php echo $nisn ?>" name="nisn">
+                                    <input type="hidden" value="<?php echo $id_tahunajaran ?>" name="id_tahunajaran">
+                                    <input type="hidden" value="<?php echo $id_mapel ?>" name="id_mapel">
                                     <div class="mb-3 row">
                                         <label for="nip" class="col-sm-2 col-form-label">
                                             Nama Siswa
@@ -218,6 +222,35 @@ $result1 = $conn->query($sql1);
                                                 $conn->close();
                                                 ?>
                                             </select>
+                                        </div>
+                                    </div>
+                                        <div class="mb-3 row">
+                                            <label for="sumatif" class="col-sm-2 col-form-label">
+                                                Sumatif
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input required type="text" name="sumatif" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
+                                                    id="sumatif" placeholder="Sumatif" value="<?php echo $sumatif?>">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="sumatif_akhir" class="col-sm-2 col-form-label">
+                                                Sumatif Akhir
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input required type="text" name="sumatif_akhir" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
+                                                    id="sumatif_akhir" placeholder="Sumatif Akhir" value="<?php echo $sumatif_akhir?>">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="nilai_rapor" class="col-sm-2 col-form-label">
+                                                Rapor
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input required type="text" name="nilai_rapor" class="form-control"
+                                                    id="nilai_rapor" placeholder="Nilai Rapor"
+                                                    value="<?php echo $rapor ?>">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="mb-3 row mt-4">
@@ -241,7 +274,7 @@ $result1 = $conn->query($sql1);
                                                 <?php
                                             }
                                             ?>
-                                            <a href="indexkelas.php" type="button" class="btn btn-danger btn-sm">
+                                            <a href="indexsumatif_ipas.php" type="button" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                                 Batal
                                             </a>
@@ -280,6 +313,17 @@ $result1 = $conn->query($sql1);
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="../../asset/js/script.js"></script>
+    <script>
+        function startHitungan(){
+            interval =setInterval("calc()",1);;
+        } function calc(){
+            one = document.autosumForm.sumatif.value;
+            two = document.autosumForm.sumatif_akhir.value;
+            document.autosumForm.nilai_rapor.value = (one * 1 + two * 1) / (2 * 1) ;
+        }function stopHitungan(){
+            clearInterval(interval);
+        }
+    </script>
 </body>
 
 </html>

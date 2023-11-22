@@ -1,5 +1,5 @@
 <?php
-include 'fungsi_ipas.php';
+include 'fungsi_sm.php';
 session_start();
 
 if (isset($_POST['aksi'])) {
@@ -9,7 +9,7 @@ if (isset($_POST['aksi'])) {
 
         if ($berhasil) {
             $_SESSION['eksekusi'] = "Data Berhasil Ditambahkan";
-            header("location: indexsumatif_ipas.php");
+            header("location: indexsumatif_sm.php");
         } else {
             echo $berhasil;
         }
@@ -20,7 +20,7 @@ if (isset($_POST['aksi'])) {
         
         if ($berhasil) {
             $_SESSION['eksekusi'] = "Data Berhasil Diperbaharui";
-            header("location: indexsumatif_ipas.php");
+            header("location: indexsumatif_sm.php");
         } else {
             echo $berhasil;
         }
@@ -35,7 +35,7 @@ if (isset($_GET['hapus'])) {
 
     if ($berhasil) {
         $_SESSION['eksekusi'] = "Data Berhasil Dihapus";
-        header("location: indexsumatif_ipas.php");
+        header("location: indexsumatif_sm.php");
     } else {
         echo $berhasil;
     }

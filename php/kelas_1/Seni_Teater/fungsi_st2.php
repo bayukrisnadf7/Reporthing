@@ -23,11 +23,11 @@
         $sumatif_akhir = $data['sumatif_akhir'];
         $nilai_rapor = $data['nilai_rapor'];
 
-        $queryShow = "SELECT * FROM tb_nilai WHERE nisn = '$nisn' AND id_mapel = 1 AND id_tahunajaran = 12;";
+        $queryShow = "SELECT * FROM tb_nilai WHERE nisn = '$nisn' AND id_mapel = 7 AND id_tahunajaran = 12;";
         $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
         $result = mysqli_fetch_assoc($sqlShow);
 
-        $query = "UPDATE tb_nilai SET sumatif='$sumatif', sumatif_akhir='$sumatif_akhir', nilai_rapor='$nilai_rapor' WHERE nisn='$nisn' AND id_mapel = 1 AND id_tahunajaran = 12;";
+        $query = "UPDATE tb_nilai SET sumatif='$sumatif', sumatif_akhir='$sumatif_akhir', nilai_rapor='$nilai_rapor' WHERE nisn='$nisn' AND id_mapel = 7 AND id_tahunajaran = 12;";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         return true;
@@ -37,7 +37,7 @@
     $nisn = $data['hapus'];
 
 
-    $query = "DELETE FROM tb_nilai WHERE nisn = '$nisn' AND id_mapel = 1 AND id_tahunajaran = 12;";
+    $query = "DELETE FROM tb_nilai WHERE nisn = '$nisn' AND id_mapel = 7 AND id_tahunajaran = 12;";
     $sql = mysqli_query($GLOBALS['conn'], $query);
     return true;
     }
