@@ -216,7 +216,7 @@ if (isset($_GET['ubah'])) {
                                         </label>
                                         <div class="col-sm-10">
                                             <input required type="text" name="tahun_ajaran" class="form-control"
-                                                id="tahun_ajaran" placeholder="Tahun Ajaran"
+                                                id="tahun_ajaran" placeholder="Tahun ajaran, contoh: 2020/2021"
                                                 value="<?php echo $tahun_ajaran; ?>">
                                         </div>
                                     </div>

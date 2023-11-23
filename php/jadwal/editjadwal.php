@@ -190,7 +190,7 @@ $result3 = $conn->query($sql3);
                             if (isset($_GET['ubah'])) {
                                 ?>
                                 <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fa fa-pen"></i> Edit Data Siswa
+                                    <i class="fa fa-pen"></i> Edit Data Jadwal
                                 </h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
@@ -199,7 +199,7 @@ $result3 = $conn->query($sql3);
                             } else {
                                 ?>
                                 <h6 name="aksi" value="add" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fas fa-plus"></i> Tambah Data Siswa
+                                    <i class="fas fa-plus"></i> Tambah Data Jadwal
                                 </h6>
                                 <!-- <h6 class="card-subtitle text-muted" style="color: white;">
                                     Form untuk menambah data kelas
@@ -254,7 +254,7 @@ $result3 = $conn->query($sql3);
                                             Jam Mulai
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="jam_mulai" class="form-control"
+                                            <input required type="time" name="jam_mulai" class="form-control"
                                                 id="jam_mulai" placeholder="Jam Mulai" value="<?php echo $jam_mulai; ?>">
                                         </div>
                                     </div>
@@ -263,7 +263,7 @@ $result3 = $conn->query($sql3);
                                             Jam Selesai
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="jam_selesai" class="form-control"
+                                            <input required type="time" name="jam_selesai" class="form-control"
                                                 id="jam_selesai" placeholder="Jam Selesai" value="<?php echo $jam_selesai; ?>">
                                         </div>
                                     </div>

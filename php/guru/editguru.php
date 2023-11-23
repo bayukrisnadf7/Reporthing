@@ -14,7 +14,7 @@ $no_telp = '';
 $tanggal_lahir = '';
 $username = '';
 $password = '';
-$walikelas = '';
+$kelas = '';
 
 if (isset($_GET['ubah'])) {
     $nip = $_GET['ubah'];
@@ -30,7 +30,7 @@ if (isset($_GET['ubah'])) {
     $tanggal_lahir = $result['tanggal_lahir'];
     $username = $result['username'];
     $password = $result['password'];
-    $walikelas = $result['id_kelas'];
+    $kelas = $result['id_kelas'];
 }
 $sql1 = "SELECT id_kelas, nama_kelas FROM tb_kelas";
 $result1 = $conn->query($sql1);
