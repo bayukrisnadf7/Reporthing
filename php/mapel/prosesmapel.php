@@ -19,7 +19,7 @@ if (isset($_POST['aksi'])) {
         $berhasil = ubah_data($_POST);
         
         if ($berhasil) {
-            $_SESSION['eksekusi'] = "Data Berhasil Diperbarui";
+            $_SESSION['eksekusi'] = "Data Berhasil Diperbaharui";
             header("location: indexmapel.php");
         } else {
             echo $berhasil;
