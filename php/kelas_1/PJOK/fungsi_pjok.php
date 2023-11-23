@@ -13,6 +13,13 @@
 
         $query = "INSERT INTO tb_nilai VALUES('', '$sumatif', '$sumatif_akhir', '$nilai_rapor','$nisn','$id_mapel', '$id_tahunajaran' )";
         $sql = mysqli_query($GLOBALS['conn'], $query);
+
+        $queryShow = "SELECT * FROM tb_total_nilai WHERE nisn = '$nisn' AND id_tahunajaran = 12;";
+        $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
+        $result = mysqli_fetch_assoc($sqlShow);
+    
+        $query = "UPDATE tb_total_nilai SET pjok = '$nilai_rapor' WHERE nisn='$nisn' AND id_tahunajaran = 12;";
+        $sql = mysqli_query($GLOBALS['conn'], $query);
         
         return true;
     }
@@ -30,6 +37,13 @@
         $query = "UPDATE tb_nilai SET sumatif='$sumatif', sumatif_akhir='$sumatif_akhir', nilai_rapor='$nilai_rapor' WHERE nisn='$nisn' AND id_mapel = 8 AND id_tahunajaran = 12;";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
+        $queryShow = "SELECT * FROM tb_total_nilai WHERE nisn = '$nisn' AND id_tahunajaran = 12;";
+        $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
+        $result = mysqli_fetch_assoc($sqlShow);
+    
+        $query = "UPDATE tb_total_nilai SET pjok = '$nilai_rapor' WHERE nisn='$nisn' AND id_tahunajaran = 12;";
+        $sql = mysqli_query($GLOBALS['conn'], $query);
+
         return true;
     }
 
@@ -38,6 +52,13 @@
 
 
     $query = "DELETE FROM tb_nilai WHERE nisn = '$nisn' AND id_mapel = 8 AND id_tahunajaran = 12;";
+    $sql = mysqli_query($GLOBALS['conn'], $query);
+
+    $queryShow = "SELECT * FROM tb_total_nilai WHERE nisn = '$nisn' AND id_tahunajaran = 12;";
+    $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
+    $result = mysqli_fetch_assoc($sqlShow);
+
+    $query = "UPDATE tb_total_nilai SET pjok = 0 WHERE nisn='$nisn' AND id_tahunajaran = 12;";
     $sql = mysqli_query($GLOBALS['conn'], $query);
     return true;
     }

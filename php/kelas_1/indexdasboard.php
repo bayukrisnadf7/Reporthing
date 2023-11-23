@@ -2,10 +2,10 @@
 include '../../koneksi.php';
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: php/login/indexlogin.php");
-    exit();
-}
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header("Location: php/login/indexlogin.php");
+//     exit();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -66,11 +66,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         </li> -->
                         <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="true">
+                            aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
                             Nilai Sumatif
                         </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="IPAS/indexsumatif_ipas.php" class="sidebar-link">
                                 <i class="fa-regular fa-circle pe-2"></i>IPAS</a>

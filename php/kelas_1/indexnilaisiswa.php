@@ -2,7 +2,7 @@
 include '../../koneksi.php';
 session_start();
 
-$query = "select tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_nilai.nilai_rapor, tb_mapel.nama_mapel, tb_tahunajaran.semester from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_siswa.id_kelas = 7;";
+$query = "SELECT tb_siswa.nisn, tb_siswa.nama_siswa, tb_total_nilai.* from tb_total_nilai join tb_siswa on tb_total_nilai.nisn = tb_siswa.nisn join tb_tahunajaran on tb_tahunajaran.id_tahunajaran = tb_total_nilai.id_tahunajaran where tb_siswa.id_kelas = 7 AND tb_total_nilai.id_tahunajaran = 12 ;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -173,9 +173,16 @@ $no = 0;
                                             <th scope="col">No</th>
                                             <th scope="col">NISN</th>
                                             <th scope="col">Nama Siswa</th>
-                                            <th scope="col">Nilai Rapor</th>
-                                            <th scope="col">Nama Mapel</th>
-                                            <th scope="col">Semester</th>
+                                            <th scope="col">IPAS</th>
+                                            <th scope="col">Matematika</th>
+                                            <th scope="col">Bahasa Indonesia</th>
+                                            <th scope="col">Seni Musik</th>
+                                            <th scope="col">Seni Tari</th>
+                                            <th scope="col">Seni Rupa</th>
+                                            <th scope="col">Seni Teater</th>
+                                            <th scope="col">PJOK</th>
+                                            <th scope="col">Bahasa Inggris</th>
+                                            <th scope="col">Rata Rata</th>
                                             <!-- <th scope="col">Tahun Ajaran</th> -->
                                             <!-- <th scope="col">Aksi</th> -->
                                     </thead>
@@ -198,13 +205,34 @@ $no = 0;
                                                 <?php echo $result['nama_siswa']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['nilai_rapor']; ?>
+                                                <?php echo $result['ipas']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['nama_mapel']; ?>
+                                                <?php echo $result['mtk']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['semester']; ?>
+                                                <?php echo $result['bahasa_indonesia']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['seni_musik']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['seni_tari']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['seni_rupa']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['seni_teater']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['pjok']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['bahasa_inggris']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['rata_rata']; ?>
                                             </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <!-- <td>

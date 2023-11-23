@@ -55,7 +55,6 @@ if (isset($_POST["login"])) {
 
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$pass = md5($password);
 	$re_password = $_POST['confirm-pass'];
 
 	$username = mysqli_real_escape_string($conn, $username);
@@ -64,7 +63,7 @@ if (isset($_POST["login"])) {
 
 	if (!empty(trim($username)) && !empty(trim($password)) && !empty(trim($re_password))) {
 		if($password == $re_password){
-			$query = "UPDATE tb_guru SET password='$pass' WHERE username='$username'";
+			$query = "UPDATE tb_guru SET password='$password' WHERE username='$username'";
 			$result = mysqli_query($conn,$query);
 			echo '<script language = "javascript">
 			alert ("Password Berhasil Diubah"); document.location="indexlogin.php"; </script>';
@@ -114,6 +113,7 @@ if (isset($_POST["login"])) {
 				</div>
 				<span class="help-text">Minimal 5 karakter</span>
 			</div>
+			
 			<!-- <button type="submit" class="btn-submit" name="login" value="Login">Login</button> -->
 			<input type="submit" class="btn-submit" name="login" value="Login">
 			<a href="#" onclick="switchForm('register', event)">Lupa password?</a>

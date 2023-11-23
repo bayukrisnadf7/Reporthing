@@ -71,7 +71,7 @@ $no = 0;
                             <ul id="pages" class="sidebar-dropdown list-unstyled collapse show"
                                 data-bs-parent="#sidebar">
                                 <li class="sidebar-item">
-                                    <a href="IPAS/indexsumatif_ipas.php" class="sidebar-link active">
+                                    <a href="indexsumatif_ipas.php" class="sidebar-link active">
                                         <i class="fa-regular fa-circle pe-2"></i>IPAS</a>
                                 </li>
                                 <li class="sidebar-item">
