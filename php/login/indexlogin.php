@@ -4,7 +4,7 @@ include '../../koneksi.php';
 if (isset($_POST["login"])) {
 	$username = $_POST["txt_username"];
 	$password = $_POST["txt_password"];
-	$pass = md5($password);
+	// $pass = md5($password);
 
 	$username = mysqli_real_escape_string($conn, $username);
 	$password = mysqli_real_escape_string($conn, $password);
@@ -12,7 +12,7 @@ if (isset($_POST["login"])) {
 	if (!empty(trim($username)) && !empty(trim($password))) {
 
 		//select data sesuai database
-		$query = "SELECT * FROM tb_user_guru WHERE username='$username' AND password='$pass'";
+		$query = "SELECT * FROM tb_guru WHERE username='$username' AND password='$password'";
 		$result = mysqli_query($conn, $query);
 		$num = mysqli_num_rows($result);
 
@@ -20,7 +20,6 @@ if (isset($_POST["login"])) {
 		$usernameVar = $row['username'];
 		$passwordVar = $row['password'];
 		$id_kelasVar = $row['id_kelas'];	
-
 	}
 
 	if ($username == "admin" && $password == "admin") {
@@ -29,32 +28,26 @@ if (isset($_POST["login"])) {
 		$_SESSION['username'] = $username;
 		header("location:../../index.php");
 		exit();
-		// header("location:../../index.html");
-		// echo '<script language = "javascript">
-		// alert ("Anda Berhasil Login"); document.location="../../index.html"; </script>';
-	}else if ($usernameVar == $username && $passwordVar == $pass && $id_kelasVar == 1) {
+	}else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 7) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
 		header("location:../kelas_1/indexdasboard.php");
 		exit();
-	} else if ($usernameVar == $username && $passwordVar == $pass && $id_kelasVar == 2) {
+	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 2) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
 		header("location:../kelas_2/indexdasboard.php");
 		exit();
 	} else if ($usernameVar == $username && $passwordVar == $pass) {
-	// header("location:../../indexguru.html");
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
 		header("location:../../indexguru.php");
 		exit();
 	}
-// echo '<script language = "javascript">
-// alert ("Guru Login Berhasil"); document.location="../../indexguru.html"; </script>';
-	else if ($usernameVar != $username && $passwordVar != $password) {
+	else if ($usernameVar != $username && $passwordVar != $pass) {
 	echo '<script language = "javascript">
 		alert ("Username atau Password salah"); document.location="indexlogin.php"; </script>';
 }
@@ -71,15 +64,15 @@ if (isset($_POST["login"])) {
 
 	if (!empty(trim($username)) && !empty(trim($password)) && !empty(trim($re_password))) {
 		if($password == $re_password){
-			$query = "UPDATE tb_user_guru SET password='$pass' WHERE username='$username'";
+			$query = "UPDATE tb_guru SET password='$pass' WHERE username='$username'";
 			$result = mysqli_query($conn,$query);
 			echo '<script language = "javascript">
 			alert ("Password Berhasil Diubah"); document.location="indexlogin.php"; </script>';
+		} if($password != $re_password){
+			echo '<script language = "javascript">
+			alert ("Password Tidak Sama"); document.location="indexlogin.php"; </script>';
 		}
 	}
-	
-
-
 }
 
 

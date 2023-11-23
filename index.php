@@ -15,14 +15,6 @@ session_start();
 // $row = mysqli_fetch_assoc($result2);
 // $total_siswa = $row['total_siswa'];
 
-// $result3 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_guru FROM tb_user_guru");
-// $row = mysqli_fetch_assoc($result3);
-// $total_pengguna_guru = $row['total_pengguna_guru'];
-
-// $result4 = mysqli_query($conn, "SELECT COUNT(*) as total_pengguna_siswa FROM tb_user_siswa");
-// $row = mysqli_fetch_assoc($result4);
-// $total_pengguna_siswa = $row['total_pengguna_siswa'];
-
 $query = "SELECT tb_jadwal.id_jadwal, tb_guru.nama_guru, tb_kelas.nama_kelas, tb_mapel.nama_mapel, tb_jadwal.hari, tb_jadwal.jam_mulai, tb_jadwal.jam_selesai
             FROM tb_jadwal JOIN tb_guru on tb_jadwal.nip = tb_guru.nip
             JOIN tb_kelas on tb_jadwal.id_kelas = tb_kelas.id_kelas

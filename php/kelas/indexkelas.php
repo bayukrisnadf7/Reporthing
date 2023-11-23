@@ -7,7 +7,7 @@ session_start();
 //     exit();
 // }
 
-$query = "SELECT * FROM tb_kelas;";
+$query = "SELECT tb_kelas.*, tb_guru.nama_guru FROM tb_kelas JOIN tb_guru ON tb_kelas.nip = tb_guru.nip;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>

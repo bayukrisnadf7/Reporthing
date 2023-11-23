@@ -2,7 +2,7 @@
 include '../../koneksi.php';
 session_start();
 
-$query = "SELECT tb_siswa.nama_siswa, tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor FROM tb_siswa JOIN tb_nilai ON tb_siswa.nisn = tb_nilai.nisn";
+$query = "select tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_nilai.nilai_rapor, tb_mapel.nama_mapel, tb_tahunajaran.semester from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_siswa.id_kelas = 7;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -37,18 +37,77 @@ $no = 0;
                         style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
-                    <li class="sidebar-item">
-                        <a href="../../indexguru.php" class="sidebar-link">
-                            <i class="fa-solid fa-gauge pe-2"></i>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="indexsumatif.php" class="sidebar-link active">
-                            <i class="fa-solid fa-chalkboard pe-2"></i>
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-item">
+                            <a href="indexdasboard.php" class="sidebar-link">
+                                <i class="fa-solid fa-gauge pe-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="indexdaftarsiswa.php" class="sidebar-link">
+                                <i class="fa-solid fa-gauge pe-2"></i>
+                                Daftar Siswa
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="indexnilaisiswa.php" class="sidebar-link active">
+                                <i class="fa-solid fa-gauge pe-2"></i>
+                                Daftar Nilai Siswa
+                            </a>
+                        </li>
+                        <!-- <li class="sidebar-item">
+                            <a href="indexsumatif.php" class="sidebar-link">
+                                <i class="fa-solid fa-chalkboard pe-2"></i>
+                                Nilai Sumatif
+                            </a>
+                        </li> -->
+                        <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                            aria-expanded="true">
+                            <i class="fa-solid fa-list pe-2"></i>
                             Nilai Sumatif
                         </a>
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="IPAS/indexsumatif_ipas.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>IPAS</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Matematika/indexsumatif_mtk.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Matematika</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Bahasa_Indonesia/indexsumatif_bi.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Bahasa Indonesia</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Seni_Musik/indexsumatif_sm.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Musik</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Seni_Tari/indexsumatif_st.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Tari</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Seni_Rupa/indexsumatif_sr.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Rupa</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Seni_Teater/indexsumatif_st2.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Teater</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="PJOK/indexsumatif_pjok.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>PJOK</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Bahasa_Inggris/indexsumatif_big.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Bahasa Inggris</a>
+                            </li>
+                        </ul>
                     </li>
+                    </ul>
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -81,8 +140,7 @@ $no = 0;
             <main class="content px-3 py-2">
                 <div class="content-fluid">
                     <div class="mb-3">
-                        <h4>Daftar Mata Pelajaran</h4>
-                        <h6>Halaman untuk mengelola nilai sumatif</h6>
+                        <h4>Daftar Nilai Siswa</h4>
                     </div>
 
                     <?php
@@ -112,13 +170,14 @@ $no = 0;
                                 <table id="dt" class="table table-hover">
                                     <thead class="custom-header">
                                         <tr>
-                                            <th scope="col">No.</th>
+                                            <th scope="col">No</th>
+                                            <th scope="col">NISN</th>
                                             <th scope="col">Nama Siswa</th>
-                                            <th scope="col">Sumatif</th>
-                                            <th scope="col">Sumatif Akhir Semester</th>
                                             <th scope="col">Nilai Rapor</th>
+                                            <th scope="col">Nama Mapel</th>
+                                            <th scope="col">Semester</th>
                                             <!-- <th scope="col">Tahun Ajaran</th> -->
-                                            <th scope="col">Aksi</th>
+                                            <!-- <th scope="col">Aksi</th> -->
                                     </thead>
                                     <tbody>
                                         <?php
@@ -133,16 +192,19 @@ $no = 0;
                                                 <?php echo ++$no; ?>.
                                             </td>
                                             <td>
+                                                <?php echo $result['nisn']; ?>
+                                            </td>
+                                            <td>
                                                 <?php echo $result['nama_siswa']; ?>
                                             </td>
                                             <td>
-                                                <?php echo $result['sumatif']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['sumatif_akhir']; ?>
-                                            </td>
-                                            <td>
                                                 <?php echo $result['nilai_rapor']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['nama_mapel']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['semester']; ?>
                                             </td>
                                             <!-- Button UBAH dan HAPUS-->
                                             <!-- <td>

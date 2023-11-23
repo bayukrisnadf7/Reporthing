@@ -16,7 +16,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard Guru - Reporthing</title>
-    <h1>INI KELAS 1</h1>
     <link href="../../img/logo_putih.png" rel="shortcut icon">
     <!-- Bootstrap -->
     <link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
@@ -42,17 +41,74 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <ul class="sidebar-nav">
                     <ul class="sidebar-nav">
                         <li class="sidebar-item">
-                            <a href="indexguru.html" class="sidebar-link active">
+                            <a href="indexdasboard.php" class="sidebar-link active">
                                 <i class="fa-solid fa-gauge pe-2"></i>
                                 Dashboard
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="php/nilai_sumatif/indexsumatif.php" class="sidebar-link">
+                            <a href="indexdaftarsiswa.php" class="sidebar-link">
+                                <i class="fa-solid fa-gauge pe-2"></i>
+                                Daftar Siswa
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="indexnilaisiswa.php" class="sidebar-link">
+                                <i class="fa-solid fa-gauge pe-2"></i>
+                                Daftar Nilai Siswa
+                            </a>
+                        </li>
+                        <!-- <li class="sidebar-item">
+                            <a href="indexsumatif.php" class="sidebar-link">
                                 <i class="fa-solid fa-chalkboard pe-2"></i>
                                 Nilai Sumatif
                             </a>
-                        </li>
+                        </li> -->
+                        <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                            aria-expanded="true">
+                            <i class="fa-solid fa-list pe-2"></i>
+                            Nilai Sumatif
+                        </a>
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse show" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="IPAS/indexsumatif_ipas.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>IPAS</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Matematika/indexsumatif_mtk.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Matematika</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Bahasa_Indonesia/indexsumatif_bi.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Bahasa Indonesia</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Seni_Musik/indexsumatif_sm.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Musik</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Seni_Tari/indexsumatif_st.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Tari</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Seni_Rupa/indexsumatif_sr.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Rupa</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Seni_Teater/indexsumatif_st2.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Seni Teater</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="PJOK/indexsumatif_pjok.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>PJOK</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="Bahasa_Inggris/indexsumatif_big.php" class="sidebar-link">
+                                <i class="fa-regular fa-circle pe-2"></i>Bahasa Inggris</a>
+                            </li>
+                        </ul>
+                    </li>
                     </ul>
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
