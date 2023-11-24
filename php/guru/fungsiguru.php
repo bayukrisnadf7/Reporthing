@@ -71,7 +71,14 @@
 
     function hapus_data($data){
     $nip = $data['hapus'];
-
+    
+    // Cek relasi foreign key
+    if (cekRelasiForeign($nip)) {
+        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena terdapat relasi dengan data lain.";
+        header("location: indexguru.php");
+        return false;
+    }
+        
     //foto
     $queryShow = "SELECT * FROM tb_guru WHERE nip = '$nip';";
     $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
@@ -90,4 +97,17 @@
 
     }
 
+    function cekRelasiForeign($nip) {
+        $query = "SELECT COUNT(*) as count FROM tb_jadwal WHERE nip = '$nip'";
+        $result = mysqli_query($GLOBALS['conn'], $query);
+    
+        if (!$result) {
+            die("Query error: " . mysqli_error($GLOBALS['conn']));
+        }
+    
+        $data = mysqli_fetch_assoc($result);
+    
+        return $data['count'] > 0;
+    }
+    
 ?>
