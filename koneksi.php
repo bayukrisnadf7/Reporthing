@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'db_reporthing2';
+$db = 'db_reporthing';
 $conn = mysqli_connect($host, $user, $pass, $db);
 
 if ($conn) {

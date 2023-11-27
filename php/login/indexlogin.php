@@ -183,8 +183,8 @@ if (isset($_POST["login"])) {
 				<span class="help-text">Confirm password must be same with password</span>
 			</div>
 			<!-- <button type="submit" class="btn-submit">Register</button> -->
-			<input type="submit" class="btn-submit" name="register" value="Register">
-			<p>I already have an account. <a href="#" onclick="switchForm('login', event)">Login</a></p>
+			<input type="submit" class="btn-submit" name="register" value="Submit">
+			<p>Back to login ? <a href="#" onclick="switchForm('login', event)">Login</a></p>
 		</form>
 	</div>
 
