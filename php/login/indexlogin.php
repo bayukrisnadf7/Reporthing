@@ -135,7 +135,7 @@ if (isset($_POST["login"])) {
 						$query = "SELECT * FROM tb_tahunajaran";
 						$sql = mysqli_query($conn, $query);
 						while ($data = mysqli_fetch_assoc($sql)) {
-							echo '<option value="' . $data['tahun_ajaran'] . '" data-info="' . $data['id_tahunajaran'] . '">' . $data['tahun_ajaran'] . '</option>';
+							echo '<option value="' . $data['tahun_ajaran'] . '" data-info="' . $data['id_tahunajaran'] . '">' . $data['tahun_ajaran'] ." - ". $data['semester'] . '</option>';
 						}
 						?>
 					</select>

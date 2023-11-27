@@ -5,7 +5,6 @@ function tambah_data($data)
 
     $tahun_ajaran = $data['tahun_ajaran'];
     $semester = $data['semester'];
-    $currentDate = date("Y-m-d");
 
     // Cek apakah tahun sudah ada
     $queryCekTAHUN = "SELECT * FROM tb_tahunajaran WHERE tahun_ajaran = '$tahun_ajaran' AND semester = '$semester'";
@@ -17,7 +16,7 @@ function tambah_data($data)
         return false;
     }
 
-    $query = "INSERT INTO tb_tahunajaran VALUES(null, '$tahun_ajaran', '$semester','$currentDate')";
+    $query = "INSERT INTO tb_tahunajaran VALUES(null, '$tahun_ajaran', '$semester')";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
     return true;
