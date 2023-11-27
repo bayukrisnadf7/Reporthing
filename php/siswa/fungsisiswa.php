@@ -77,6 +77,13 @@ function hapus_data($data)
 {
     $nisn = $data['hapus'];
 
+    // Cek relasi foreign key
+    if (cekRelasiForeign($nisn)) {
+        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena terdapat relasi dengan data lain.";
+        header("location: indexsiswa.php");
+        return false;
+    }
+
     //foto
     $queryShow = "SELECT * FROM tb_siswa WHERE nisn = '$nisn';";
     $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
@@ -93,6 +100,19 @@ function hapus_data($data)
 
     return true;
 
+}
+
+function cekRelasiForeign($nisn) {
+    $query = "SELECT COUNT(*) as count FROM tb_nilai WHERE nisn = '$nisn'";
+    $result = mysqli_query($GLOBALS['conn'], $query);
+
+    if (!$result) {
+        die("Query error: " . mysqli_error($GLOBALS['conn']));
+    }
+
+    $data = mysqli_fetch_assoc($result);
+
+    return $data['count'] > 0;
 }
 
 ?>

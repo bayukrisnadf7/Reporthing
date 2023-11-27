@@ -7,7 +7,7 @@ session_start();
 //     exit();
 // }
 
-$query = "SELECT tb_kelas.*, tb_guru.nama_guru FROM tb_kelas JOIN tb_guru ON tb_kelas.nip = tb_guru.nip;";
+$query = "SELECT * FROM tb_kelas;";
 $sql = mysqli_query($conn, $query);
 $no = 0;
 ?>
@@ -180,16 +180,35 @@ $no = 0;
                     <!-- Alert Eksekusi-->
                     <?php
                     if (isset($_SESSION['eksekusi'])):
-                        ?>
-                        <div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo $_SESSION['eksekusi']; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php
-                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan sukses
+                        if ($_SESSION['eksekusi'] === "Data Berhasil Ditambahkan") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Diperbaharui") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Dihapus") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } else {
+                            // Tampilkan pesan kesalahan
+                            echo '<div id="alertDiv" class="alert alert-danger alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }
+
+                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan
                     endif;
                     ?>
-
                     <!-- <script>
                         setTimeout(function () {
                             document.getElementById("alertDiv").style.display = "none";

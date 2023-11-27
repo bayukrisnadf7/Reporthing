@@ -50,9 +50,37 @@ function hapus_data($data)
 {
     $id_mapel = $data['hapus'];
 
+    // Cek relasi foreign key
+    if (cekRelasiForeign($id_mapel)) {
+        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena terdapat relasi dengan data lain.";
+        header("location: indexmapel.php");
+        return false;
+    }
+
     $query = "DELETE FROM tb_mapel WHERE id_mapel = '$id_mapel';";
     $sql = mysqli_query($GLOBALS['conn'], $query);
     return true;
+}
+
+function cekRelasiForeign($id_mapel) {
+    $query = "SELECT COUNT(*) as count FROM tb_jadwal WHERE id_mapel = '$id_mapel'";
+    $result = mysqli_query($GLOBALS['conn'], $query);
+
+    if (!$result) {
+        die("Query error: " . mysqli_error($GLOBALS['conn']));
+    }
+
+    $query1 = "SELECT COUNT(*) as count FROM tb_nilai WHERE id_mapel = '$id_mapel'";
+    $result1 = mysqli_query($GLOBALS['conn'], $query1);
+
+    if (!$result1) {
+        die("Query error: " . mysqli_error($GLOBALS['conn']));
+    }
+
+    $data = mysqli_fetch_assoc($result);
+    $data = mysqli_fetch_assoc($result1);
+
+    return $data['count'] > 0;
 }
 
 ?>
