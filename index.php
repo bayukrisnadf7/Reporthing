@@ -175,7 +175,7 @@ $no = 0;
                     </div>
                     <div class="row">
                         <style>
-                            .custom-card {
+                            .custom-card-blue {
                                 position: relative;
                                 overflow: hidden;
                                 border: none;
@@ -185,15 +185,88 @@ $no = 0;
                                 text-indent: 5px;
                                 line-height: 27px;
                                 margin-bottom: 10px;
-                                background-color: #2E84D9;
+                                background-color: #67729D;
+                                /* Blue background */
+                                color: #FFFFFF;
+                                /* White text color */
+                            }
+                            
+                            .custom-card-green {
+                                position: relative;
+                                overflow: hidden;
+                                border: none;
+                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                height: 90px;
+                                text-indent: 5px;
+                                line-height: 27px;
+                                margin-bottom: 10px;
+                                background-color: #28a745;
+                                /* Blue background */
+                                color: #FFFFFF;
+                                /* White text color */
+                            }
+                            .custom-card-yellow {
+                                position: relative;
+                                overflow: hidden;
+                                border: none;
+                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                height: 90px;
+                                text-indent: 5px;
+                                line-height: 27px;
+                                margin-bottom: 10px;
+                                background-color: #ffc107;
+                                /* Blue background */
+                                color: #FFFFFF;
+                                /* White text color */
+                            }
+                            .custom-card-red {
+                                position: relative;
+                                overflow: hidden;
+                                border: none;
+                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                height: 90px;
+                                text-indent: 5px;
+                                line-height: 27px;
+                                margin-bottom: 10px;
+                                background-color: #BE3144;
                                 /* Blue background */
                                 color: #FFFFFF;
                                 /* White text color */
                             }
 
-                            .custom-bg-danger,
-                            .custom-bg-primary,
-                            .custom-bg-warning,
+                            .custom-bg-danger{
+                                /* Updated styles for the background color divs */
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                width: 3%;
+                                background-color: #BE3144;
+                                /* Blue background */
+                            }
+                            .custom-bg-primary {
+                                /* Updated styles for the background color divs */
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                width: 3%;
+                                background-color: #67729D;
+                                /* Blue background */
+                            }
+                            .custom-bg-warning {
+                                /* Updated styles for the background color divs */
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                width: 3%;
+                                background-color: #ffc107;
+                                /* Blue background */
+                            }
                             .custom-bg-success {
                                 /* Updated styles for the background color divs */
                                 position: absolute;
@@ -201,7 +274,7 @@ $no = 0;
                                 left: 0;
                                 bottom: 0;
                                 width: 3%;
-                                background-color: #2E84D9;
+                                background-color: #28a745;
                                 /* Blue background */
                             }
 
@@ -225,7 +298,7 @@ $no = 0;
                         </style>
 
                         <div class="col-12 col-md-6 col-lg-3">
-                            <div class="card flex-fill border-0 custom-card">
+                            <div class="card flex-fill border-0 custom-card-blue">
                                 <div class="card-body position-relative">
                                     <i class="fas fa-house fa-3x"></i>
                                     <p class="card-title">
@@ -238,7 +311,7 @@ $no = 0;
                         </div>
 
                         <div class="col-12 col-md-6 col-lg-3">
-                            <div class="card flex-fill border-0 custom-card">
+                            <div class="card flex-fill border-0 custom-card-green">
                                 <div class="card-body">
                                     <i class="fa-solid fa-book-open  fa-3x"></i>
                                     <p class="card-title">
@@ -251,7 +324,7 @@ $no = 0;
                         </div>
 
                         <div class="col-12 col-md-6 col-lg-3">
-                            <div class="card flex-fill border-0 custom-card">
+                            <div class="card flex-fill border-0 custom-card-yellow">
                                 <div class="card-body">
                                     <i class="fa-solid fa-users fa-3x"></i>
                                     <p class="card-title">
@@ -264,7 +337,7 @@ $no = 0;
                         </div>
 
                         <div class="col-12 col-md-6 col-lg-3">
-                            <div class="card flex-fill border-0 custom-card">
+                            <div class="card flex-fill border-0 custom-card-red">
                                 <div class="card-body">
                                     <i class="fa-solid fa-user-group fa-3x"></i>
                                     <p class="card-title">

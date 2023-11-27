@@ -77,12 +77,13 @@ function hapus_data($data)
 {
     $nisn = $data['hapus'];
 
-    // Cek relasi foreign key
-    if (cekRelasiForeign($nisn)) {
-        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena terdapat relasi dengan data lain.";
-        header("location: indexsiswa.php");
-        return false;
-    }
+    // // Cek relasi foreign key
+    // if (cekRelasiForeign($nisn)) {
+    //     $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena terdapat relasi dengan data lain. 
+    //     Jika ingin menghapus data, mohon hapus data pada fitur data nilai & total nilai yang berada di level guru terlebih dahulu.";
+    //     header("location: indexsiswa.php");
+    //     return false;
+    // }
 
     //foto
     $queryShow = "SELECT * FROM tb_siswa WHERE nisn = '$nisn';";
@@ -102,17 +103,25 @@ function hapus_data($data)
 
 }
 
-function cekRelasiForeign($nisn) {
-    $query = "SELECT COUNT(*) as count FROM tb_nilai WHERE nisn = '$nisn'";
-    $result = mysqli_query($GLOBALS['conn'], $query);
+// function cekRelasiForeign($nisn) {
+//     $query_nilai = "SELECT COUNT(*) as count FROM tb_nilai WHERE nisn = '$nisn'";
+//     $result_nilai = mysqli_query($GLOBALS['conn'], $query_nilai);
 
-    if (!$result) {
-        die("Query error: " . mysqli_error($GLOBALS['conn']));
-    }
+//     if (!$result_nilai) {
+//         die("Query error: " . mysqli_error($GLOBALS['conn']));
+//     }
 
-    $data = mysqli_fetch_assoc($result);
+//     $query_total_nilai = "SELECT COUNT(*) as count FROM tb_total_nilai WHERE nisn = '$nisn'";
+//     $result_total_nilai = mysqli_query($GLOBALS['conn'], $query_total_nilai);
 
-    return $data['count'] > 0;
-}
+//     if (!$result_total_nilai) {
+//         die("Query error: " . mysqli_error($GLOBALS['conn']));
+//     }
+
+//     $data_nilai = mysqli_fetch_assoc($result_nilai);
+//     $data_total_nilai = mysqli_fetch_assoc($result_total_nilai);
+
+//     return ($data_nilai['count'] > 0) || ($data_total_nilai['count'] > 0);
+// }
 
 ?>

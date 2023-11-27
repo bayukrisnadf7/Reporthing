@@ -1,0 +1,161 @@
+body {
+  font-family: "Mostserrat" "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 2000px;
+}
+
+/* css header */
+header {
+  /* background-color: #2e84d9; */
+  padding: 15px 0;
+}
+
+.brand {
+  /* background-color: #2e84d9; */
+  margin-left: 50px;
+  display: flex;
+}
+img {
+  width: 1560px;
+}
+.brand img {
+  width: 100px;
+  margin-right: 20px;
+}
+.brand .brand-name h1 {
+  margin-top: 10px;
+  font-size: 40px;
+  font-weight: 700;
+  color: #454545;
+  text-transform: uppercase;
+}
+.brand .brand-name h3 {
+  font-size: 12px;
+  color: yellowgreen;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.pembungkus-seacrhbox {
+  display: flex;
+  align-items: center;
+}
+.seacrhbox {
+  width: 100%;
+}
+
+/* navbar */
+.container .navbar {
+  margin-bottom: 5px;
+}
+.navbar {
+  padding-top: 5;
+  padding-bottom: 5;
+  /* border-top: 5px solid #aeaeae; */
+  /* border-bottom: 5px solid yellow; */
+}
+
+.nav-item-btn .btn {
+  /* margin-top: 2px; */
+  background-color: #fff !important;
+  border-radius: 0.5rem;
+  /* color: #000; */
+}
+.btn a {
+  color: #111;
+  text-decoration: none;
+}
+.dropdown-menu {
+  padding: 5px;
+}
+a.nav-link {
+  background-color: transparent;
+  border-radius: 0.5rem;
+}
+a.dropdown-item {
+  padding: 5px 5px;
+  background-color: transparent;
+  border-radius: 0.5rem;
+}
+ul {
+  align-items: center;
+}
+.nav-link {
+  padding: 2;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+}
+.bg-nav {
+  background-color: #2e84d9 !important;
+  color: #ffffff;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  padding: 5px 20px;
+  display: inline-block;
+}
+ul > li > a:hover {
+  /* border-bottom: 5px solid #fff !important; */
+  background-color: #fff !important;
+  color: #15477a !important;
+  border-radius: 0.5rem;
+  /* transition: all 0.5 ease-in-out; */
+}
+
+ul > div > a:hover {
+  background-color: #fff !important;
+  border-radius: 0.5rem;
+  color: #15477a !important;
+}
+ul > div > div > a:hover {
+  background-color: #15477a !important;
+  color: #fff !important;
+}
+
+section {
+  padding-bottom: 30px;
+}
+section#alamat {
+  padding-top: 30px;
+}
+section#prestasi {
+  background-color: #2e84d9;
+}
+section#ekskul {
+  background-color: #2e84d9;
+}
+.sub-judul {
+  text-align: justify;
+}
+.sub-judul-2 img {
+  width: 100%;
+}
+.card {
+  box-shadow: 10px;
+}
+.sub-judul-3 img {
+  width: 100%;
+}
+.bawah {
+  background-color: #2e84d9;
+  color: #fff;
+  text-align: justify;
+}
+footer {
+  background-color: #15477a;
+  color: #fff;
+}
+
+.container .maps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+iframe {
+  width: 13000px;
+  height: 500px;
+}
