@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../asset/css/bootstrap.min.css" />
     <link rel="stylesheet" href="asset/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="../asset/fontawesome/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="stylee.css" />
     <title></title>
   </head>
   <body>
