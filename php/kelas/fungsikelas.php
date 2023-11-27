@@ -64,33 +64,33 @@ function hapus_data($data)
 
 function cekRelasiForeign($id_kelas)
 {
-    $query = "SELECT COUNT(*) as count FROM tb_siswa WHERE id_kelas = '$id_kelas'";
-    $result = mysqli_query($GLOBALS['conn'], $query);
+    $query_siswa = "SELECT COUNT(*) as count FROM tb_siswa WHERE id_kelas = '$id_kelas'";
+    $result_siswa = mysqli_query($GLOBALS['conn'], $query_siswa);
 
-    if (!$result) {
+    if (!$result_siswa) {
         die("Query error: " . mysqli_error($GLOBALS['conn']));
     }
 
-    $query1 = "SELECT COUNT(*) as count FROM tb_guru WHERE id_kelas = '$id_kelas'";
-    $result1 = mysqli_query($GLOBALS['conn'], $query1);
+    $query_guru = "SELECT COUNT(*) as count FROM tb_guru WHERE id_kelas = '$id_kelas'";
+    $result_guru = mysqli_query($GLOBALS['conn'], $query_guru);
 
-    if (!$result1) {
+    if (!$result_guru) {
         die("Query error: " . mysqli_error($GLOBALS['conn']));
     }
 
-    $query2 = "SELECT COUNT(*) as count FROM tb_jadwal WHERE id_kelas = '$id_kelas'";
-    $result2 = mysqli_query($GLOBALS['conn'], $query2);
+    $query_jadwal = "SELECT COUNT(*) as count FROM tb_jadwal WHERE id_kelas = '$id_kelas'";
+    $result_jadwal = mysqli_query($GLOBALS['conn'], $query_jadwal);
 
-    if (!$result2) {
+    if (!$result_jadwal) {
         die("Query error: " . mysqli_error($GLOBALS['conn']));
     }
 
+    $data_siswa = mysqli_fetch_assoc($result_siswa);
+    $data_guru = mysqli_fetch_assoc($result_guru);
+    $data_jadwal = mysqli_fetch_assoc($result_jadwal);
 
-    $data = mysqli_fetch_assoc($result);
-    $data = mysqli_fetch_assoc($result1);
-    $data = mysqli_fetch_assoc($result2);
-
-    return $data['count'] > 0;
+    return ($data_siswa['count'] > 0) || ($data_guru['count'] > 0) || ($data_jadwal['count'] > 0);
 }
+
 
 ?>

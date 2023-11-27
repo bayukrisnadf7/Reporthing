@@ -7,13 +7,21 @@ session_start();
 //     exit();
 // }
 
-// $result1 = mysqli_query($conn, "SELECT COUNT(*) as total_guru FROM tb_guru");
-// $row = mysqli_fetch_assoc($result1);
-// $total_guru = $row['total_guru'];
+$result1 = mysqli_query($conn, "SELECT COUNT(*) as total_guru FROM tb_guru");
+$row = mysqli_fetch_assoc($result1);
+$total_guru = $row['total_guru'];
 
-// $result2 = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa");
-// $row = mysqli_fetch_assoc($result2);
-// $total_siswa = $row['total_siswa'];
+$result2 = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa");
+$row = mysqli_fetch_assoc($result2);
+$total_siswa = $row['total_siswa'];
+
+$result3 = mysqli_query($conn, "SELECT COUNT(*) as total_mapel FROM tb_mapel");
+$row = mysqli_fetch_assoc($result3);
+$total_mapel = $row['total_mapel'];
+
+$result4 = mysqli_query($conn, "SELECT COUNT(*) as total_kelas FROM tb_kelas");
+$row = mysqli_fetch_assoc($result4);
+$total_kelas = $row['total_kelas'];
 
 $query = "SELECT tb_jadwal.id_jadwal, tb_guru.nama_guru, tb_kelas.nama_kelas, tb_mapel.nama_mapel, tb_jadwal.hari, tb_jadwal.jam_mulai, tb_jadwal.jam_selesai
             FROM tb_jadwal JOIN tb_guru on tb_jadwal.nip = tb_guru.nip
@@ -106,23 +114,7 @@ $no = 0;
                             Jadwal
                         </a>
                     </li>
-                    <!-- <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
-                            Pengguna
-                        </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="php/pengguna/guru/indexpenggunaguru.php" class="sidebar-link">
-                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="php/pengguna/siswa/indexpenggunasiswa.php" class="sidebar-link">
-                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
-                            </li>
-                        </ul>
-                    </li> -->
+
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -188,96 +180,105 @@ $no = 0;
                                 overflow: hidden;
                                 border: none;
                                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-                                width: 250px;
-                                /* Atur lebar card sesuai keinginan Anda */
-                                height: 80px;
-                                /* Atur tinggi card sesuai keinginan Anda */
+                                width: 100%;
+                                height: 90px;
                                 text-indent: 5px;
-                                line-height: 20px;
+                                line-height: 27px;
+                                margin-bottom: 10px;
+                                background-color: #2E84D9;
+                                /* Blue background */
+                                color: #FFFFFF;
+                                /* White text color */
                             }
 
                             .custom-bg-danger,
                             .custom-bg-primary,
                             .custom-bg-warning,
                             .custom-bg-success {
+                                /* Updated styles for the background color divs */
                                 position: absolute;
                                 top: 0;
                                 left: 0;
                                 bottom: 0;
                                 width: 3%;
+                                background-color: #2E84D9;
+                                /* Blue background */
                             }
 
-                            .custom-bg-danger {
-                                background-color: #dc3545;
-                            }
-
-                            .custom-bg-primary {
-                                background-color: #0d6efd;
-                            }
-
-                            .custom-bg-warning {
-                                background-color: #ffc107;
-                            }
-
-                            .custom-bg-success {
-                                background-color: #198754;
+                            .fa-user-group,
+                            .fa-book-open,
+                            .fa-users,
+                            .fa-house {
+                                /* Updated styles for the icons */
+                                position: absolute;
+                                top: 50%;
+                                right: 10px;
+                                transform: translateY(-50%);
+                                color: #F1F6F9;
+                                /* White icon color */
                             }
 
                             .card-title {
                                 font-size: 20px;
+                                font-weight: bold;
                             }
                         </style>
 
-                        <div class="col-12 col-md-3 d-flex">
+                        <div class="col-12 col-md-6 col-lg-3">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body position-relative">
-                                    <i class="fas fa-user fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">100</p>
-                                    <h6 class="card-text" style="color: #0d6efd">Pengguna Guru</h6>
+                                    <i class="fas fa-house fa-3x"></i>
+                                    <p class="card-title">
+                                        <?php echo $total_kelas ?>
+                                    </p>
+                                    <h6 class="card-text">Jumlah Kelas</h6>
                                 </div>
                                 <div class="custom-bg-primary"></div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 d-flex">
+                        <div class="col-12 col-md-6 col-lg-3">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-group fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">100</p>
-                                    <h6 class="card-text" style="color: #198754">Pengguna Siswa</h6>
+                                    <i class="fa-solid fa-book-open  fa-3x"></i>
+                                    <p class="card-title">
+                                        <?php echo $total_mapel ?>
+                                    </p>
+                                    <h6 class="card-text">Jumlah Mapel</h6>
                                 </div>
                                 <div class="custom-bg-success"></div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 d-flex">
+                        <div class="col-12 col-md-6 col-lg-3">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-tie fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">100</p>
-                                    <h6 class="card-text" style="color: #ffc107">Jumlah Guru</h6>
+                                    <i class="fa-solid fa-users fa-3x"></i>
+                                    <p class="card-title">
+                                        <?php echo $total_guru ?>
+                                    </p>
+                                    <h6 class="card-text">Jumlah Guru</h6>
                                 </div>
                                 <div class="custom-bg-warning"></div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 d-flex">
+                        <div class="col-12 col-md-6 col-lg-3">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-graduate fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">100</p>
-                                    <h6 class="card-text" style="color: #dc3545">Jumlah Siswa</h6>
+                                    <i class="fa-solid fa-user-group fa-3x"></i>
+                                    <p class="card-title">
+                                        <?php echo $total_siswa ?>
+                                    </p>
+                                    <h6 class="card-text">Jumlah Siswa</h6>
                                 </div>
                                 <div class="custom-bg-danger"></div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Table Element -->
-                    <div class="card border-0">
+                    <div class="card flex-fill card border-0 mt-2">
                         <div class="card-header mt-2" style="background-color: #FFFFFF;">
                             <h6>Jadwal</h6>
                         </div>
@@ -286,7 +287,6 @@ $no = 0;
                                 <table id="dt" class="table table-hover">
                                     <thead class="custom-header">
                                         <tr>
-                                            <th scope="col">No.</th>
                                             <th scope="col">Hari</th>
                                             <th scope="col">Jam</th>
                                             <th scope="col">Nama Pelajaran</th>
@@ -297,9 +297,6 @@ $no = 0;
                                         <?php
                                         while ($result = mysqli_fetch_assoc($sql)) {
                                             ?>
-                                            <td>
-                                                <?php echo ++$no; ?>.
-                                            </td>
                                             <td>
                                                 <?php echo $result['hari']; ?>
                                             </td>
@@ -325,10 +322,8 @@ $no = 0;
                         </div>
                     </div>
                 </div>
+            </main>
         </div>
-        </main>
-    </div>
-    </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="asset/js/script.js"></script>
