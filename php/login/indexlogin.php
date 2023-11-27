@@ -4,10 +4,13 @@ include '../../koneksi.php';
 if (isset($_POST["login"])) {
 	$username = $_POST["txt_username"];
 	$password = $_POST["txt_password"];
+	$id_tahunajaran = $_POST["id_tahunajaran"];
 	// $pass = md5($password);
 
 	$username = mysqli_real_escape_string($conn, $username);
 	$password = mysqli_real_escape_string($conn, $password);
+
+	
 
 	if (!empty(trim($username)) && !empty(trim($password))) {
 
@@ -19,7 +22,7 @@ if (isset($_POST["login"])) {
 		$row = mysqli_fetch_array($result);
 		$usernameVar = $row['username'];
 		$passwordVar = $row['password'];
-		$id_kelasVar = $row['id_kelas'];	
+		$id_kelasVar = $row['id_kelas'];
 	}
 
 	if ($username == "admin" && $password == "admin") {
@@ -28,13 +31,20 @@ if (isset($_POST["login"])) {
 		$_SESSION['username'] = $username;
 		header("location:../../index.php");
 		exit();
-	}else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 7) {
+	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 6 && $id_tahunajaran == 14  ) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
-		header("location:../kelas_1/indexdasboard.php");
+		header("location:../kelas1_ganjil_2023/indexdasboard.php");
 		exit();
-	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 2) {
+	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 6 && $id_tahunajaran == 15  ) {
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['username'] = $username;
+		header("location:../kelas1_genap_2023/indexdasboard.php");
+		exit();
+	} 
+	else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 7) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
@@ -46,12 +56,11 @@ if (isset($_POST["login"])) {
 		$_SESSION['username'] = $username;
 		header("location:../../indexguru.php");
 		exit();
-	}
-	else if ($usernameVar != $username && $passwordVar != $pass) {
-	echo '<script language = "javascript">
+	} else if ($usernameVar != $username && $passwordVar != $pass) {
+		echo '<script language = "javascript">
 		alert ("Username atau Password salah"); document.location="indexlogin.php"; </script>';
-}
-} elseif(isset($_POST["register"])){
+	}
+} elseif (isset($_POST["register"])) {
 
 	$username = $_POST['username'];
 	$password = $_POST['password'];
@@ -62,12 +71,13 @@ if (isset($_POST["login"])) {
 	// $re_password = mysqli_real_escape_string ($conn, $pass);
 
 	if (!empty(trim($username)) && !empty(trim($password)) && !empty(trim($re_password))) {
-		if($password == $re_password){
+		if ($password == $re_password) {
 			$query = "UPDATE tb_guru SET password='$password' WHERE username='$username'";
-			$result = mysqli_query($conn,$query);
+			$result = mysqli_query($conn, $query);
 			echo '<script language = "javascript">
 			alert ("Password Berhasil Diubah"); document.location="indexlogin.php"; </script>';
-		} if($password != $re_password){
+		}
+		if ($password != $re_password) {
 			echo '<script language = "javascript">
 			alert ("Password Tidak Sama"); document.location="indexlogin.php"; </script>';
 		}
@@ -113,7 +123,35 @@ if (isset($_POST["login"])) {
 				</div>
 				<span class="help-text">Minimal 5 karakter</span>
 			</div>
-			
+
+			<div class="form-group">
+				<label for="tahun_ajaran" class="col-sm-2 col-form-label">
+					Tahun Ajaran
+				</label>
+				<div class="col-sm-10">
+					<select name="tahun_ajaran" class="form-select" id="tahun_ajaran" onchange="displayData()">
+						<option value="">-- Pilih Tahun Ajaran --</option>
+						<?php
+						$query = "SELECT * FROM tb_tahunajaran";
+						$sql = mysqli_query($conn, $query);
+						while ($data = mysqli_fetch_assoc($sql)) {
+							echo '<option value="' . $data['tahun_ajaran'] . '" data-info="' . $data['id_tahunajaran'] . '">' . $data['tahun_ajaran'] . '</option>';
+						}
+						?>
+					</select>
+				</div>
+			</div>
+			<div style="display:none;" class="mb-3 row">
+				<label for="id_tahunajaran" class="col-sm-2 col-form-label">
+					NIP
+				</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="id_tahunajaran" id="id_tahunajaran" readonly>
+				</div>
+			</div>
+
+
+
 			<!-- <button type="submit" class="btn-submit" name="login" value="Login">Login</button> -->
 			<input type="submit" class="btn-submit" name="login" value="Login">
 			<a href="#" onclick="switchForm('register', event)">Lupa password?</a>
@@ -151,6 +189,18 @@ if (isset($_POST["login"])) {
 	</div>
 
 	<script src="../../asset/js/scripts.js"></script>
+
+	<script>
+		function displayData() {
+			var selected_nip = document.getElementById("tahun_ajaran");
+			var id_tahunajaran = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info');
+			document.getElementById("id_tahunajaran").value = id_tahunajaran;
+		}
+	</script>
+
+
+
+
 </body>
 
 </html>
