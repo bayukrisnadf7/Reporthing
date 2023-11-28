@@ -30,7 +30,7 @@ function tambah_data($data)
 
     } elseif (mysqli_num_rows($sqlselect) > 0) {
         $_SESSION['eksekusi'] = "Gagal menambahkan data. Nama sudah terdaftar.";
-        header("location: indexsumatif_bi.php");
+        header("location: indexsumatif_ipas.php");
         return false;
 
     }
