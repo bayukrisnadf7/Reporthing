@@ -30,9 +30,9 @@ if (isset($_GET['ubah'])) {
 }
 
 $sql1 = "SELECT nisn,nama_siswa FROM tb_siswa WHERE id_kelas = 6 AND id_tahunajaran = 14";
-$query2 = "SELECT id_mapel, nama_mapel FROM tb_mapel WHERE id_mapel = 6";
+$query2 = "SELECT id_mapel, nama_mapel FROM tb_mapel WHERE id_mapel = 7";
 $query3 = "SELECT id_tahunajaran, tahun_ajaran FROM tb_tahunajaran where id_tahunajaran = 14"; 
-$query4 = "SELECT id_kelas, nama_kelas from tb_kelas WHERE id_kelas = 6";
+$query4 = "SELECT id_kelas, nama_kelas from tb_kelas WHERE id_kelas = 7";
 $sql2 = mysqli_query($conn, $query2);
 $sql3 = mysqli_query($conn, $query3);
 $sql4 = mysqli_query($conn, $query4);

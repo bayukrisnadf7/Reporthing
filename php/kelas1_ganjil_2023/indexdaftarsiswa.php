@@ -175,7 +175,6 @@ $no = 0;
                                             <th scope="col">NISN</th>
                                             <th scope="col">Nama Siswa</th>
                                             <th scope="col">Tahun Ajaran</th>
-                                            <th scope="col">Semester</th>
                                             <th scope="col">No Telepon</th>
                                             <th scope="col">Tanggal Lahir</th>
                                             <!-- <th scope="col">Tahun Ajaran</th> -->
@@ -201,9 +200,6 @@ $no = 0;
                                             </td>
                                             <td>
                                                 <?php echo $result['tahun_ajaran']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['semester']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $result['no_telp']; ?>

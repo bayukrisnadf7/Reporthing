@@ -10,7 +10,7 @@ if (isset($_POST["login"])) {
 	$username = mysqli_real_escape_string($conn, $username);
 	$password = mysqli_real_escape_string($conn, $password);
 
-	
+
 
 	if (!empty(trim($username)) && !empty(trim($password))) {
 
@@ -24,37 +24,35 @@ if (isset($_POST["login"])) {
 		$passwordVar = $row['password'];
 		$id_kelasVar = $row['id_kelas'];
 	}
-
 	if ($username == "admin" && $password == "admin") {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
 		header("location:../../index.php");
 		exit();
-	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 6 && $id_tahunajaran == 14  ) {
+	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 6 && $id_tahunajaran == 14) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
 		header("location:../kelas1_ganjil_2023/indexdasboard.php");
 		exit();
-	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 6 && $id_tahunajaran == 15  ) {
+	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 6 && $id_tahunajaran == 15) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
 		header("location:../kelas1_genap_2023/indexdasboard.php");
 		exit();
-	} 
-	else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 7) {
+	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 7 && $id_tahunajaran == 14) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
-		header("location:../kelas_2/indexdasboard.php");
+		header("location:../kelas2_ganjil_2023/indexdasboard.php");
 		exit();
-	} else if ($usernameVar == $username && $passwordVar == $pass) {
+	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 7 && $id_tahunajaran == 15) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
-		header("location:../../indexguru.php");
+		header("location:../kelas2_genap_2023/indexdasboard.php");
 		exit();
 	} else if ($usernameVar != $username && $passwordVar != $pass) {
 		echo '<script language = "javascript">
@@ -135,7 +133,7 @@ if (isset($_POST["login"])) {
 						$query = "SELECT * FROM tb_tahunajaran";
 						$sql = mysqli_query($conn, $query);
 						while ($data = mysqli_fetch_assoc($sql)) {
-							echo '<option value="' . $data['tahun_ajaran'] . '" data-info="' . $data['id_tahunajaran'] . '">' . $data['tahun_ajaran'] ." - ". $data['semester'] . '</option>';
+							echo '<option value="' . $data['tahun_ajaran'] . '" data-info="' . $data['id_tahunajaran'] . '">' . $data['tahun_ajaran'] . " - " . $data['semester'] . '</option>';
 						}
 						?>
 					</select>
