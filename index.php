@@ -2,10 +2,10 @@
 include 'koneksi.php';
 session_start();
 
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: php/login/indexlogin.php");
-//     exit();
-// }
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: php/login/indexlogin.php");
+    exit();
+}
 
 $result1 = mysqli_query($conn, "SELECT COUNT(*) as total_guru FROM tb_guru");
 $row = mysqli_fetch_assoc($result1);
@@ -158,8 +158,14 @@ $no = 0;
                         <div class="modal-body">
                             <!-- Form untuk mengedit profil -->
                             <form action="editprofile.php" method="post">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Admin</label>
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="img/profile1.png" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
                                 </div>
                             </form>
                         </div>

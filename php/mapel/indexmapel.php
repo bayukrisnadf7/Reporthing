@@ -2,10 +2,10 @@
 include '../../koneksi.php';
 session_start();
 
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: ../login/indexlogin.php");
-//     exit();
-// }
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../login/indexlogin.php");
+    exit();
+}
 
 $query = "SELECT * FROM tb_mapel";
 $sql = mysqli_query($conn, $query);

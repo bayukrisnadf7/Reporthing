@@ -48,13 +48,13 @@ session_start();
                         </li>
                         <li class="sidebar-item">
                             <a href="indexdaftarsiswa.php" class="sidebar-link">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-user pe-2"></i>
                                 Daftar Siswa
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a href="rata_rata/indexnilaisiswa.php" class="sidebar-link">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-book pe-2"></i>
                                 Daftar Nilai Siswa
                             </a>
                         </li>
@@ -131,8 +131,6 @@ session_start();
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
-                                    data-bs-target="#changePasswordModal">Ganti Password</a>
                                 <a href="logout.php" class="dropdown-item"
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
@@ -203,94 +201,175 @@ session_start();
                     </div>
                     <div class="row">
                         <style>
-                            .custom-card {
+                            .custom-card-blue {
                                 position: relative;
                                 overflow: hidden;
                                 border: none;
                                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-                                width: 250px;
-                                /* Atur lebar card sesuai keinginan Anda */
-                                height: 80px;
-                                /* Atur tinggi card sesuai keinginan Anda */
+                                width: 100%;
+                                height: 90px;
                                 text-indent: 5px;
-                                line-height: 20px;
+                                line-height: 27px;
+                                margin-bottom: 10px;
+                                background-color: #67729D;
+                                /* Blue background */
+                                color: #FFFFFF;
+                                /* White text color */
+                            }
+                            
+                            .custom-card-green {
+                                position: relative;
+                                overflow: hidden;
+                                border: none;
+                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                height: 90px;
+                                text-indent: 5px;
+                                line-height: 27px;
+                                margin-bottom: 10px;
+                                background-color: #28a745;
+                                /* Blue background */
+                                color: #FFFFFF;
+                                /* White text color */
+                            }
+                            .custom-card-yellow {
+                                position: relative;
+                                overflow: hidden;
+                                border: none;
+                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                height: 90px;
+                                text-indent: 5px;
+                                line-height: 27px;
+                                margin-bottom: 10px;
+                                background-color: #ffc107;
+                                /* Blue background */
+                                color: #FFFFFF;
+                                /* White text color */
+                            }
+                            .custom-card-red {
+                                position: relative;
+                                overflow: hidden;
+                                border: none;
+                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                height: 90px;
+                                text-indent: 5px;
+                                line-height: 27px;
+                                margin-bottom: 10px;
+                                background-color: #BE3144;
+                                /* Blue background */
+                                color: #FFFFFF;
+                                /* White text color */
                             }
 
-                            .custom-bg-danger,
-                            .custom-bg-primary,
-                            .custom-bg-warning,
-                            .custom-bg-success {
+                            .custom-bg-danger{
+                                /* Updated styles for the background color divs */
                                 position: absolute;
                                 top: 0;
                                 left: 0;
                                 bottom: 0;
                                 width: 3%;
+                                background-color: #BE3144;
+                                /* Blue background */
                             }
-
-                            .custom-bg-danger {
-                                background-color: #dc3545;
-                            }
-
                             .custom-bg-primary {
-                                background-color: #0d6efd;
+                                /* Updated styles for the background color divs */
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                width: 3%;
+                                background-color: #67729D;
+                                /* Blue background */
                             }
-
                             .custom-bg-warning {
+                                /* Updated styles for the background color divs */
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                width: 3%;
                                 background-color: #ffc107;
+                                /* Blue background */
+                            }
+                            .custom-bg-success {
+                                /* Updated styles for the background color divs */
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                width: 3%;
+                                background-color: #28a745;
+                                /* Blue background */
                             }
 
-                            .custom-bg-success {
-                                background-color: #198754;
+                            .fa-user-group,
+                            .fa-book-open,
+                            .fa-users,
+                            .fa-house {
+                                /* Updated styles for the icons */
+                                position: absolute;
+                                top: 50%;
+                                right: 10px;
+                                transform: translateY(-50%);
+                                color: #F1F6F9;
+                                /* White icon color */
                             }
 
                             .card-title {
                                 font-size: 20px;
+                                font-weight: bold;
                             }
                         </style>
 
-                        <div class="col-12 col-md-3 d-flex">
-                            <div class="card flex-fill border-0 custom-card">
+<div class="col-12 col-md-6 col-lg-3">
+                            <div class="card flex-fill border-0 custom-card-blue">
                                 <div class="card-body position-relative">
-                                    <i class="fas fa-user fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">10</p>
-                                    <h6 class="card-text" style="color: #0d6efd">Pengguna Guru</h6>
+                                    <i class="fas fa-house fa-3x"></i>
+                                    <p class="card-title">
+                                        100
+                                    </p>
+                                    <h6 class="card-text">Jumlah Kelas</h6>
                                 </div>
                                 <div class="custom-bg-primary"></div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 d-flex">
-                            <div class="card flex-fill border-0 custom-card">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="card flex-fill border-0 custom-card-green">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-group fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">10</p>
-                                    <h6 class="card-text" style="color: #198754">Pengguna Siswa</h6>
+                                    <i class="fa-solid fa-book-open  fa-3x"></i>
+                                    <p class="card-title">
+                                        100
+                                    </p>
+                                    <h6 class="card-text">Jumlah Mapel</h6>
                                 </div>
                                 <div class="custom-bg-success"></div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 d-flex">
-                            <div class="card flex-fill border-0 custom-card">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="card flex-fill border-0 custom-card-yellow">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-tie fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">10</p>
-                                    <h6 class="card-text" style="color: #ffc107">Jumlah Guru</h6>
+                                    <i class="fa-solid fa-users fa-3x"></i>
+                                    <p class="card-title">
+                                        100
+                                    </p>
+                                    <h6 class="card-text">Jumlah Guru</h6>
                                 </div>
                                 <div class="custom-bg-warning"></div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-3 d-flex">
-                            <div class="card flex-fill border-0 custom-card">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="card flex-fill border-0 custom-card-red">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-graduate fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">10</p>
-                                    <h6 class="card-text" style="color: #dc3545">Jumlah Siswa</h6>
+                                    <i class="fa-solid fa-user-group fa-3x"></i>
+                                    <p class="card-title">
+                                        100
+                                    </p>
+                                    <h6 class="card-text">Jumlah Siswa</h6>
                                 </div>
                                 <div class="custom-bg-danger"></div>
                             </div>

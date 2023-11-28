@@ -47,13 +47,13 @@ $no = 0;
                         </li>
                         <li class="sidebar-item">
                             <a href="indexdaftarsiswa.php" class="sidebar-link active">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-user pe-2"></i>
                                 Daftar Siswa
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a href="rata_rata/indexnilaisiswa.php" class="sidebar-link">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-book pe-2"></i>
                                 Daftar Nilai Siswa
                             </a>
                         </li>
@@ -159,8 +159,8 @@ $no = 0;
                     ?>
                 </div>
 
-                 <!-- Table Element -->
-                 <div class="card border-0">
+                <!-- Table Element -->
+                <div class="card border-0">
                         <div class="card-header" style="background-color: #FFFFFF;">
                             <a href="kelolakelas.php" type="button" class="btn btn-primary btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Data
