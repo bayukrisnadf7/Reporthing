@@ -2,10 +2,10 @@
 include '../../koneksi.php';
 session_start();
 
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: ../login/indexlogin.php");
-//     exit();
-// }
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../login/indexlogin.php");
+    exit();
+}
 
 $query = "SELECT tb_siswa.nisn, tb_siswa.nama_siswa, tb_kelas.nama_kelas, tb_tahunajaran.tahun_ajaran, tb_tahunajaran.semester, tb_siswa.no_telp, tb_siswa.tanggal_lahir, tb_siswa.username, tb_siswa.password, tb_siswa.foto_siswa FROM tb_siswa JOIN tb_kelas on tb_siswa.id_kelas = tb_kelas.id_kelas JOIN tb_tahunajaran on tb_siswa.id_tahunajaran = tb_tahunajaran.id_tahunajaran;";
 $sql = mysqli_query($conn, $query);

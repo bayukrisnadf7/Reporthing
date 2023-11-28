@@ -48,13 +48,13 @@ $no = 0;
                         </li>
                         <li class="sidebar-item">
                             <a href="../indexdaftarsiswa.php" class="sidebar-link">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-user pe-2"></i>
                                 Daftar Siswa
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a href="indexnilaisiswa.php" class="sidebar-link active">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-book pe-2"></i>
                                 Daftar Nilai Siswa
                             </a>
                         </li>

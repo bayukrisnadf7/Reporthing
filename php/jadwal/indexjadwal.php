@@ -2,10 +2,10 @@
 include '../../koneksi.php';
 session_start();
 
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: ../login/indexlogin.php");
-//     exit();
-// }
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../login/indexlogin.php");
+    exit();
+}
 
 $query = "SELECT tb_jadwal.id_jadwal, tb_guru.nama_guru, tb_kelas.nama_kelas, tb_mapel.nama_mapel, tb_jadwal.hari, tb_jadwal.jam_mulai, tb_jadwal.jam_selesai
             FROM tb_jadwal JOIN tb_guru on tb_jadwal.nip = tb_guru.nip
