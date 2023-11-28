@@ -159,3 +159,21 @@ iframe {
   width: 13000px;
   height: 500px;
 }
+.container .row img{
+
+  width: 60px;
+}
+.container .row h5{
+  margin-top: 15px;
+}
+.navbar-toggler{
+  margin-left: 0px;
+}
+
+/* .nav-item button :hover{
+  background-color: #fff !important;
+  
+}
+.nav-item button a{
+  text-decoration: none;
+} */

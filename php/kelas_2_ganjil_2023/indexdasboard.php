@@ -6,6 +6,28 @@ session_start();
 //     header("Location: php/login/indexlogin.php");
 //     exit();
 // }
+
+$result1 = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa where id_kelas = 7");
+$row = mysqli_fetch_assoc($result1);
+$total_siswa = $row['total_siswa'];
+
+$result2 = mysqli_query($conn, "SELECT nama_guru FROM tb_guru where id_kelas = 7");
+$row = mysqli_fetch_assoc($result2);
+$nama_guru = $row['nama_guru'];
+
+$result3 = mysqli_query($conn, "SELECT nama_kelas FROM tb_kelas");
+$row = mysqli_fetch_assoc($result3);
+$nama_kelas = $row['nama_kelas'];
+
+$result4 = mysqli_query($conn, "SELECT * FROM tb_tahunajaran where id_tahunajaran = 14");
+$row = mysqli_fetch_assoc($result4);
+$semester = $row['semester'];
+$tahun_ajaran = $row['tahun_ajaran'];
+
+
+$query = "SELECT tb_siswa.nisn, tb_siswa.nama_siswa, tb_total_nilai.rata_rata from tb_total_nilai join tb_siswa on tb_total_nilai.nisn = tb_siswa.nisn where tb_total_nilai.id_tahunajaran = 14 and tb_total_nilai.id_kelas = 7 order by rata_rata desc;";
+$sql = mysqli_query($conn, $query);
+$no = 0;
 ?>
 
 <!DOCTYPE html>
@@ -247,14 +269,15 @@ session_start();
                                 font-size: 20px;
                             }
                         </style>
+                     
 
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body position-relative">
                                     <i class="fas fa-user fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">10</p>
-                                    <h6 class="card-text" style="color: #0d6efd">Pengguna Guru</h6>
+                                    <p class="card-title"><?php echo $nama_guru ?></p>
+                                    <h6 class="card-text" style="color: #0d6efd">Wali Kelas</h6>
                                 </div>
                                 <div class="custom-bg-primary"></div>
                             </div>
@@ -265,8 +288,8 @@ session_start();
                                 <div class="card-body">
                                     <i class="fa-solid fa-user-group fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">10</p>
-                                    <h6 class="card-text" style="color: #198754">Pengguna Siswa</h6>
+                                    <p class="card-title"><?php echo $total_siswa ?></p>
+                                    <h6 class="card-text" style="color: #198754">Jumlah Siswa</h6>
                                 </div>
                                 <div class="custom-bg-success"></div>
                             </div>
@@ -275,10 +298,10 @@ session_start();
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-tie fa-3x"
+                                <i class="fa-solid fa-users fa-3x"
                                         style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">10</p>
-                                    <h6 class="card-text" style="color: #ffc107">Jumlah Guru</h6>
+                                    <p class="card-title"><?php echo $nama_kelas ?></p>
+                                    <h6 class="card-text" style="color: #ffc107">Kelas</h6>
                                 </div>
                                 <div class="custom-bg-warning"></div>
                             </div>
@@ -287,59 +310,58 @@ session_start();
                         <div class="col-12 col-md-3 d-flex">
                             <div class="card flex-fill border-0 custom-card">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-graduate fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
-                                    <p class="card-title">10</p>
-                                    <h6 class="card-text" style="color: #dc3545">Jumlah Siswa</h6>
+                                    <!-- <i class="fa-solid fa-user-graduate fa-3x"
+                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i> -->
+                                    <p class="card-title"><?php echo $tahun_ajaran."\n".$semester ?></p>
+                                    <h6 class="card-text" style="color: #dc3545">Tahun Ajaran & Semester</h6>
                                 </div>
                                 <div class="custom-bg-danger"></div>
                             </div>
                         </div>
+
+                        
                     </div>
 
-                    <!-- Table Element -->
-                    <!-- <div class="card border-0">
-                        <div class="card-header">
-                            <h5 class="card-tittle">Basic Table</h5>
-                            <h6 class="card-subtitle text-muted">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-                                minima ullam eum in adipisci placeat magnam reprehenderit
-                                odio, expedita incidunt tempora ab modi dolorum magni deserunt
-                                ducimus soluta nisi? Aliquid!
-                            </h6>
+                       <!-- Table Element -->
+                       <div class="card flex-fill card border-0 mt-2">
+                        <div class="card-header mt-2" style="background-color: #FFFFFF;">
+                            <h6>Rangking Siswa</h6>
                         </div>
                         <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="dt" class="table table-hover">
+                                    <thead class="custom-header">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">NISN</th>
+                                            <th scope="col">Nama Siswa</th>
+                                            <th scope="col">Rata Rata</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($result = mysqli_fetch_assoc($sql)) {
+                                            ?>
+                                            <td>
+                                                <?php echo ++$no; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['nisn']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['nama_siswa']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $result['rata_rata']; ?>
+                                            </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </main>
 

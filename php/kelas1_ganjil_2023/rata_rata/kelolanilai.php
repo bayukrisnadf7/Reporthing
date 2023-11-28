@@ -239,7 +239,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="ipas" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();" id="ipas"
-                                                placeholder="Sumatif" value="<?php echo $ipas ?>">
+                                                placeholder="Sumatif" value="<?php echo $ipas ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -249,7 +249,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="mtk" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();" id="mtk"
-                                                placeholder="Sumatif Akhir" value="<?php echo $mtk ?>">
+                                                placeholder="Sumatif Akhir" value="<?php echo $mtk ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -260,7 +260,7 @@ $result1 = $conn->query($sql1);
                                             <input required type="text" name="bahasa_indonesia" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();"
                                                 id="bahasa_indonesia" placeholder="Sumatif Akhir"
-                                                value="<?php echo $bahasa_indonesia ?>">
+                                                value="<?php echo $bahasa_indonesia ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -270,7 +270,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="seni_musik" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();" id="seni_musik"
-                                                placeholder="Sumatif Akhir" value="<?php echo $seni_musik ?>">
+                                                placeholder="Sumatif Akhir" value="<?php echo $seni_musik ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -280,7 +280,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="seni_tari" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();" id="seni_tari"
-                                                placeholder="Sumatif Akhir" value="<?php echo $seni_tari ?>">
+                                                placeholder="Sumatif Akhir" value="<?php echo $seni_tari ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -290,7 +290,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="seni_rupa" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();" id="seni_rupa"
-                                                placeholder="Sumatif Akhir" value="<?php echo $seni_rupa ?>">
+                                                placeholder="Sumatif Akhir" value="<?php echo $seni_rupa ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -300,7 +300,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="seni_teater" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();" id="seni_teater"
-                                                placeholder="Sumatif Akhir" value="<?php echo $seni_teater ?>">
+                                                placeholder="Sumatif Akhir" value="<?php echo $seni_teater ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -310,7 +310,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="pjok" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();" id="pjok"
-                                                placeholder="Sumatif Akhir" value="<?php echo $pjok ?>">
+                                                placeholder="Sumatif Akhir" value="<?php echo $pjok ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -320,7 +320,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="bahasa_inggris" class="form-control"
                                                 onfocus="startHitungan();" onblur="stopHitungan();" id="bahasa_inggris"
-                                                placeholder="Sumatif Akhir" value="<?php echo $bahasa_inggris ?>">
+                                                placeholder="Sumatif Akhir" value="<?php echo $bahasa_inggris ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -330,7 +330,7 @@ $result1 = $conn->query($sql1);
                                         <div class="col-sm-10">
                                             <input required type="text" name="rata_rata" class="form-control"
                                                 id="rata_rata" placeholder="Nilai Rapor"
-                                                value="<?php echo $rata_rata ?>">
+                                                value="<?php echo $rata_rata ?>" readonly>
                                         </div>
                                     </div>
                             </div>
@@ -392,9 +392,15 @@ $result1 = $conn->query($sql1);
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="../../asset/js/script.js"></script>
+    
     <script>
+
+        window.onload =function(){
+            startHitungan();
+        };
+
         function startHitungan() {
-            interval = setInterval("calc()", 1);;
+            interval = setInterval(calc, 1);;
         } function calc() {
             one = document.autosumForm.ipas.value;
             two = document.autosumForm.mtk.value;
