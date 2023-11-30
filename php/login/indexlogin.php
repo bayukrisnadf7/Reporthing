@@ -10,9 +10,30 @@ if (isset($_POST["login"])) {
 	$username = mysqli_real_escape_string($conn, $username);
 	$password = mysqli_real_escape_string($conn, $password);
 
-
+	if ($username == "admin" && $password == "admin" && $id_tahunajaran == null) {
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['username'] = $username;
+		header("location:../../index.php");
+		exit();
+	} elseif ($username == "admin" && $password == "admin" && $id_tahunajaran == 14) {
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['username'] = $username;
+		header("location:indexlogin.php");
+		exit();
+	} elseif ($username == "admin" && $password == "admin" && $id_tahunajaran == 15) {
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['username'] = $username;
+		header("location:indexlogin.php");
+		exit();
+	}
 
 	if (!empty(trim($username)) && !empty(trim($password))) {
+		$username = $_POST["txt_username"];
+		$password = $_POST["txt_password"];
+		$id_tahunajaran = $_POST["id_tahunajaran"];
 
 		//select data sesuai database
 		$query = "SELECT * FROM tb_guru WHERE username='$username' AND password='$password'";
@@ -23,14 +44,8 @@ if (isset($_POST["login"])) {
 		$usernameVar = $row['username'];
 		$passwordVar = $row['password'];
 		$id_kelasVar = $row['id_kelas'];
-	}
-	if ($username == "admin" && $password == "admin") {
-		session_start();
-		$_SESSION['loggedin'] = true;
-		$_SESSION['username'] = $username;
-		header("location:../../index.php");
-		exit();
-	} else if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 6 && $id_tahunajaran == 14) {
+
+	} if ($usernameVar == $username && $passwordVar == $password && $id_kelasVar == 6 && $id_tahunajaran == 14) {
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
@@ -192,8 +207,7 @@ if (isset($_POST["login"])) {
 		function displayData() {
 			var selected_nip = document.getElementById("tahun_ajaran");
 			var id_tahunajaran = selected_nip.options[selected_nip.selectedIndex].getAttribute('data-info');
-			document.getElementById("id_tahunajaran").value = id_tahunajaran;
-		}
+			document.getElementById("id_tahunajaran").value = id_tahunajaran;		}
 	</script>
 
 

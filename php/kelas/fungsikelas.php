@@ -52,7 +52,7 @@ function hapus_data($data)
 
     // Cek relasi foreign key
     if (cekRelasiForeign($id_kelas)) {
-        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena terdapat relasi dengan data lain.";
+        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena kelas yang ingin dihapus terdaftar pada siswa, guru & jadwal. Jika ingin menghapus, ubah kelas yang terdaftar pada siswa, guru & jadwal terlebih dahulu.";
         header("location: indexkelas.php");
         return false;
     }

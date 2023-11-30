@@ -53,6 +53,9 @@ function ubah_data($data)
     $query = "UPDATE tb_total_nilai SET pjok = '$nilai_rapor' WHERE nisn='$nisn' AND id_tahunajaran = 15 AND id_kelas = 6;";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
+    $query = "UPDATE tb_total_nilai SET rata_rata = 0 WHERE nisn='$nisn' AND id_tahunajaran = 15 AND id_kelas = 6;";
+    $sql = mysqli_query($GLOBALS['conn'], $query);
+
     return true;
 }
 

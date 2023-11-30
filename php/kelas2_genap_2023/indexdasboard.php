@@ -15,7 +15,7 @@ $result2 = mysqli_query($conn, "SELECT nama_guru FROM tb_guru where id_kelas = 7
 $row = mysqli_fetch_assoc($result2);
 $nama_guru = $row['nama_guru'];
 
-$result3 = mysqli_query($conn, "SELECT nama_kelas FROM tb_kelas");
+$result3 = mysqli_query($conn, "SELECT nama_kelas FROM tb_kelas where id_kelas = 7");
 $row = mysqli_fetch_assoc($result3);
 $nama_kelas = $row['nama_kelas'];
 

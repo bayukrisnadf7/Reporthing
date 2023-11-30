@@ -217,12 +217,12 @@ $no = 0;
                                             ?>" type="button" class="btn btn-warning btn-sm">
                                                 <i class="fa fa-pen"></i>
                                             </a>
-                                            <a href="proses_ipas.php?hapus=<?php
+                                            <!-- <a href="proses_ipas.php?hapus=<?php
                                             echo $result['nisn'];
                                             ?>" type="button" class="btn btn-danger btn-sm"
                                                 onClick="return confirm('Ingin menghapus data tersebut?')">
                                                 <i class="fa fa-trash"></i>
-                                            </a>
+                                            </a> -->
                                         </td>
                                         </tr>
                                         <?php

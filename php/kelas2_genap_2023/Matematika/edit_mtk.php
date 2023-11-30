@@ -269,7 +269,7 @@ $result1 = $conn->query($sql1);
                                             <div class="col-sm-10">
                                                 <input required type="text" name="nilai_rapor" class="form-control"
                                                     id="nilai_rapor" placeholder="Nilai Rapor"
-                                                    value="<?php echo $rapor ?>">
+                                                    value="<?php echo $rapor ?>" readonly>
                                             </div>
                                         </div>
                                     </div>

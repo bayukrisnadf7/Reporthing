@@ -22,10 +22,19 @@ $no = 0;
     <script src="../../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../../asset/fontawesome/css/all.min.css">
+    <!-- Data Tables-->
+    <link rel="stylesheet" type="text/css" href="../../../asset/datatables/datatables.css">
+    <script type="text/javascript" src="../../../asset/datatables/datatables.js"></script>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../../asset/css/style.css" />
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dt').DataTable();
+    });
+</script>
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
@@ -36,7 +45,7 @@ $no = 0;
             <div class="h-100">
                 <div class="sidebar-logo">
                     <a href="#"><img src="../../../img/logo_putih.png" alt="homepage" class="dark-logo"
-                        style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
+                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
                     <ul class="sidebar-nav">
@@ -65,50 +74,50 @@ $no = 0;
                             </a>
                         </li> -->
                         <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
-                            Nilai Sumatif
-                        </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="../IPAS/indexsumatif_ipas.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>IPAS</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../Matematika/indexsumatif_mtk.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Matematika</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../Bahasa_Indonesia/indexsumatif_bi.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Bahasa Indonesia</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../Seni_Musik/indexsumatif_sm.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Seni Musik</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../Seni_Tari/indexsumatif_st.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Seni Tari</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../Seni_Rupa/indexsumatif_sr.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Seni Rupa</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../Seni_Teater/indexsumatif_st2.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Seni Teater</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../PJOK/indexsumatif_pjok.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>PJOK</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../Bahasa_Inggris/indexsumatif_big.php" class="sidebar-link">
-                                <i class="fa-regular fa-circle pe-2"></i>Bahasa Inggris</a>
-                            </li>
-                        </ul>
-                    </li>
+                            <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-list pe-2"></i>
+                                Nilai Sumatif
+                            </a>
+                            <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                <li class="sidebar-item">
+                                    <a href="../IPAS/indexsumatif_ipas.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>IPAS</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Matematika/indexsumatif_mtk.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Matematika</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Bahasa_Indonesia/indexsumatif_bi.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Bahasa Indonesia</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Seni_Musik/indexsumatif_sm.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Seni Musik</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Seni_Tari/indexsumatif_st.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Seni Tari</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Seni_Rupa/indexsumatif_sr.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Seni Rupa</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Seni_Teater/indexsumatif_st2.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Seni Teater</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../PJOK/indexsumatif_pjok.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>PJOK</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Bahasa_Inggris/indexsumatif_big.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Bahasa Inggris</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
@@ -126,18 +135,48 @@ $no = 0;
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>   
-                            </a>    
+                                <img src="../../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle"
+                                    alt="" />
+                                <i class="fas fa-caret-down"></i>
+                            </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item">Setting</a>
-                                <a href="../login/indexlogin.php" class="dropdown-item">Logout</a>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#editProfileModal">Profile</a>
+                                <a href="logout.php" class="dropdown-item"
+                                    onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+
+            <!-- Modal untuk Profile -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form untuk mengedit profil -->
+                            <form action="editprofile.php" method="post">
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="../../../img/1975551339999112004.jpg" alt="Profile Picture"
+                                        class="rounded-circle" width="100" height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
@@ -160,94 +199,94 @@ $no = 0;
                     ?>
                 </div>
 
-                 <!-- Table Element -->
-                 <div class="card border-0">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="dt" class="table table-hover">
-                                    <thead class="custom-header">
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">NISN</th>
-                                            <th scope="col">Nama Siswa</th>
-                                            <th scope="col">IPAS</th>
-                                            <th scope="col">Matematika</th>
-                                            <th scope="col">Bahasa Indonesia</th>
-                                            <th scope="col">Seni Musik</th>
-                                            <th scope="col">Seni Tari</th>
-                                            <th scope="col">Seni Rupa</th>
-                                            <th scope="col">Seni Teater</th>
-                                            <th scope="col">PJOK</th>
-                                            <th scope="col">Bahasa Inggris</th>
-                                            <th scope="col">Rata Rata</th>
-                                            <th scope="col">Aksi</th>
-                                            <!-- <th scope="col">Tahun Ajaran</th> -->
-                                            <!-- <th scope="col">Aksi</th> -->
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        while ($result = mysqli_fetch_assoc($sql)) {
-                                            // Hitung jumlah siswa per kelas
-                                            // $kelas_id = $result['id_kelas'];
-                                            // $result_siswa = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa WHERE id_kelas = $kelas_id");
-                                            // $row_siswa = mysqli_fetch_assoc($result_siswa);
-                                            // $total_siswa = $row_siswa['total_siswa'];
-                                            ?>
-                                            <td>
-                                                <?php echo ++$no; ?>.
-                                            </td>
-                                            <td>
-                                                <?php echo $result['nisn']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['nama_siswa']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['ipas']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['mtk']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['bahasa_indonesia']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['seni_musik']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['seni_tari']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['seni_rupa']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['seni_teater']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['pjok']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['bahasa_inggris']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['rata_rata']; ?>
-                                            </td>
-                                            <!-- Button UBAH dan HAPUS-->
-                                            <td>
-                                                <a href="kelolanilai.php?ubah=<?php echo $result['nisn']; ?>"
-                                                    type="button" class="btn btn-warning btn-sm">
-                                                    <i class="fa fa-pen"></i>
-                                                </a>
-                                            </td>
-                                            </tr>
-                                            <?php
-                                        }
+                <!-- Table Element -->
+                <div class="card border-0">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="dt" class="table table-hover">
+                                <thead class="custom-header">
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">NISN</th>
+                                        <th scope="col">Nama Siswa</th>
+                                        <th scope="col">IPAS</th>
+                                        <th scope="col">Matematika</th>
+                                        <th scope="col">Bahasa Indonesia</th>
+                                        <th scope="col">Seni Musik</th>
+                                        <th scope="col">Seni Tari</th>
+                                        <th scope="col">Seni Rupa</th>
+                                        <th scope="col">Seni Teater</th>
+                                        <th scope="col">PJOK</th>
+                                        <th scope="col">Bahasa Inggris</th>
+                                        <th scope="col">Rata Rata</th>
+                                        <th scope="col">Aksi</th>
+                                        <!-- <th scope="col">Tahun Ajaran</th> -->
+                                        <!-- <th scope="col">Aksi</th> -->
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($result = mysqli_fetch_assoc($sql)) {
+                                        // Hitung jumlah siswa per kelas
+                                        // $kelas_id = $result['id_kelas'];
+                                        // $result_siswa = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa WHERE id_kelas = $kelas_id");
+                                        // $row_siswa = mysqli_fetch_assoc($result_siswa);
+                                        // $total_siswa = $row_siswa['total_siswa'];
                                         ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                        <td>
+                                            <?php echo ++$no; ?>.
+                                        </td>
+                                        <td>
+                                            <?php echo $result['nisn']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['nama_siswa']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['ipas']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['mtk']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['bahasa_indonesia']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['seni_musik']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['seni_tari']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['seni_rupa']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['seni_teater']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['pjok']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['bahasa_inggris']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $result['rata_rata']; ?>
+                                        </td>
+                                        <!-- Button UBAH dan HAPUS-->
+                                        <td>
+                                            <a href="kelolanilai.php?ubah=<?php echo $result['nisn']; ?>" type="button"
+                                                class="btn btn-warning btn-sm">
+                                                <i class="fa fa-pen"></i>
+                                            </a>
+                                        </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>  
+                    </div>
+                </div>
             </main>
 
         </div>
@@ -255,9 +294,9 @@ $no = 0;
 
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="../../asset/js/script.js"></script>
+    <script src="../../../asset/js/script.js"></script>
 
-  
+
 </body>
 
 </html>

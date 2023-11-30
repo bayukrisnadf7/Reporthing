@@ -52,7 +52,7 @@ function hapus_data($data)
 
     // Cek relasi foreign key
     if (cekRelasiForeign($id_mapel)) {
-        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena terdapat relasi dengan data lain.";
+        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena mata pelajaran yang ingin dihapus terdaftar pada penilaian & jadwal. Jika ingin menghapus, ubah mata pelajaran yang terdaftar pada penilaian & jadwal terlebih dahulu.";
         header("location: indexmapel.php");
         return false;
     }

@@ -2,10 +2,10 @@
 include '../../koneksi.php';
 session_start();
 
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: php/login/indexlogin.php");
-//     exit();
-// }
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../../php/login/indexlogin.php");
+    exit();
+}
 
 $result1 = mysqli_query($conn, "SELECT COUNT(*) as total_siswa FROM tb_siswa where id_kelas = 6");
 $row = mysqli_fetch_assoc($result1);
@@ -44,10 +44,20 @@ $no = 0;
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
+    <!-- Data Tables-->
+    <link rel="stylesheet" type="text/css" href="../../asset/datatables/datatables.css">
+    <script type="text/javascript" src="../../asset/datatables/datatables.js"></script>
+
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dt').DataTable();
+    });
+</script>
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
@@ -80,12 +90,6 @@ $no = 0;
                                 Daftar Nilai Siswa
                             </a>
                         </li>
-                        <!-- <li class="sidebar-item">
-                            <a href="indexsumatif.php" class="sidebar-link">
-                                <i class="fa-solid fa-chalkboard pe-2"></i>
-                                Nilai Sumatif
-                            </a>
-                        </li> -->
                         <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
                             aria-expanded="false">
@@ -148,51 +152,19 @@ $no = 0;
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
+                                <img src="../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle" alt="" />
                                 <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Profile</a>
-                                <a href="logout.php" class="dropdown-item"
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#editProfileModal">Profile</a>
+                                <a href="../../logout.php" class="dropdown-item"
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
-            <!-- Modal for Change Password -->
-            <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ganti Password</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Form untuk mengganti password -->
-                            <form action="changepassword.php" method="post">
-                                <div class="mb-3">
-                                    <label for="currentPassword" class="form-label">Current Password</label>
-                                    <input type="password" class="form-control" id="currentPassword"
-                                        name="currentPassword" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="newPassword" class="form-label">New Password</label>
-                                    <input type="password" class="form-control" id="newPassword" name="newPassword"
-                                        required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                                    <input type="password" class="form-control" id="confirmPassword"
-                                        name="confirmPassword" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Modal untuk Profile -->
             <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -206,8 +178,14 @@ $no = 0;
                         <div class="modal-body">
                             <!-- Form untuk mengedit profil -->
                             <form action="editprofile.php" method="post">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Guru</label>
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="../../img/1975551339999112004.jpg" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
                                 </div>
                             </form>
                         </div>
@@ -329,7 +307,7 @@ $no = 0;
                             .fa-user-group,
                             .fa-book-open,
                             .fa-users,
-                            .fa-house {
+                            .fa-user-tie {
                                 /* Updated styles for the icons */
                                 position: absolute;
                                 top: 50%;
@@ -344,15 +322,13 @@ $no = 0;
                                 font-weight: bold;
                             }
                         </style>
-                     
 
 <div class="col-12 col-md-6 col-lg-3">
                             <div class="card flex-fill border-0 custom-card-blue">
                                 <div class="card-body position-relative">
-                                    <i class="fas fa-user fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
+                                    <i class="fas fa-user-tie fa-3x"></i>
                                     <p class="card-title"><?php echo $nama_guru ?></p>
-                                    <h6 class="card-text" style="color: #0d6efd">Wali Kelas</h6>
+                                    <h6 class="card-text" style="color: #fff">Wali Kelas</h6>
                                 </div>
                                 <div class="custom-bg-primary"></div>
                             </div>
@@ -361,10 +337,9 @@ $no = 0;
                         <div class="col-12 col-md-6 col-lg-3">
                             <div class="card flex-fill border-0 custom-card-green">
                                 <div class="card-body">
-                                    <i class="fa-solid fa-user-group fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
+                                    <i class="fa-solid fa-user-group fa-3x"></i>
                                     <p class="card-title"><?php echo $total_siswa ?></p>
-                                    <h6 class="card-text" style="color: #198754">Jumlah Siswa</h6>
+                                    <h6 class="card-text" style="color: #fff">Jumlah Siswa</h6>
                                 </div>
                                 <div class="custom-bg-success"></div>
                             </div>
@@ -373,10 +348,9 @@ $no = 0;
                         <div class="col-12 col-md-6 col-lg-3">
                             <div class="card flex-fill border-0 custom-card-yellow">
                                 <div class="card-body">
-                                <i class="fa-solid fa-users fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i>
+                                <i class="fa-solid fa-users fa-3x"></i>
                                     <p class="card-title"><?php echo $nama_kelas ?></p>
-                                    <h6 class="card-text" style="color: #ffc107">Kelas</h6>
+                                    <h6 class="card-text" style="color: #fff">Kelas</h6>
                                 </div>
                                 <div class="custom-bg-warning"></div>
                             </div>
@@ -385,10 +359,9 @@ $no = 0;
                         <div class="col-12 col-md-6 col-lg-3">
                             <div class="card flex-fill border-0 custom-card-red">
                                 <div class="card-body">
-                                    <!-- <i class="fa-solid fa-user-graduate fa-3x"
-                                        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #D0D4CA"></i> -->
+                                <i class="fa-solid fa-book-open fa-3x"></i>
                                     <p class="card-title"><?php echo $tahun_ajaran."\n".$semester ?></p>
-                                    <h6 class="card-text" style="color: #dc3545">Tahun Ajaran & Semester</h6>
+                                    <h6 class="card-text" style="color: #fff">Tahun Ajaran</h6>
                                 </div>
                                 <div class="custom-bg-danger"></div>
                             </div>
@@ -465,7 +438,7 @@ $no = 0;
         </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="asset/js/script.js"></script>
+    <script src="../../asset/js/script.js"></script>
 </body>
 
 </html>

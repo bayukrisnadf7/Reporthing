@@ -10,6 +10,7 @@ function tambah_data($data)
     $id_mapel = $data['id_mapel'];
     $id_tahunajaran = $data['id_tahunajaran'];
     $id_kelas = $data['id_kelas'];
+    $id = $data['id'];
 
 
     $sqlselect = mysqli_query($GLOBALS['conn'], "SELECT * FROM tb_nilai WHERE nisn = '$nisn' AND id_tahunajaran = '$id_tahunajaran'  AND id_mapel = '$id_mapel' AND id_kelas = '$id_kelas'");
@@ -18,6 +19,9 @@ function tambah_data($data)
     if (mysqli_num_rows($sqlselect) === 0) {
 
         $query = "INSERT INTO tb_nilai VALUES('$sumatif', '$sumatif_akhir', '$nilai_rapor','$nisn','$id_mapel', '$id_tahunajaran', '$id_kelas')";
+        $sql = mysqli_query($GLOBALS['conn'], $query);
+
+        $query = "INSERT INTO tb_total_nilai (nisn, id_tahunajaran, id_kelas) VALUES('$nisn','$id_tahunajaran','$id_kelas')";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         $queryShow = "SELECT * FROM tb_total_nilai WHERE nisn = '$nisn' AND id_tahunajaran = 14;";
@@ -58,13 +62,17 @@ function ubah_data($data)
     $query = "UPDATE tb_total_nilai SET ipas = '$nilai_rapor' WHERE nisn='$nisn' AND id_tahunajaran = 14 AND id_kelas = 6;";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
+    $query = "UPDATE tb_total_nilai SET rata_rata = 0 WHERE nisn='$nisn' AND id_tahunajaran = 14 AND id_kelas = 6;";
+    $sql = mysqli_query($GLOBALS['conn'], $query);
+
     return true;
 }
 
 function hapus_data($data)
 {
     $nisn = $data['hapus'];
-
+    $id_tahunajaran = $data['id_tahunajaran'];
+    $id_kelas = $data['id_kelas'];
 
     $query = "DELETE FROM tb_nilai WHERE nisn = '$nisn' AND id_mapel = 1 AND id_tahunajaran = 14 AND id_kelas = 6;";
     $sql = mysqli_query($GLOBALS['conn'], $query);
@@ -75,8 +83,6 @@ function hapus_data($data)
 
     $query = "UPDATE tb_total_nilai SET ipas = 0 WHERE nisn='$nisn' AND id_tahunajaran = 14 AND id_kelas = 6;";
     $sql = mysqli_query($GLOBALS['conn'], $query);
-
-
 
     return true;
 }

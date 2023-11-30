@@ -58,63 +58,82 @@ $result1 = $conn->query($sql1);
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                    <a href="#"><img src="../../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
                 <ul class="sidebar-nav">
-                    <li class="sidebar-item">
-                        <a href="../../index.php" class="sidebar-link">
-                            <i class="fa-solid fa-gauge pe-2"></i>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="../guru/indexguru.php" class="sidebar-link">
-                            <i class="fa-solid fa-user-tie pe-2"></i>
-                            Guru
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="../siswa/indexsiswa.php" class="sidebar-link">
-                            <i class="fa-solid fa-user-graduate pe-2"></i>
-                            Siswa
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="indexkelas.php" class="sidebar-link active">
-                            <i class="fa-solid fa-chalkboard pe-2"></i>
-                            Kelas
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="../mapel/indexmapel.php" class="sidebar-link">
-                            <i class="fa-solid fa-book pe-2"></i>
-                            Mata Pelajaran
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
-                            <i class="fa-solid fa-calendar-days pe-2"></i>
-                            Tahun Ajaran
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
-                            Pengguna
-                        </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="../pengguna/guru/indexpenggunaguru.php" class="sidebar-link">
-                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../pengguna/siswa/indexpenggunasiswa.php" class="sidebar-link">
-                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
-                            </li>
-                        </ul>
-                    </li>
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-item">
+                            <a href="../indexdasboard.php" class="sidebar-link">
+                                <i class="fa-solid fa-gauge pe-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="../indexdaftarsiswa.php" class="sidebar-link">
+                                <i class="fa-solid fa-user pe-2"></i>
+                                Daftar Siswa
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="../rata_rata/indexnilaisiswa.php" class="sidebar-link">
+                                <i class="fa-solid fa-book pe-2"></i>
+                                Daftar Nilai Siswa
+                            </a>
+                        </li>
+                        <!-- <li class="sidebar-item">
+                            <a href="indexsumatif.php" class="sidebar-link">
+                                <i class="fa-solid fa-chalkboard pe-2"></i>
+                                Nilai Sumatif
+                            </a>
+                        </li> -->
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                                aria-expanded="true">
+                                <i class="fa-solid fa-list pe-2"></i>
+                                Nilai Sumatif
+                            </a>
+                            <ul id="pages" class="sidebar-dropdown list-unstyled collapse show"
+                                data-bs-parent="#sidebar">
+                                <li class="sidebar-item">
+                                    <a href="../IPAS/indexsumatif_ipas.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>IPAS</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Matematika/indexsumatif_mtk.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Matematika</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Bahasa_Indonesia/indexsumatif_bi.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Bahasa Indonesia</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Seni_Musik/indexsumatif_sm.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Seni Musik</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Seni_Tari/indexsumatif_st.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Seni Tari</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="indexsumatif_sr.php" class="sidebar-link active">
+                                        <i class="fa-regular fa-circle pe-2"></i>Seni Rupa</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Seni_Teater/indexsumatif_st2.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Seni Teater</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../PJOK/indexsumatif_pjok.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>PJOK</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../Bahasa_Inggris/indexsumatif_big.php" class="sidebar-link">
+                                        <i class="fa-regular fa-circle pe-2"></i>Bahasa Inggris</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -130,14 +149,14 @@ $result1 = $conn->query($sql1);
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
+                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img src="../../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle" alt="" />
                                 <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
                                     data-bs-target="#editProfileModal">Profile</a>
-                                <a href="../../logout.php" class="dropdown-item"
+                                <a href="logout.php" class="dropdown-item"
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
@@ -157,8 +176,14 @@ $result1 = $conn->query($sql1);
                         <div class="modal-body">
                             <!-- Form untuk mengedit profil -->
                             <form action="editprofile.php" method="post">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Admin</label>
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="../../../img/1975551339999112004.jpg" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
                                 </div>
                             </form>
                         </div>
@@ -180,7 +205,7 @@ $result1 = $conn->query($sql1);
                             if (isset($_GET['ubah'])) {
                                 ?>
                                 <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
-                                    <i class="fa fa-pen"></i> Edit Data Kelas
+                                    <i class="fa fa-pen"></i> Edit Nilai Seni Rupa
                                 </h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
@@ -200,7 +225,8 @@ $result1 = $conn->query($sql1);
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <form method="POST" action="proses_sr.php" enctype="multipart/form-data" name="autosumForm">
+                                <form method="POST" action="proses_sr.php" enctype="multipart/form-data"
+                                    name="autosumForm">
                                     <input type="hidden" value="<?php echo $nisn ?>" name="nisn">
                                     <input type="hidden" value="<?php echo $id_tahunajaran ?>" name="id_tahunajaran">
                                     <input type="hidden" value="<?php echo $id_mapel ?>" name="id_mapel">
@@ -224,79 +250,78 @@ $result1 = $conn->query($sql1);
                                             </select>
                                         </div>
                                     </div>
-                                        <div class="mb-3 row">
-                                            <label for="sumatif" class="col-sm-2 col-form-label">
-                                                Sumatif
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" name="sumatif" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                    id="sumatif" placeholder="Sumatif" value="<?php echo $sumatif?>">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="sumatif_akhir" class="col-sm-2 col-form-label">
-                                                Sumatif Akhir
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" name="sumatif_akhir" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                    id="sumatif_akhir" placeholder="Sumatif Akhir" value="<?php echo $sumatif_akhir?>">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="nilai_rapor" class="col-sm-2 col-form-label">
-                                                Rapor
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" name="nilai_rapor" class="form-control"
-                                                    id="nilai_rapor" placeholder="Nilai Rapor"
-                                                    value="<?php echo $rapor ?>">
-                                            </div>
+                                    <div class="mb-3 row">
+                                        <label for="sumatif" class="col-sm-2 col-form-label">
+                                            Sumatif
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="text" name="sumatif" class="form-control"
+                                                onfocus="startHitungan();" onblur="stopHitungan();" id="sumatif"
+                                                placeholder="Sumatif" value="<?php echo $sumatif ?>">
                                         </div>
                                     </div>
-                                    <div class="mb-3 row mt-4">
-                                        <div class="col">
-                                            <?php
-                                            if (isset($_GET['ubah'])) {
-                                                ?>
-                                                <button type="submit" name="aksi" value="edit"
-                                                    class="btn btn-primary btn-sm">
-                                                    <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
-                                                    Simpan Perubahan
-                                                </button>
-                                                <?php
-                                            } else {
-                                                ?>
-                                                <button type="submit" name="aksi" value="add"
-                                                    class="btn btn-primary btn-sm">
-                                                    <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
-                                                    Tambahkan
-                                                </button>
-                                                <?php
-                                            }
-                                            ?>
-                                            <a href="indexsumatif_sr.php" type="button" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-reply" aria-hidden="true"></i>
-                                                Batal
-                                            </a>
+                                    <div class="mb-3 row">
+                                        <label for="sumatif_akhir" class="col-sm-2 col-form-label">
+                                            Sumatif Akhir
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="text" name="sumatif_akhir" class="form-control"
+                                                onfocus="startHitungan();" onblur="stopHitungan();" id="sumatif_akhir"
+                                                placeholder="Sumatif Akhir" value="<?php echo $sumatif_akhir ?>">
                                         </div>
                                     </div>
-                                </form>
+                                    <div class="mb-3 row">
+                                        <label for="nilai_rapor" class="col-sm-2 col-form-label">
+                                            Rapor
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="text" name="nilai_rapor" class="form-control"
+                                                id="nilai_rapor" placeholder="Nilai Rapor" value="<?php echo $rapor ?>" readonly>
+                                        </div>
+                                    </div>
                             </div>
+                            <div class="mb-3 row mt-4">
+                                <div class="col">
+                                    <?php
+                                    if (isset($_GET['ubah'])) {
+                                        ?>
+                                        <button type="submit" name="aksi" value="edit" class="btn btn-primary btn-sm">
+                                            <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
+                                            Simpan Perubahan
+                                        </button>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <button type="submit" name="aksi" value="add" class="btn btn-primary btn-sm">
+                                            <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
+                                            Tambahkan
+                                        </button>
+                                        <?php
+                                    }
+                                    ?>
+                                    <a href="indexsumatif_sr.php" type="button" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-reply" aria-hidden="true"></i>
+                                        Batal
+                                    </a>
+                                </div>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </main>
+        </div>
+        </main>
 
-            <!-- ========= light and dark mode toggle button ======= -->
+        <!-- ========= light and dark mode toggle button ======= -->
 
-            <!-- <a href="#" class="theme-toggle">
+        <!-- <a href="#" class="theme-toggle">
                 <i class="fa-regular fa-moon"></i>
                 <i class="fa-regular fa-sun"></i>
             </a> -->
 
-            <!-- ========= footer section of dashboard ======= -->
+        <!-- ========= footer section of dashboard ======= -->
 
-            <!-- <footer class="footer">
+        <!-- <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
                         <div class="col-6 text-start">
@@ -309,18 +334,18 @@ $result1 = $conn->query($sql1);
                     </div>
                 </div>
             </footer> -->
-        </div>
+    </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="../../asset/js/script.js"></script>
+    <script src="../../../asset/js/script.js"></script>
     <script>
-        function startHitungan(){
-            interval =setInterval("calc()",1);;
-        } function calc(){
+        function startHitungan() {
+            interval = setInterval("calc()", 1);;
+        } function calc() {
             one = document.autosumForm.sumatif.value;
             two = document.autosumForm.sumatif_akhir.value;
-            document.autosumForm.nilai_rapor.value = (one * 1 + two * 1) / (2 * 1) ;
-        }function stopHitungan(){
+            document.autosumForm.nilai_rapor.value = (one * 1 + two * 1) / (2 * 1);
+        } function stopHitungan() {
             clearInterval(interval);
         }
     </script>

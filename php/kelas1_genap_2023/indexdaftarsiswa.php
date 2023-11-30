@@ -2,6 +2,11 @@
 include '../../koneksi.php';
 session_start();
 
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ../../php/login/indexlogin.php");
+    exit();
+}
+
 $query = "select tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_tahunajaran.tahun_ajaran, tb_tahunajaran.semester, tb_siswa.no_telp, tb_siswa.tanggal_lahir from tb_siswa join tb_tahunajaran on tb_siswa.id_tahunajaran = tb_tahunajaran.id_tahunajaran join tb_kelas on tb_siswa.id_kelas = tb_kelas.id_kelas where tb_siswa.id_kelas = 6";
 $sql = mysqli_query($conn, $query);
 $no = 0;
@@ -21,10 +26,19 @@ $no = 0;
     <script src="../../asset/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../asset/fontawesome/css/all.min.css">
+    <!-- Data Tables-->
+    <link rel="stylesheet" type="text/css" href="../../asset/datatables/datatables.css">
+    <script type="text/javascript" src="../../asset/datatables/datatables.js"></script>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" /> -->
     <!-- <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dt').DataTable();
+    });
+</script>
 
 <body>
     <!-- ======== Main wrapper for dashboard =========== -->
@@ -47,13 +61,13 @@ $no = 0;
                         </li>
                         <li class="sidebar-item">
                             <a href="indexdaftarsiswa.php" class="sidebar-link active">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-user pe-2"></i>
                                 Daftar Siswa
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a href="rata_rata/indexnilaisiswa.php" class="sidebar-link">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-book pe-2"></i>
                                 Daftar Nilai Siswa
                             </a>
                         </li>
@@ -125,18 +139,47 @@ $no = 0;
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>   
-                            </a>    
+                                <img src="../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle" alt="" />
+                                <i class="fas fa-caret-down"></i>
+                            </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item">Setting</a>
-                                <a href="../login/indexlogin.php" class="dropdown-item">Logout</a>
+                                <a href="#" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#editProfileModal">Profile</a>
+                                <a href="logout.php" class="dropdown-item"
+                                    onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+
+            <!-- Modal untuk Profile -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form untuk mengedit profil -->
+                            <form action="editprofile.php" method="post">
+                                <div class="mb-3 text-center">
+                                    <!-- Foto profil dengan border bulat -->
+                                    <img src="../../img/1975551339999112004.jpg" alt="Profile Picture" class="rounded-circle" width="100"
+                                        height="100">
+                                    <!-- Label Admin -->
+                                    <h5>
+                                        <p class="mt-3">Admin</p>
+                                    </h5>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ========= Main content section of dashboard ======= -->
             <main class="content px-3 py-2">
                 <div class="content-fluid">
@@ -159,13 +202,8 @@ $no = 0;
                     ?>
                 </div>
 
-                 <!-- Table Element -->
-                 <div class="card border-0">
-                        <div class="card-header" style="background-color: #FFFFFF;">
-                            <a href="kelolakelas.php" type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-plus"></i> Tambah Data
-                            </a>
-                        </div>
+                <!-- Table Element -->
+                <div class="card border-0">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="dt" class="table table-hover">
@@ -175,7 +213,6 @@ $no = 0;
                                             <th scope="col">NISN</th>
                                             <th scope="col">Nama Siswa</th>
                                             <th scope="col">Tahun Ajaran</th>
-                                            <th scope="col">Semester</th>
                                             <th scope="col">No Telepon</th>
                                             <th scope="col">Tanggal Lahir</th>
                                             <!-- <th scope="col">Tahun Ajaran</th> -->
@@ -201,9 +238,6 @@ $no = 0;
                                             </td>
                                             <td>
                                                 <?php echo $result['tahun_ajaran']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $result['semester']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $result['no_telp']; ?>

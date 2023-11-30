@@ -52,9 +52,38 @@ function hapus_data($data)
 {
     $id_tahunajaran = $data['hapus'];
 
+    // Cek relasi foreign key
+    if (cekRelasiForeign($id_tahunajaran)) {
+        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena tahun ajaran yang ingin dihapus terdaftar pada penilaian & siswa. Jika ingin menghapus, ubah tahun ajaran yang terdaftar pada penilaian & siswa terlebih dahulu.";
+        header("location: indexajaran.php");
+        return false;
+    }
+
     $query = "DELETE FROM tb_tahunajaran WHERE id_tahunajaran = '$id_tahunajaran';";
     $sql = mysqli_query($GLOBALS['conn'], $query);
     return true;
+}
+
+function cekRelasiForeign($id_tahunajaran)
+{
+    $query_siswa = "SELECT COUNT(*) as count FROM tb_siswa WHERE id_tahunajaran = '$id_tahunajaran'";
+    $result_siswa = mysqli_query($GLOBALS['conn'], $query_siswa);
+
+    if (!$result_siswa) {
+        die("Query error: " . mysqli_error($GLOBALS['conn']));
+    }
+
+    $query_nilai = "SELECT COUNT(*) as count FROM tb_nilai WHERE id_tahunajaran = '$id_tahunajaran'";
+    $result_nilai = mysqli_query($GLOBALS['conn'], $query_nilai);
+
+    if (!$result_nilai) {
+        die("Query error: " . mysqli_error($GLOBALS['conn']));
+    }
+
+    $data_siswa = mysqli_fetch_assoc($result_siswa);
+    $data_nilai = mysqli_fetch_assoc($result_nilai);
+
+    return ($data_siswa['count'] > 0) || ($data_nilai['count'] > 0);
 }
 
 ?>

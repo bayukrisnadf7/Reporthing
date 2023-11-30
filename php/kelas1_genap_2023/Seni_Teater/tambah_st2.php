@@ -30,9 +30,9 @@ if (isset($_GET['ubah'])) {
 }
 
 $sql1 = "SELECT nisn,nama_siswa FROM tb_siswa WHERE id_kelas = 6 AND id_tahunajaran = 15";
-$query2 = "SELECT id_mapel, nama_mapel FROM tb_mapel WHERE id_mapel = 6";
+$query2 = "SELECT id_mapel, nama_mapel FROM tb_mapel WHERE id_mapel = 7";
 $query3 = "SELECT id_tahunajaran, tahun_ajaran FROM tb_tahunajaran where id_tahunajaran = 15"; 
-$query4 = "SELECT id_kelas, nama_kelas from tb_kelas WHERE id_kelas = 6";
+$query4 = "SELECT id_kelas, nama_kelas from tb_kelas WHERE id_kelas = 7";
 $sql2 = mysqli_query($conn, $query2);
 $sql3 = mysqli_query($conn, $query3);
 $sql4 = mysqli_query($conn, $query4);
@@ -87,13 +87,13 @@ $result1 = $conn->query($sql1);
                         </li>
                         <li class="sidebar-item">
                             <a href="../indexdaftarsiswa.php" class="sidebar-link">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-user pe-2"></i>
                                 Daftar Siswa
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a href="../rata_rata/indexnilaisiswa.php" class="sidebar-link">
-                                <i class="fa-solid fa-gauge pe-2"></i>
+                                <i class="fa-solid fa-book pe-2"></i>
                                 Daftar Nilai Siswa
                             </a>
                         </li>
@@ -166,14 +166,14 @@ $result1 = $conn->query($sql1);
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
-                                <i class="fas fa-caret-down"></i>   
+                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img src="../../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle" alt="" />
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
                                     data-bs-target="#editProfileModal">Profile</a>
-                                <a href="../../logout.php" class="dropdown-item"
+                                <a href="logout.php" class="dropdown-item"
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
@@ -195,7 +195,7 @@ $result1 = $conn->query($sql1);
                             <form action="editprofile.php" method="post">
                                 <div class="mb-3 text-center">
                                     <!-- Foto profil dengan border bulat -->
-                                    <img src="../../img/profile1.png" alt="Profile Picture" class="rounded-circle" width="100"
+                                    <img src="../../../img/1975551339999112004.jpg" alt="Profile Picture" class="rounded-circle" width="100"
                                         height="100">
                                     <!-- Label Admin -->
                                     <h5>

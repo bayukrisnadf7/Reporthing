@@ -19,7 +19,7 @@ function tambah_data($data)
         $query = "INSERT INTO tb_nilai VALUES('$sumatif', '$sumatif_akhir', '$nilai_rapor','$nisn','$id_mapel', '$id_tahunajaran', '$id_kelas')";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
-        $query = "UPDATE tb_total_nilai SET id_tahunajaran = 15, id_kelas = 7 WHERE nisn='$nisn'";
+        $query = "INSERT INTO tb_total_nilai (nisn, id_tahunajaran, id_kelas) VALUES('$nisn','$id_tahunajaran','$id_kelas')";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
         $queryShow = "SELECT * FROM tb_total_nilai WHERE nisn = '$nisn' AND id_tahunajaran = 15;";
@@ -56,6 +56,9 @@ function ubah_data($data)
     $result = mysqli_fetch_assoc($sqlShow);
 
     $query = "UPDATE tb_total_nilai SET ipas = '$nilai_rapor' WHERE nisn='$nisn' AND id_tahunajaran = 15 AND id_kelas = 7;";
+    $sql = mysqli_query($GLOBALS['conn'], $query);
+
+    $query = "UPDATE tb_total_nilai SET rata_rata = 0 WHERE nisn='$nisn' AND id_tahunajaran = 15 AND id_kelas = 7;";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
     return true;

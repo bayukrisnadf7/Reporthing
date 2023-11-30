@@ -74,7 +74,7 @@
     
     // Cek relasi foreign key
     if (cekRelasiForeign($nip)) {
-        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena terdapat relasi dengan data lain.";
+        $_SESSION['eksekusi'] = "Data tidak dapat dihapus karena guru yang ingin dihapus terdaftar pada menu jadwal. Jika ingin menghapus, ubah guru yang terdaftar pada jadwal terlebih dahulu.";
         header("location: indexguru.php");
         return false;
     }
