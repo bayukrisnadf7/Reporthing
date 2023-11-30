@@ -299,7 +299,7 @@ $result1 = $conn->query($sql1);
                                                 <?php
                                             }
                                             ?>
-                                            <a href="indexsumatif_st.php" type="button" class="btn btn-danger btn-sm">
+                                            <a href="indexsumatif_st2.php" type="button" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                                 Batal
                                             </a>
