@@ -14,7 +14,15 @@ $nama_siswa = '';
 if (isset($_GET['ubah'])) {
     $nisn = $_GET['ubah'];
 
+<<<<<<< HEAD
     $query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_siswa.id_kelas = 6 AND tb_nilai.id_mapel = 7 AND tb_nilai.id_tahunajaran = 14 AND tb_siswa.nisn = '$nisn';";
+=======
+<<<<<<<< HEAD:php/kelas2_ganjil_2023/Bahasa_Inggris/edit_big.php
+    $query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_nilai.id_kelas = 7 AND tb_nilai.id_mapel = 9 AND tb_nilai.id_tahunajaran = 14 AND tb_siswa.nisn = '$nisn';";
+========
+    $query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_siswa.id_kelas = 6 AND tb_nilai.id_mapel = 7 AND tb_nilai.id_tahunajaran = 14 AND tb_siswa.nisn = '$nisn';";
+>>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030:php/kelas1_ganjil_2023/Seni_Teater/edit_st2.php
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);
@@ -26,7 +34,11 @@ if (isset($_GET['ubah'])) {
     $rapor = $result['nilai_rapor'];
 }
 
+<<<<<<< HEAD
 $sql1 = "SELECT nisn,nama_siswa FROM tb_siswa WHERE id_kelas = 6";
+=======
+$sql1 = "SELECT nisn,nama_siswa FROM tb_siswa WHERE id_kelas = 7";
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
 $result1 = $conn->query($sql1);
 ?>
 
@@ -58,6 +70,7 @@ $result1 = $conn->query($sql1);
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
+<<<<<<< HEAD
                     <a href="#"><img src="../../../img/logo_putih.png" alt="homepage" class="dark-logo"
                             style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
                 </div>
@@ -134,6 +147,65 @@ $result1 = $conn->query($sql1);
                             </ul>
                         </li>
                     </ul>
+=======
+                    <a href="#"><img src="../../img/logo_putih.png" alt="homepage" class="dark-logo"
+                            style="width: 10%; margin-right: 2px; margin-bottom: 3px;" /> Reporthing</a>
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-item">
+                        <a href="../../index.php" class="sidebar-link">
+                            <i class="fa-solid fa-gauge pe-2"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../guru/indexguru.php" class="sidebar-link">
+                            <i class="fa-solid fa-user-tie pe-2"></i>
+                            Guru
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../siswa/indexsiswa.php" class="sidebar-link">
+                            <i class="fa-solid fa-user-graduate pe-2"></i>
+                            Siswa
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="indexkelas.php" class="sidebar-link active">
+                            <i class="fa-solid fa-chalkboard pe-2"></i>
+                            Kelas
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../mapel/indexmapel.php" class="sidebar-link">
+                            <i class="fa-solid fa-book pe-2"></i>
+                            Mata Pelajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="../tahunajaran/indexajaran.php" class="sidebar-link">
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Tahun Ajaran
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-list pe-2"></i>
+                            Pengguna
+                        </a>
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="../pengguna/guru/indexpenggunaguru.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Guru</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../pengguna/siswa/indexpenggunasiswa.php" class="sidebar-link">
+                                    <i class="fa-regular fa-circle pe-2"></i> Siswa</a>
+                            </li>
+                        </ul>
+                    </li>
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
                 </ul>
                 <!-- ======= Navigation links for sidebar ======== -->
                 <ul class="sidebar-nav"></ul>
@@ -149,22 +221,34 @@ $result1 = $conn->query($sql1);
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
+<<<<<<< HEAD
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="../../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle"
                                     alt="" />
+=======
+                            <a href="indexmapel.php" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img src="../../img/profile1.png" class="avatar img-fluid rounded-circle" alt="" />
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
                                 <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
                                     data-bs-target="#editProfileModal">Profile</a>
+<<<<<<< HEAD
                                 <a href="logout.php" class="dropdown-item"
+=======
+                                <a href="../../logout.php" class="dropdown-item"
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+<<<<<<< HEAD
             </nav>
+=======
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
 
             <!-- Modal untuk Profile -->
             <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -178,6 +262,7 @@ $result1 = $conn->query($sql1);
                         <div class="modal-body">
                             <!-- Form untuk mengedit profil -->
                             <form action="editprofile.php" method="post">
+<<<<<<< HEAD
                                 <div class="mb-3 text-center">
                                     <!-- Foto profil dengan border bulat -->
                                     <img src="../../../img/1975551339999112004.jpg" alt="Profile Picture"
@@ -186,6 +271,10 @@ $result1 = $conn->query($sql1);
                                     <h5>
                                         <p class="mt-3">Admin</p>
                                     </h5>
+=======
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Admin</label>
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
                                 </div>
                             </form>
                         </div>
@@ -207,7 +296,11 @@ $result1 = $conn->query($sql1);
                             if (isset($_GET['ubah'])) {
                                 ?>
                                 <h6 name="aksi" value="edit" class="card-tittle mt-2" style="color: black;">
+<<<<<<< HEAD
                                     <i class="fa fa-pen"></i> Edit Nilai Seni Teater
+=======
+                                    <i class="fa fa-pen"></i> Edit Data Kelas
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
                                 </h6>
                                 <!-- <h6 class="card-subtitle" style="color: white;">
                                     Form untuk meng-edit data kelas
@@ -227,7 +320,15 @@ $result1 = $conn->query($sql1);
                         </div>
                         <div class="card-body">
                             <div class="container">
+<<<<<<< HEAD
                                 <form method="POST" action="proses_st2.php" enctype="multipart/form-data" name="autosumForm">
+=======
+<<<<<<<< HEAD:php/kelas2_ganjil_2023/Bahasa_Inggris/edit_big.php
+                                <form method="POST" action="proses_big.php" enctype="multipart/form-data" name="autosumForm">
+========
+                                <form method="POST" action="proses_sr.php" enctype="multipart/form-data" name="autosumForm">
+>>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030:php/kelas1_ganjil_2023/Seni_Teater/edit_st2.php
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
                                     <input type="hidden" value="<?php echo $nisn ?>" name="nisn">
                                     <input type="hidden" value="<?php echo $id_tahunajaran ?>" name="id_tahunajaran">
                                     <input type="hidden" value="<?php echo $id_mapel ?>" name="id_mapel">
@@ -301,7 +402,11 @@ $result1 = $conn->query($sql1);
                                                 <?php
                                             }
                                             ?>
+<<<<<<< HEAD
                                             <a href="indexsumatif_st2.php" type="button" class="btn btn-danger btn-sm">
+=======
+                                            <a href="indexsumatif_big.php" type="button" class="btn btn-danger btn-sm">
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                                 Batal
                                             </a>
@@ -339,10 +444,17 @@ $result1 = $conn->query($sql1);
         </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
+<<<<<<< HEAD
     <script src="../../../asset/js/script.js"></script>
     <script>
         function startHitungan(){
             interval =setInterval("calc()",1);;
+=======
+    <script src="../../asset/js/script.js"></script>
+    <script>
+        function startHitungan(){
+            interval = setInterval("calc()",1);;
+>>>>>>> a310a3bf51e7e7eafcd8f0376ccf7cef45242030
         } function calc(){
             one = document.autosumForm.sumatif.value;
             two = document.autosumForm.sumatif_akhir.value;
