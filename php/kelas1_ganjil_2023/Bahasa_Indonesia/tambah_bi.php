@@ -4,7 +4,7 @@ include '../../../koneksi.php';
 session_start();
 
 // if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header("Location: ../login/indexlogin.php");
+//     header("Location: ../../login/indexlogin.php");
 //     exit();
 // }
 
@@ -23,7 +23,7 @@ if (isset($_GET['ubah'])) {
     $nama_siswa = $result['nama_siswa'];
     $sumatif = $result['sumatif'];
     $sumatif_akhir = $result['sumatif_akhir'];
-    $rapor =  $result['nilai_rapor'];
+    $rapor = $result['nilai_rapor'];
     $id_tahunajaran = $result['id_tahunajaran'];
     $id_mapel = $result['id_mapel'];
     // $nama_mapel = $result['nama_mapel'];
@@ -31,7 +31,7 @@ if (isset($_GET['ubah'])) {
 
 $sql1 = "SELECT nisn,nama_siswa FROM tb_siswa WHERE id_kelas = 6 AND id_tahunajaran = 14";
 $query2 = "SELECT id_mapel, nama_mapel FROM tb_mapel WHERE id_mapel = 3";
-$query3 = "SELECT id_tahunajaran, tahun_ajaran FROM tb_tahunajaran where id_tahunajaran = 14"; 
+$query3 = "SELECT id_tahunajaran, tahun_ajaran FROM tb_tahunajaran where id_tahunajaran = 14";
 $query4 = "SELECT id_kelas, nama_kelas from tb_kelas WHERE id_kelas = 6";
 $sql2 = mysqli_query($conn, $query2);
 $sql3 = mysqli_query($conn, $query3);
@@ -155,7 +155,7 @@ $result1 = $conn->query($sql1);
                 <ul class="sidebar-nav"></ul>
             </div>
         </aside>
-        
+
         <!-- ========= Main section of dashboard ======= -->
         <div class="main">
             <!-- ========= Main navbar section of dashboard ======= -->
@@ -167,7 +167,8 @@ $result1 = $conn->query($sql1);
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle" alt="" />
+                                <img src="../../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle"
+                                    alt="" />
                                 <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -181,8 +182,8 @@ $result1 = $conn->query($sql1);
                 </div>
             </nav>
 
-           <!-- Modal untuk Profile -->
-           <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <!-- Modal untuk Profile -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -195,8 +196,8 @@ $result1 = $conn->query($sql1);
                             <form action="editprofile.php" method="post">
                                 <div class="mb-3 text-center">
                                     <!-- Foto profil dengan border bulat -->
-                                    <img src="../../../img/1975551339999112004.jpg" alt="Profile Picture" class="rounded-circle" width="100"
-                                        height="100">
+                                    <img src="../../../img/1975551339999112004.jpg" alt="Profile Picture"
+                                        class="rounded-circle" width="100" height="100">
                                     <!-- Label Admin -->
                                     <h5>
                                         <p class="mt-3">Admin</p>
@@ -246,7 +247,8 @@ $result1 = $conn->query($sql1);
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <form method="POST" action="proses_bi.php" enctype="multipart/form-data" name="autosumForm">
+                                <form method="POST" action="proses_bi.php" enctype="multipart/form-data"
+                                    name="autosumForm">
                                     <input type="hidden" value="<?php echo $nisn ?>" name="nisn">
                                     <input type="hidden" value="<?php echo $id_tahunajaran ?>" name="id_tahunajaran">
                                     <input type="hidden" value="<?php echo $id_mapel ?>" name="id_mapel">
@@ -275,8 +277,10 @@ $result1 = $conn->query($sql1);
                                             Sumatif
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="sumatif" class="form-control" id="sumatif" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                placeholder="Sumatif">
+                                            <input required type="number" name="sumatif" class="form-control"
+                                                id="sumatif" onfocus="startHitungan();"
+                                                onblur="stopHitungan(); checkValue();" placeholder="Sumatif" min="0"
+                                                max="100">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -284,8 +288,9 @@ $result1 = $conn->query($sql1);
                                             Sumatif Akhir
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="sumatif_akhir" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                id="sumatif_akhir" placeholder="Sumatif Akhir">
+                                            <input required type="number" name="sumatif_akhir" class="form-control"
+                                                onfocus="startHitungan();" onblur="stopHitungan(); checkValue();"
+                                                id="sumatif_akhir" placeholder="Sumatif Akhir" min="0" max="100">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -293,8 +298,8 @@ $result1 = $conn->query($sql1);
                                             Nilai Rapor
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="nilai_rapor" class="form-control" id="nilai_rapor"
-                                                placeholder="Nilai Rapor" readonly>
+                                            <input required type="text" name="nilai_rapor" class="form-control"
+                                                id="nilai_rapor" placeholder="Nilai Rapor" readonly>
                                         </div>
                                     </div>
                                     <div style="display:none;" class="mb-3 row">
@@ -302,7 +307,7 @@ $result1 = $conn->query($sql1);
                                             Mata Pelajaran
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="mapel" class="form-control" id="mapel" 
+                                            <input required type="text" name="mapel" class="form-control" id="mapel"
                                                 placeholder="" value="<?php echo $id_mapel ?>" readonly>
                                         </div>
                                     </div>
@@ -311,8 +316,9 @@ $result1 = $conn->query($sql1);
                                             Tahun Ajaran
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="tahun_ajaran" class="form-control" id="tahun_ajaran"
-                                                placeholder="" value="<?php echo $id_tahunajaran ?>" readonly>
+                                            <input required type="text" name="tahun_ajaran" class="form-control"
+                                                id="tahun_ajaran" placeholder="" value="<?php echo $id_tahunajaran ?>"
+                                                readonly>
                                         </div>
                                     </div>
                                     <div style="display:none;" class="mb-3 row">
@@ -320,8 +326,8 @@ $result1 = $conn->query($sql1);
                                             Kelas
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="id_kelas" class="form-control" id="id_kelas"
-                                                placeholder="" value="<?php echo $id_kelas ?>" readonly>
+                                            <input required type="text" name="id_kelas" class="form-control"
+                                                id="id_kelas" placeholder="" value="<?php echo $id_kelas ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row mt-4">
@@ -385,13 +391,47 @@ $result1 = $conn->query($sql1);
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="../../../asset/js/script.js"></script>
     <script>
-        function startHitungan(){
-            interval =setInterval("calc()",1);;
-        } function calc(){
+        function checkValue() {
+            // Get the numeric input field
+            const sumatifInput = document.getElementById('sumatif_akhir');
+
+            // Parse the input value as a float
+            const inputValue = parseFloat(sumatifInput.value);
+
+            // Check if the value is greater than 100
+            if (inputValue > 100) {
+                // Trigger an alert with the updated message
+                alert('Nilai Maksimal 100');
+
+                // Optionally, you can reset the input field or take other actions here
+                sumatifInput.value = ''; // Reset the input field
+            }
+        }
+        function checkValue() {
+            // Get the numeric input field
+            const sumatifInput = document.getElementById('sumatif');
+
+            // Parse the input value as a float
+            const inputValue = parseFloat(sumatifInput.value);
+
+            // Check if the value is greater than 100
+            if (inputValue > 100) {
+                // Trigger an alert with the updated message
+                alert('Nilai Maksimal 100');
+
+                // Optionally, you can reset the input field or take other actions here
+                sumatifInput.value = ''; // Reset the input field
+            }
+        }
+    </script>
+    <script>
+        function startHitungan() {
+            interval = setInterval("calc()", 1);;
+        } function calc() {
             one = document.autosumForm.sumatif.value;
             two = document.autosumForm.sumatif_akhir.value;
-            document.autosumForm.nilai_rapor.value = (one * 1 + two * 1) / (2 * 1) ;
-        }function stopHitungan(){
+            document.autosumForm.nilai_rapor.value = (one * 1 + two * 1) / (2 * 1);
+        } function stopHitungan() {
             clearInterval(interval);
         }
     </script>

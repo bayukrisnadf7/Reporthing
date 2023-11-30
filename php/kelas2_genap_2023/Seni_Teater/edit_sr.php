@@ -224,24 +224,26 @@ $result1 = $conn->query($sql1);
                                             </select>
                                         </div>
                                     </div>
-                                        <div class="mb-3 row">
-                                            <label for="sumatif" class="col-sm-2 col-form-label">
-                                                Sumatif
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" name="sumatif" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                    id="sumatif" placeholder="Sumatif" value="<?php echo $sumatif?>">
-                                            </div>
+                                    <div class="mb-3 row">
+                                        <label for="notelp" class="col-sm-2 col-form-label">
+                                            Sumatif
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="number" name="sumatif" class="form-control"
+                                                id="sumatif" onfocus="startHitungan();" onblur="stopHitungan(); checkValue();"
+                                                placeholder="Sumatif" min="0" max="100" value = <?php echo $sumatif ?>>
                                         </div>
-                                        <div class="mb-3 row">
-                                            <label for="sumatif_akhir" class="col-sm-2 col-form-label">
-                                                Sumatif Akhir
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" name="sumatif_akhir" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                    id="sumatif_akhir" placeholder="Sumatif Akhir" value="<?php echo $sumatif_akhir?>">
-                                            </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="sumatif_akhir" class="col-sm-2 col-form-label">
+                                            Sumatif Akhir
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="number" name="sumatif_akhir" class="form-control"
+                                                onfocus="startHitungan();" onblur="stopHitungan(); checkValue();" id="sumatif_akhir"
+                                                placeholder="Sumatif Akhir" min="0" max="100" value = <?php echo $sumatif_akhir ?>>
                                         </div>
+                                    </div>
                                         <div class="mb-3 row">
                                             <label for="nilai_rapor" class="col-sm-2 col-form-label">
                                                 Rapor
@@ -313,6 +315,40 @@ $result1 = $conn->query($sql1);
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="../../asset/js/script.js"></script>
+    <script>
+        function checkValue() {
+            // Get the numeric input field
+            const sumatifInput = document.getElementById('sumatif_akhir');
+
+            // Parse the input value as a float
+            const inputValue = parseFloat(sumatifInput.value);
+
+            // Check if the value is greater than 100
+            if (inputValue > 100) {
+                // Trigger an alert with the updated message
+                alert('Nilai Maksimal 100');
+
+                // Optionally, you can reset the input field or take other actions here
+                sumatifInput.value = ''; // Reset the input field
+            }
+        }
+        function checkValue() {
+            // Get the numeric input field
+            const sumatifInput = document.getElementById('sumatif');
+
+            // Parse the input value as a float
+            const inputValue = parseFloat(sumatifInput.value);
+
+            // Check if the value is greater than 100
+            if (inputValue > 100) {
+                // Trigger an alert with the updated message
+                alert('Nilai Maksimal 100');
+
+                // Optionally, you can reset the input field or take other actions here
+                sumatifInput.value = ''; // Reset the input field
+            }
+        }
+    </script>
     <script>
         function startHitungan(){
             interval =setInterval("calc()",1);;
