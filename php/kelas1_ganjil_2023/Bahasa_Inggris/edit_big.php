@@ -144,7 +144,8 @@ $result1 = $conn->query($sql1);
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="../../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle" alt="" />
+                                <img src="../../../img/1975551339999112004.jpg" class="avatar img-fluid rounded-circle"
+                                    alt="" />
                                 <i class="fas fa-caret-down"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -172,8 +173,8 @@ $result1 = $conn->query($sql1);
                             <form action="editprofile.php" method="post">
                                 <div class="mb-3 text-center">
                                     <!-- Foto profil dengan border bulat -->
-                                    <img src="../../../img/1975551339999112004.jpg" alt="Profile Picture" class="rounded-circle" width="100"
-                                        height="100">
+                                    <img src="../../../img/1975551339999112004.jpg" alt="Profile Picture"
+                                        class="rounded-circle" width="100" height="100">
                                     <!-- Label Admin -->
                                     <h5>
                                         <p class="mt-3">Admin</p>
@@ -219,7 +220,8 @@ $result1 = $conn->query($sql1);
                         </div>
                         <div class="card-body">
                             <div class="container">
-                                <form method="POST" action="proses_big.php" enctype="multipart/form-data" name="autosumForm">
+                                <form method="POST" action="proses_big.php" enctype="multipart/form-data"
+                                    name="autosumForm">
                                     <input type="hidden" value="<?php echo $nisn ?>" name="nisn">
                                     <input type="hidden" value="<?php echo $id_tahunajaran ?>" name="id_tahunajaran">
                                     <input type="hidden" value="<?php echo $id_mapel ?>" name="id_mapel">
@@ -243,79 +245,78 @@ $result1 = $conn->query($sql1);
                                             </select>
                                         </div>
                                     </div>
-                                        <div class="mb-3 row">
-                                            <label for="sumatif" class="col-sm-2 col-form-label">
-                                                Sumatif
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" name="sumatif" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                    id="sumatif" placeholder="Sumatif" value="<?php echo $sumatif?>">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="sumatif_akhir" class="col-sm-2 col-form-label">
-                                                Sumatif Akhir
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" name="sumatif_akhir" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                    id="sumatif_akhir" placeholder="Sumatif Akhir" value="<?php echo $sumatif_akhir?>">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="nilai_rapor" class="col-sm-2 col-form-label">
-                                                Rapor
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" name="nilai_rapor" class="form-control"
-                                                    id="nilai_rapor" placeholder="Nilai Rapor"
-                                                    value="<?php echo $rapor ?>">
-                                            </div>
+                                    <div class="mb-3 row">
+                                        <label for="notelp" class="col-sm-2 col-form-label">
+                                            Sumatif
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="number" name="sumatif" class="form-control"
+                                                id="sumatif" onfocus="startHitungan();" onblur="stopHitungan(); checkValue();"
+                                                placeholder="Sumatif" min="0" max="100" value = <?php echo $sumatif ?>>
                                         </div>
                                     </div>
-                                    <div class="mb-3 row mt-4">
-                                        <div class="col">
-                                            <?php
-                                            if (isset($_GET['ubah'])) {
-                                                ?>
-                                                <button type="submit" name="aksi" value="edit"
-                                                    class="btn btn-primary btn-sm">
-                                                    <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
-                                                    Simpan Perubahan
-                                                </button>
-                                                <?php
-                                            } else {
-                                                ?>
-                                                <button type="submit" name="aksi" value="add"
-                                                    class="btn btn-primary btn-sm">
-                                                    <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
-                                                    Tambahkan
-                                                </button>
-                                                <?php
-                                            }
-                                            ?>
-                                            <a href="indexsumatif_big.php" type="button" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-reply" aria-hidden="true"></i>
-                                                Batal
-                                            </a>
+                                    <div class="mb-3 row">
+                                        <label for="sumatif_akhir" class="col-sm-2 col-form-label">
+                                            Sumatif Akhir
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="number" name="sumatif_akhir" class="form-control"
+                                                onfocus="startHitungan();" onblur="stopHitungan(); checkValue();" id="sumatif_akhir"
+                                                placeholder="Sumatif Akhir" min="0" max="100" value = <?php echo $sumatif_akhir ?>>
                                         </div>
                                     </div>
-                                </form>
+                                    <div class="mb-3 row">
+                                        <label for="nilai_rapor" class="col-sm-2 col-form-label">
+                                            Rapor
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input required type="text" name="nilai_rapor" class="form-control"
+                                                id="nilai_rapor" placeholder="Nilai Rapor" value="<?php echo $rapor ?>">
+                                        </div>
+                                    </div>
                             </div>
+                            <div class="mb-3 row mt-4">
+                                <div class="col">
+                                    <?php
+                                    if (isset($_GET['ubah'])) {
+                                        ?>
+                                        <button type="submit" name="aksi" value="edit" class="btn btn-primary btn-sm">
+                                            <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
+                                            Simpan Perubahan
+                                        </button>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <button type="submit" name="aksi" value="add" class="btn btn-primary btn-sm">
+                                            <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i>
+                                            Tambahkan
+                                        </button>
+                                        <?php
+                                    }
+                                    ?>
+                                    <a href="indexsumatif_big.php" type="button" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-reply" aria-hidden="true"></i>
+                                        Batal
+                                    </a>
+                                </div>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </main>
+        </div>
+        </main>
 
-            <!-- ========= light and dark mode toggle button ======= -->
+        <!-- ========= light and dark mode toggle button ======= -->
 
-            <!-- <a href="#" class="theme-toggle">
+        <!-- <a href="#" class="theme-toggle">
                 <i class="fa-regular fa-moon"></i>
                 <i class="fa-regular fa-sun"></i>
             </a> -->
 
-            <!-- ========= footer section of dashboard ======= -->
+        <!-- ========= footer section of dashboard ======= -->
 
-            <!-- <footer class="footer">
+        <!-- <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
                         <div class="col-6 text-start">
@@ -328,18 +329,52 @@ $result1 = $conn->query($sql1);
                     </div>
                 </div>
             </footer> -->
-        </div>
+    </div>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="../../../asset/js/script.js"></script>
     <script>
-        function startHitungan(){
-            interval = setInterval("calc()",1);;
-        } function calc(){
+        function checkValue() {
+            // Get the numeric input field
+            const sumatifInput = document.getElementById('sumatif_akhir');
+
+            // Parse the input value as a float
+            const inputValue = parseFloat(sumatifInput.value);
+
+            // Check if the value is greater than 100
+            if (inputValue > 100) {
+                // Trigger an alert with the updated message
+                alert('Nilai Maksimal 100');
+
+                // Optionally, you can reset the input field or take other actions here
+                sumatifInput.value = ''; // Reset the input field
+            }
+        }
+        function checkValue() {
+            // Get the numeric input field
+            const sumatifInput = document.getElementById('sumatif');
+
+            // Parse the input value as a float
+            const inputValue = parseFloat(sumatifInput.value);
+
+            // Check if the value is greater than 100
+            if (inputValue > 100) {
+                // Trigger an alert with the updated message
+                alert('Nilai Maksimal 100');
+
+                // Optionally, you can reset the input field or take other actions here
+                sumatifInput.value = ''; // Reset the input field
+            }
+        }
+    </script>
+    <script>
+        function startHitungan() {
+            interval = setInterval("calc()", 1);;
+        } function calc() {
             one = document.autosumForm.sumatif.value;
             two = document.autosumForm.sumatif_akhir.value;
-            document.autosumForm.nilai_rapor.value = (one * 1 + two * 1) / (2 * 1) ;
-        }function stopHitungan(){
+            document.autosumForm.nilai_rapor.value = (one * 1 + two * 1) / (2 * 1);
+        } function stopHitungan() {
             clearInterval(interval);
         }
     </script>

@@ -145,17 +145,36 @@ $no = 0;
                         <h6>Halaman untuk mengelola nilai sumatif</h6>
                     </div>
 
+                    <!-- Alert Eksekusi-->
                     <?php
                     if (isset($_SESSION['eksekusi'])):
-                        ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php
+                        if ($_SESSION['eksekusi'] === "Data Berhasil Ditambahkan") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
                             echo $_SESSION['eksekusi'];
-                            ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        <?php
-                        session_destroy();
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Diperbaharui") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } elseif ($_SESSION['eksekusi'] === "Data Berhasil Dihapus") {
+                            // Tampilkan pesan sukses
+                            echo '<div id="alertDiv" class="alert alert-success alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        } else {
+                            // Tampilkan pesan kesalahan
+                            echo '<div id="alertDiv" class="alert alert-danger alert-dismissible fade show" role="alert">';
+                            echo $_SESSION['eksekusi'];
+                            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                            echo '</div>';
+                        }
+
+                        unset($_SESSION['eksekusi']); // Hapus session setelah menampilkan pesan
                     endif;
                     ?>
                 </div>
