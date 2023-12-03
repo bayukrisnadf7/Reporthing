@@ -14,7 +14,7 @@ $nama_siswa = '';
 if (isset($_GET['ubah'])) {
     $nisn = $_GET['ubah'];
 
-    $query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_nilai.id_kelas = 6 AND tb_nilai.id_mapel = 5 AND tb_nilai.id_tahunajaran = 14 AND tb_siswa.nisn = '$nisn';";
+    $query = "SELECT tb_nilai.sumatif, tb_nilai.sumatif_akhir, tb_nilai.nilai_rapor, tb_siswa.nisn, tb_siswa.nama_siswa, tb_siswa.id_kelas, tb_mapel.nama_mapel from tb_nilai join tb_siswa on tb_nilai.nisn = tb_siswa.nisn join tb_mapel on tb_nilai.id_mapel = tb_mapel.id_mapel join tb_tahunajaran on tb_nilai.id_tahunajaran = tb_tahunajaran.id_tahunajaran where tb_nilai.id_kelas = 6 AND tb_nilai.id_mapel = 7 AND tb_nilai.id_tahunajaran = 14 AND tb_siswa.nisn = '$nisn';";
     $sql = mysqli_query($conn, $query);
 
     $result = mysqli_fetch_assoc($sql);

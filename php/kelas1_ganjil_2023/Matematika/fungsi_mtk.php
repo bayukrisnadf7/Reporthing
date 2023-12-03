@@ -18,9 +18,6 @@ function tambah_data($data)
     $query = "INSERT INTO tb_nilai VALUES('$sumatif', '$sumatif_akhir', '$nilai_rapor','$nisn','$id_mapel', '$id_tahunajaran', '$id_kelas')";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
-    $query = "UPDATE tb_total_nilai SET id_tahunajaran = 14, id_kelas = 6 WHERE nisn='$nisn'";
-    $sql = mysqli_query($GLOBALS['conn'], $query);
-
     $queryShow = "SELECT * FROM tb_total_nilai WHERE nisn = '$nisn' AND id_tahunajaran = 14;";
     $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
     $result = mysqli_fetch_assoc($sqlShow);
