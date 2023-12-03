@@ -28,6 +28,7 @@ function tambah_data($data)
 
         $query = "UPDATE tb_total_nilai SET ipas = '$nilai_rapor' WHERE nisn='$nisn' AND id_tahunajaran = 14 AND id_kelas = 7;";
         $sql = mysqli_query($GLOBALS['conn'], $query);
+        
     } elseif (mysqli_num_rows($sqlselect) > 0) {
         $_SESSION['eksekusi'] = "Gagal menambahkan data. Nama sudah terdaftar.";
         header("location: indexsumatif_ipas.php");

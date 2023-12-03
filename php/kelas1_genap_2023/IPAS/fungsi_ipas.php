@@ -28,8 +28,7 @@ function tambah_data($data)
         $query = "UPDATE tb_total_nilai SET ipas = '$nilai_rapor' WHERE nisn='$nisn' AND id_tahunajaran = 15 AND id_kelas = 6;";
         $sql = mysqli_query($GLOBALS['conn'], $query);
 
-        $query = "UPDATE tb_total_nilai SET rata_rata = 0 WHERE nisn='$nisn' AND id_tahunajaran = 15 AND id_kelas = 6;";
-        $sql = mysqli_query($GLOBALS['conn'], $query);
+
 
     } elseif (mysqli_num_rows($sqlselect) > 0) {
         $_SESSION['eksekusi'] = "Gagal menambahkan data. Nama sudah terdaftar.";
@@ -59,6 +58,9 @@ function ubah_data($data)
     $result = mysqli_fetch_assoc($sqlShow);
 
     $query = "UPDATE tb_total_nilai SET ipas = '$nilai_rapor' WHERE nisn='$nisn' AND id_tahunajaran = 15 AND id_kelas = 6;";
+    $sql = mysqli_query($GLOBALS['conn'], $query);
+
+    $query = "UPDATE tb_total_nilai SET rata_rata = 0 WHERE nisn='$nisn' AND id_tahunajaran = 15 AND id_kelas = 6;";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
     return true;

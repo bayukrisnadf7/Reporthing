@@ -269,8 +269,10 @@ $result1 = $conn->query($sql1);
                                             Sumatif
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="sumatif" class="form-control" id="sumatif" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                placeholder="Sumatif">
+                                            <input required type="number" name="sumatif" class="form-control"
+                                                id="sumatif" onfocus="startHitungan();"
+                                                onblur="stopHitungan(); checkValue();" placeholder="Sumatif" min="0"
+                                                max="100">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -278,8 +280,9 @@ $result1 = $conn->query($sql1);
                                             Sumatif Akhir
                                         </label>
                                         <div class="col-sm-10">
-                                            <input required type="text" name="sumatif_akhir" class="form-control" onfocus="startHitungan();" onblur="stopHitungan();"
-                                                id="sumatif_akhir" placeholder="Sumatif Akhir">
+                                            <input required type="number" name="sumatif_akhir" class="form-control"
+                                                onfocus="startHitungan();" onblur="stopHitungan(); checkValue();"
+                                                id="sumatif_akhir" placeholder="Sumatif Akhir" min="0" max="100">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
