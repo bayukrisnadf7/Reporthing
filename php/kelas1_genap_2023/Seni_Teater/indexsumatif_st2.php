@@ -144,7 +144,7 @@ $no = 0;
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
                                     data-bs-target="#editProfileModal">Profile</a>
-                                <a href="logout.php" class="dropdown-item"
+                                <a href="../../../logout.php" class="dropdown-item"
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>

@@ -173,7 +173,7 @@ $result1 = $conn->query($sql1);
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
                                     data-bs-target="#editProfileModal">Profile</a>
-                                <a href="logout.php" class="dropdown-item"
+                                <a href="../../../logout.php" class="dropdown-item"
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
@@ -403,6 +403,10 @@ $result1 = $conn->query($sql1);
 
                 // Optionally, you can reset the input field or take other actions here
                 sumatifInput.value = ''; // Reset the input field
+            } else if (inputValue < 0) {
+                alert('Nilai Minimal 0');
+
+                sumatifInput.value = '';
             }
         }
         function checkValue() {
@@ -419,6 +423,10 @@ $result1 = $conn->query($sql1);
 
                 // Optionally, you can reset the input field or take other actions here
                 sumatifInput.value = ''; // Reset the input field
+            } else if (inputValue < 0) {
+                alert('Nilai Minimal 0');
+
+                sumatifInput.value = '';
             }
         }
     </script>

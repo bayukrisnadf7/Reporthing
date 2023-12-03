@@ -171,7 +171,7 @@ $no = 0;
                                         height="100">
                                     <!-- Label Admin -->
                                     <h5>
-                                        <p class="mt-3">Admin</p>
+                                        <p class="mt-3">Guru Kelas 1</p>
                                     </h5>
                                 </div>
                             </form>

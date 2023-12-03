@@ -230,7 +230,7 @@ $no = 0;
                                         </td>
 
                                         <td>
-                                            <a href="edit_sr.php?ubah=<?php
+                                            <a href="edit_st2.php?ubah=<?php
                                             echo $result['nisn'];
                                             ?>" type="button" class="btn btn-warning btn-sm">
                                                 <i class="fa fa-pen"></i>

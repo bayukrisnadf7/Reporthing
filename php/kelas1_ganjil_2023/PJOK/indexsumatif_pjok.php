@@ -149,7 +149,7 @@ $no = 0;
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
                                     data-bs-target="#editProfileModal">Profile</a>
-                                <a href="logout.php" class="dropdown-item"
+                                <a href="../../../logout.php" class="dropdown-item"
                                     onClick="return confirm('Anda yakin ingin logout?')">Logout</a>
                             </div>
                         </li>
@@ -175,7 +175,7 @@ $no = 0;
                                         class="rounded-circle" width="100" height="100">
                                     <!-- Label Admin -->
                                     <h5>
-                                        <p class="mt-3">Admin</p>
+                                        <p class="mt-3">Guru Kelas 1</p>
                                     </h5>
                                 </div>
                             </form>
